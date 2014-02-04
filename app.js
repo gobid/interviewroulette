@@ -12,8 +12,8 @@ var index = require('./routes/index');
 var signup = require('./routes/signup');
 var project = require('./routes/project');
 var intervieweeProfile = require('./routes/intervieweeProfile');
-var intervieweeSurvey = require("./routes/intervieweeSurvey");
-var interviewerSurvey = require("./routes/interviewerSurvey");
+var intervieweeSurvey = require('./routes/intervieweeSurvey');
+var interviewerSurvey = require('./routes/interviewerSurvey');
 
 
 var partialsDir="views/partials/"
