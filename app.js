@@ -47,8 +47,8 @@ app.get('/', index.view);
 app.get('/signup', signup.view);
 app.get('/project/:name', project.viewProject);
 app.get('/intervieweeProfile', intervieweeProfile.viewIntervieweeProfile);
-app.get("/intervieweeSurvey",intervieweeSurvey.dosurveyInterviewee);
-app.get("/interviewerSurvey",interviewerSurvey.dosurveyInterviewer);
+app.get("/intervieweeSurvey", intervieweeSurvey.dosurveyInterviewee);
+app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
 
 // Example route
 // app.get('/users', user.list);
