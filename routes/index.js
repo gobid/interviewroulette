@@ -2,7 +2,6 @@ exports.view = function(req, res){
 /*
  * GET home page.
  */
-
   res.render('index', {
       'projects': [
         { 'name': 'Waiting in Line',
