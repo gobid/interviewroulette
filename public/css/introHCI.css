@@ -26,8 +26,13 @@
      z-index: -1;	
 }
 
+.jumbotron h1 {
+     text-align: center;
+}
+
 .jumbotron p {
      color: #6e6e6e;
+     text-align: center;
 }
 
 .project a {
