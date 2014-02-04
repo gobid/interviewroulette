@@ -11,7 +11,7 @@ var handlebars = require('express3-handlebars')
 var index = require('./routes/index');
 var signup = require('./routes/signup');
 var project = require('./routes/project');
-var intervieweeProfile = require('.routes/intervieweeProfile');
+var intervieweeProfile = require('./routes/intervieweeProfile');
 
 var partialsDir="views/partials/"
 
