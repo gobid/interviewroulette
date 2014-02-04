@@ -15,7 +15,6 @@ var intervieweeProfile = require('./routes/intervieweeProfile');
 var intervieweeSurvey = require('./routes/intervieweeSurvey');
 var interviewerSurvey = require('./routes/interviewerSurvey');
 
-
 var partialsDir="views/partials/"
 
 // Example route

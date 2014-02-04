@@ -11,12 +11,11 @@
 
 .jumbotron {
 	position: relative;
-	background: none;
+     background-color:transparent;
 }
 
 .jumbotron:after {
      content:"";
-     background: url("../images/lorempixel.jumbotron.jpeg");
      opacity: 0.2;
      top: 0;
      left: 0;
