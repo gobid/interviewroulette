@@ -12,6 +12,9 @@ var index = require('./routes/index');
 var signup = require('./routes/signup');
 var project = require('./routes/project');
 var intervieweeProfile = require('./routes/intervieweeProfile');
+var surveyee = require("./routes/intervieweeSurvey");
+var surveyer = require("./routes/interviewerSurvey");
+
 
 var partialsDir="views/partials/"
 
@@ -45,6 +48,8 @@ app.get('/', index.view);
 app.get('/signup', signup.view);
 app.get('/project/:name', project.viewProject);
 app.get('/intervieweeProfile', intervieweeProfile.viewIntervieweeProfile);
+app.get("/surveyee",intervieweeSurvey.dosurveyInterviewee);
+app.get("/surveyer",interviewerSurvey.dosurveyInterviewer);
 
 // Example route
 // app.get('/users', user.list);
