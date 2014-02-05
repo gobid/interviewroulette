@@ -1,0 +1,20 @@
+.feedback {
+	border-radius: 10px;
+ 	background: #d3d3d3;
+ 	margin-bottom: 5px;
+ 	padding: 15px;
+}
+.profile-circle {
+	border-radius: 50%;
+	background-color:#d3d3d3;
+	height: 140px;
+	margin: auto; 
+	text-align: center;
+	line-height: 140px;
+	width: 140px;
+}
+
+.profile-header {
+	margin-bottom: 15px;
+}
+
