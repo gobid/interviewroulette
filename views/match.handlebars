@@ -9,13 +9,26 @@
   <body>
   	 <div class="container">
       <h1> Interview </h1>
-      <h3> Not yet implemented! </h3>
       <br>
-      <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
-      <g:hangout render="createhangout"></g:hangout>
-      <br>
-      <hr>
-      <a class="btn btn-primary btn-lg active" href="/intervieweeProfile" role="button">Back To Profile</a>
+      <div class = "row">
+        <div class = "col-md-4">
+          <div class="alert alert-info">
+            <ol>
+              <li>Copy the email of invitee.</li>
+              <li>Press hangout</li> 
+              <li>Paste the invitee's email into the google hangout prompt to add participants.</li>
+            </ol>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Copy This: </span>
+            <input type = 'text' class = 'form-control' id = 'invitee' value = 'govinda@govindadasu.com'>
+          </div>
+          <br>
+          <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+          <g:hangout render="createhangout"></g:hangout>
+          <br><hr>
+          <a class="btn btn-primary btn-lg active" href="/intervieweeProfile" role="button">Back To Profile</a>
+        </div>
     </div> 
  </body>
 </html>
