@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {{> head}}
+  </head>
+
+  <body>
+
+    <div class="container">
+      {{> navbar}}
+      <br>
+      <div class = "row">
+        <div class = "col-md-6">
+          <form role="form" id = "signup-form" method="get" action="/intervieweeProfile">
+            <div class="form-group">
+              <div class = "row">
+                <div class = "col-md-6">
+                  <label for="fname">Username</label>
+                  <input type="text" class="form-control" id="fname" placeholder="Enter username">
+                </div>
+                <div class = "col-md-6">
+                  <label for="password">Password</label>
+                  <input type="password" class="form-control" id="password" placeholder="Enter password">
+                </div>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+</html>
