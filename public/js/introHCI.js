@@ -1,6 +1,7 @@
-'use strict';
+//'use strict';
 
 // Call this function when the page loads (the "ready" event)
+console.log('loaded introHCI.js')
 $(document).ready(function() {
 	initializePage();
 })
@@ -11,3 +12,4 @@ $(document).ready(function() {
 function initializePage() {
 	// add any functionality and listeners you want here
 }
+
