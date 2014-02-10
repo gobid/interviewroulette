@@ -15,7 +15,7 @@ var intervieweeProfile = require('./routes/intervieweeProfile');
 var interviewerProfile = require('./routes/interviewerProfile');
 var intervieweeSurvey = require('./routes/intervieweeSurvey');
 var interviewerSurvey = require('./routes/interviewerSurvey');
-var interviewingPage = require('./routes/interviewingPage');
+var match = require('./routes/match');
 var unimplemented = require('./routes/unimplemented');
 
 var partialsDir="views/partials/"
@@ -53,7 +53,7 @@ app.get('/intervieweeProfile', intervieweeProfile.viewIntervieweeProfile);
 app.get('/interviewerProfile', interviewerProfile.viewInterviewerProfile);
 app.get("/intervieweeSurvey", intervieweeSurvey.dosurveyInterviewee);
 app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
-app.get("/interviewingPage", interviewingPage.viewInterviewingPage);
+app.get("/match", match.viewMatchPage);
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);
 
