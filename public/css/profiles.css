@@ -18,3 +18,31 @@
 	margin-bottom: 15px;
 }
 
+.btn.btn-primary.btn-lg.match {
+	width: 200px;
+}
+
+.btn.btn-primary.btn-lg.active {
+    text-align: center;
+    width: 250px;
+}
+
+
+.col-md-6.extrainfo {
+	text-align: center;
+}
+
+.col-md-4.extrainfo {
+	text-align: center;
+}
+
+.col-md-8.extrainfo {
+	text-align: center;
+}
+
+.clear {
+   text-shadow:grey 0.1em 0.1em 0.2em;
+   color: grey;
+   text-align: center;
+}
+
