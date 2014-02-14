@@ -1,13 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <link rel="stylesheet" type="text/css" href="/css/profiles.css">
-    {{> head}}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-    <div class="container">
-      <div class = "row profile-header">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+        <meta charset="utf-8">
+
+        <title>Interview Profile</title>
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+
+        <link rel="stylesheet" type="text/css" href="/css/profiles.css">
+    </head>
+    
+    <!-- HTML code from Bootply.com editor -->
+    
+    <body>
+        
+    <div class="wrapper">
+    <div class="box">
+        <div class="row row-offcanvas row-offcanvas-left">
+          
+            <!-- sidebar -->
+            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
+              
+                <ul class="nav">
+                  <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
+                </ul>
+               
+                <ul class="nav hidden-xs" id="lg-menu">
+                  <li class="active" id="about-me"><a href="/interviewerProfile"><i class="glyphicon glyphicon-home"></i> My Profile</a></li>
+                  <li id="about-me"><a href="/interviewerAboutMe"><i class="glyphicon glyphicon-user"></i> More About Me</a></li>
+                  <li id="experience"><a href="/interviewerPastExp"><i class="glyphicon glyphicon-list"></i> My Past Experience</a></li>
+                </ul>
+            </div>
+            <!-- /sidebar -->
+          
+            <!-- main right col -->
+            <div class="column col-sm-10 col-xs-11" id="main">
+                
+              
+                <div class="padding">
+                    <div class="full col-sm-9">
+                      
+                        <!-- content -->                      
+              <div class = "row profile-header">
         <div class="col-md-4">
          <div class="profile-circle"> Edit Photo
         <!-- <img data-src="holder.js/140x140" class="img-circle" style="width:140px; height: 140px;" > -->
@@ -33,34 +77,43 @@
           <a class="btn btn-primary btn-lg active" href="" role="button">Match with an interviewee</a>
         </div>
       </div>
-      <div class="row">
-        <nav class="navbar navbar-inverse" role="navigation">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Experience</a></li>
-            <li><a href="#">About Me</a></li>
-          </ul>
-         </nav>
-      </div>
-      <div class = "row">
-        <address>
-          <strong>TV hostess</strong> at <strong>Twitter, Inc.</strong><br>
-          2003 - 2010<br>
-          San Francisco, CA 94107<br>
-          Talked a lot and entertained audiences.<br>
-        </address>
+                    
+                    </div><!-- /col-9 -->
+                </div><!-- /padding -->
+            </div>
+            <!-- /main -->
+          
+        </div>
+    </div>
+</div>
 
-        <address>
-          <strong>TV hostess</strong> at <strong>Twitter, Inc.</strong><br>
-          2003 - 2010<br>
-          San Francisco, CA 94107<br>
-          Talked a lot and entertained audiences.<br>
-        </address>
+        
+        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 
-      </div>
-    </div> <!-- /container -->
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-  </body>
+        <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+
+
+
+        
+        <!-- JavaScript jQuery code from Bootply.com editor -->
+        
+        <script type='text/javascript'>
+        
+          $(document).ready(function() {
+              /* off-canvas sidebar toggle */
+
+              $('[data-toggle=offcanvas]').click(function() {
+                  $(this).toggleClass('visible-xs text-center');
+                  $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+                  $('.row-offcanvas').toggleClass('active');
+                  $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+                  $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+                  $('#btnShow').toggle();
+              });
+          });
+        
+        </script>
+        
+    </body>
 </html>
