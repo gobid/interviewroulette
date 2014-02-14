@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/profiles.css">
+    {{> head}}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <!DOCTYPE html>
+  <body>
+
+<div class="container">
+  
+    <h4 style="padding-top:10%;text-align:center">Kick off your interview now!</h4>
+      <br>
+      <div class = "row">
+        <div class = "col-md-4">
+          <div class="alert alert-info" style="text-align:left">
+            <ol>
+              <li>Copy the email of invitee.</li>
+              <li>Start Google Hangout</li> 
+              <li>Paste the invitee's email into the google hangout prompt to add participants.</li>
+            </ol>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon">Copy This: </span>
+            <input type = 'text' class = 'form-control' id = 'invitee' value = 'govinda@govindadasu.com'>
+          </div>
+          <br>
+          <div style="text-align:center">
+          <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+          <g:hangout render="createhangout"></g:hangout>
+          <br>
+          <br>
+          <a class="btn btn-primary active" href="/intervieweeProfile" role="button" style="width:137px;">Back To Profile</a>
+        </div>
+
+        </div>
+    
+    </div>
+</div>
+</body>
+</html>

@@ -1,18 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Project</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="/css/introHCI.css" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
+    {{>head}}
+    <link rel="stylesheet" type="text/css" href="/css/profiles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body style = "background-image: url(/images/interview.jpg);">   
 
@@ -23,7 +14,7 @@
 
     <div class="form-group">
       
-      <label>Which field do you feel passioate about?</label>
+      <label class="clear"><h4>Which field do you feel passioate about?</h4></label><br>
       <select class="form-control">
          <option>Software Engineer</option>
          <option>Product Manager</option>
@@ -34,7 +25,7 @@
     </div>
 
     <div class="form-group">
-      <label>Which company you particularly want to work for?</label>
+      <label class="clear"><h4>Which company you particularly want to work for?</h4></label><br>
       <input type="text" class="form-control" placeholder="Company name">
     </div>
 

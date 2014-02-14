@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     {{> head}}
+    <script src = "/js/signup.js"></script>
   </head>
 
   <body>
@@ -35,6 +36,24 @@
                 <div class = "col-md-6">
                   <label for="password-confirm">Password Confirmation</label>
                   <input type="password-confirm" class="form-control" id="password-confirmation" placeholder="Confirm your password">
+                </div>
+              </div>
+              <br>
+              <div class = "row">
+                <div class = "col-md-12">
+                  <b>What are you?</b>
+                  <div class="radio">
+                    <label>
+                      <input class = 'intervieweree' type="radio" name="optionsRadios" id="optionsRadios1" value="interviewee" checked>
+                      Interviewee
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input class = 'intervieweree' type="radio" name="optionsRadios" id="optionsRadios2" value="interviewer">
+                      Interviewer
+                    </label>
+                  </div>
                 </div>
               </div>
               <br>
