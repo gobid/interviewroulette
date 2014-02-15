@@ -1,3 +1,3 @@
 exports.viewIntervieweePublicRatings = function(req, res){
-  res.render('unimplemented');
+  res.render('intervieweePublicRatings');
 };

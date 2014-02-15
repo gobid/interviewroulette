@@ -1,3 +1,3 @@
 exports.viewIntervieweeAreasToImprove = function(req, res){
-  res.render('unimplemented');
+  res.render('intervieweeAreasToImprove');
 };
