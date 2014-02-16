@@ -29,56 +29,55 @@
         <div class="row row-offcanvas row-offcanvas-left">
           
             <!-- sidebar -->
-            <div class="column col-sm-2 col-xs-1 sidebar-offcanvas" id="sidebar">
-              
-                <ul class="nav">
-                  <li><a href="#" data-toggle="offcanvas" class="visible-xs text-center"><i class="glyphicon glyphicon-chevron-right"></i></a></li>
-                </ul>
-               
-                <ul class="nav hidden-xs" id="lg-menu">
-                  <li class="active" id="about-me"><a href="/interviewerProfile"><i class="glyphicon glyphicon-home"></i> My Profile</a></li>
-                  <li id="about-me"><a href="/interviewerAboutMe"><i class="glyphicon glyphicon-user"></i> More About Me</a></li>
-                  <li id="experience"><a href="/interviewerPastExp"><i class="glyphicon glyphicon-list"></i> My Past Experience</a></li>
-                </ul>
-            </div>
+            {{> interviewerProfileSidebar}}
             <!-- /sidebar -->
           
             <!-- main right col -->
             <div class="column col-sm-10 col-xs-11" id="main">
                 
-              
-                <div class="padding">
-                    <div class="full col-sm-9">
-                      
-                        <!-- content -->                      
-              <div class = "row profile-header">
-        <div class="col-md-4">
-         <div class="profile-circle"> Edit Photo
-        <!-- <img data-src="holder.js/140x140" class="img-circle" style="width:140px; height: 140px;" > -->
-         </div>
-        </div>
-        <div class="col-md-8 extrainfo">
-          <h1>Jack Dorsey</h1><br>
-          <p><h4><small>interviewer</h4></small><br>
-          <div class="row">
-            <div class="col-md-4 extrainfo">
-            <address>
-              <strong>Twitter, Inc.</strong><br>
-              San Francisco, CA<br>
-            </address>
-          </div>
-            <div class="col-md-4 extrainfo">
-            <address>
-              <strong>Software Developer</strong><br>
-              <a href="mailto:#">Jack@twitter.com</a>
-            </address>
-          </div>
-        </div>
-          <a class="btn btn-primary btn-lg active" href="/unimplemented" role="button">Match with an interviewee</a>
-        </div>
-      </div>
+              <div class="padding">
+                <div class="full col-sm-9">
+                  <!-- content -->                      
+                  <div class = "row profile-header">
+
+                    <!-- Edit Button -->
+                    <div class="row">
+                      <a href="/editInterviewerProfile">
+                      <button type="submit" class="edit-button btn btn-primary">
+                        
+                          <i class="edit-icon glyphicon glyphicon-pencil"></i>
+                        
+                      </button>
+                      </a>
+                    </div> <!--/Edit Button -->
+
+                    <div class="col-md-4">
+                     <div class="profile-circle"> Edit Photo
+                    <!-- <img data-src="holder.js/140x140" class="img-circle" style="width:140px; height: 140px;" > -->
+                     </div>
+                    </div>
+                    <div class="col-md-8 extrainfo">
+                      <h1>{{firstname}} {{lastname}}</h1><br>
+                      <p><h4><small>interviewer</h4></small><br>
+                      <div class="row">
+                        <div class="col-md-4 extrainfo">
+                        <address>
+                          <strong>{{company}}</strong><br>
+                          {{location}}<br>
+                        </address>
+                      </div>
+                        <div class="col-md-4 extrainfo">
+                        <address>
+                          <strong>{{occupation}}</strong><br>
+                          <a href="mailto:#">{{email}}</a>
+                        </address>
+                      </div>
+                    </div>
+                      <a class="btn btn-primary btn-lg active" href="/unimplemented" role="button">Match with an interviewee</a>
+                    </div>
+                  </div>
                     
-                    </div><!-- /col-9 -->
+                  </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>
             <!-- /main -->

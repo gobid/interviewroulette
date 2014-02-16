@@ -24,6 +24,7 @@ var unimplemented = require('./routes/unimplemented');
 var interviewerProfile = require('./routes/interviewerProfile');
 var interviewerPastExp = require('./routes/interviewerPastExp');
 var interviewerAboutMe = require('./routes/interviewerAboutMe');
+var editInterviewerProfile = require('./routes/editInterviewerProfile');
 
 // INTERVIEWEE PROFILE PAGES
 var intervieweeProfile = require('./routes/intervieweeProfile');
@@ -31,8 +32,7 @@ var intervieweeFeedback = require('./routes/intervieweeFeedback');
 var intervieweePublicRatings = require('./routes/intervieweePublicRatings');
 var intervieweeSkills = require('./routes/intervieweeSkills');
 var intervieweeAreasToImprove = require('./routes/intervieweeAreasToImprove');
-
-var editProfile = require('./routes/editProfile');
+var editIntervieweeProfile = require('./routes/editIntervieweeProfile');
 
 var partialsDir="views/partials/";
 
@@ -81,13 +81,13 @@ app.get('/intervieweeFeedback',intervieweeFeedback.viewIntervieweeFeedback);
 app.get('/intervieweeSkills',intervieweeSkills.viewIntervieweeSkills);
 app.get('/intervieweePublicRatings',intervieweePublicRatings.viewIntervieweePublicRatings);
 app.get('/intervieweeAreasToImprove',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
-
-app.get('/editProfile', editProfile.viewEditProfile);
+app.get('/editIntervieweeProfile', editIntervieweeProfile.viewEditIntervieweeProfile);
 
 //INTERVIEWER PAGES
-app.get('/interviewerProfile', interviewerProfile.viewInterviewerProfile);
+app.get('/interviewerProfile/:pageBefore', interviewerProfile.viewInterviewerProfile);
 app.get('/interviewerPastExp', interviewerPastExp.viewInterviewerPastExp);
 app.get('/interviewerAboutMe', interviewerAboutMe.viewInterviewerAboutMe);
+app.get('/editInterviewerProfile', editInterviewerProfile.viewEditInterviewerProfile);
 
 // Example route
 // app.get('/users', user.list);
