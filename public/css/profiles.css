@@ -348,3 +348,11 @@ small.text-muted {
 .visible-feedback {
   display: block;
 }
+
+.edit-button {
+  float:right;
+}
+
+.edit-icon {
+  color:white;
+}
