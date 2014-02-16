@@ -10,25 +10,26 @@ exports.viewInterviewerProfile = function(req, res) {
 	if(pageBefore == "Survey") {
 		var company = req.query.company;
 		mostRecentlyAddedUser.company = company;
-	} else if (pageBefore == "editInterviewerProfile"){ 
+	} else if (pageBefore == "editInterviewerProfile") {
+		console.log("Page before was editing!")
 		if (req.query.fname != "") {
-			mostRecentlyAddedUser .firstname = req.query.fname;
+			mostRecentlyAddedUser.firstname = req.query.fname;
 		}
 
 		if (req.query.lname != "") {
-			mostRecentlyAddedUser .lastname = req.query.lname;
+			mostRecentlyAddedUser.lastname = req.query.lname;
 		}
 
 		if (req.query.email != "") {
-			mostRecentlyAddedUser .email = req.query.email;
+			mostRecentlyAddedUser.email = req.query.email;
 		}
 
 		if (req.query.education != "") {
-			mostRecentlyAddedUser .education = req.query.education;
+			mostRecentlyAddedUser.education = req.query.education;
 		}
 
 		if (req.query.occupation != "") {
-			mostRecentlyAddedUser .occupation = req.query.occupation;
+			mostRecentlyAddedUser.occupation = req.query.occupation;
 		}
 
 		if (req.query.location != "") {
@@ -38,6 +39,32 @@ exports.viewInterviewerProfile = function(req, res) {
 		if (req.query.company != "") {
 			mostRecentlyAddedUser.company = req.query.company;
 		}
-	} 		
+		console.log(mostRecentlyAddedUser);
+	} else if (pageBefore == "AboutMe"){
+		if (req.query.missionStatement != "") 
+			mostRecentlyAddedUser.mission = req.query.missionStatement;
+		if (req.query.hobbies != "") 
+			mostRecentlyAddedUser.hobbies = req.query.hobbies;
+
+	} else if(pageBefore == "PastExp"){
+		if (req.query.description1 != "") 
+			mostRecentlyAddedUser.description1= req.query.description1;
+		if (req.query.description2 != "") 
+			mostRecentlyAddedUser.description2 = req.query.description2;
+	} else if (pageBefore == "Sidebar"){
+		console.log("Previous Page was sidebar");
+		// Look up user in data JSON. 
+		var unameEmail = req._parsedUrl.query;
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				//Check if user is an interviewER or interviewEE
+				if (mostRecentlyAddedUser.interviewer) {
+					break;
+				}
+			}
+		}
+	}	
 	res.render('interviewerProfile', mostRecentlyAddedUser);
 }

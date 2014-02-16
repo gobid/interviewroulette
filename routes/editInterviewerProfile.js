@@ -1,9 +1,15 @@
 var data = require("../users.json");
 
 exports.viewEditInterviewerProfile = function(req, res) {   
-	console.log(data);
-	// Add user to dummy database
+
+	// Look up user in data JSON. 
 	var numberOfUsers = data["users"].length;
-	var mostRecentlyAddedUser = data["users"][numberOfUsers - 1];
-	res.render('editInterviewerProfile', mostRecentlyAddedUser);
+	var unameEmail = req.params.uname;
+	for (i = 0; i < numberOfUsers; i++) {
+		if (data["users"][i].email == unameEmail) {
+			var mostRecentlyAddedUser = data["users"][i];
+			res.render('editInterviewerProfile', mostRecentlyAddedUser);
+			return;
+		}
+	}
  }
