@@ -34,6 +34,19 @@ exports.viewIntervieweeProfile = function(req, res) {
 		if (req.query.location != "") {
 			mostRecentlyAddedUser.location = req.query.location;
 		}
-	} 
+	} else if (pageBefore == "login") {
+		// Look up user in data JSON. 
+		var unameEmail = req.query.uname;
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				//Check if user is an interviewER or interviewEE
+				if (mostRecentlyAddedUser.interviewer) {
+					res.render('interviewerProfile', mostRecentlyAddedUser);
+					return;
+				}
+			}
+		}
+	}
 	res.render('intervieweeProfile', mostRecentlyAddedUser);
 }
