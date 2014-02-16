@@ -27,61 +27,16 @@
                 <div class="padding">
                     <div class="full col-sm-9">
                       <h1> I want to improve by: </h1>
-                      <h5>Select improvement areas.</h5>
                         <!-- content -->     
 
-                        <!-- Collapse Menu -->
-                        <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h4 class="panel-title">
-                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                    Most Popular Areas
-                                  </a>
-                                </h4>
-                              </div>
-                              <div id="collapseOne" class="panel-collapse collapse in">
-                                <div class="panel-body">
-                                  <form role="form">
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox"> Speaking slower.
-                                      </label>
-                                    </div>
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox"> Practicing more technical questions.
-                                      </label>
-                                    </div>
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox"> Presenting confidently.
-                                      </label>
-                                    </div>
-                                    <div class="checkbox">
-                                      <label>
-                                        <input type="checkbox"> Learning more about the industry.
-                                      </label>
-                                    </div>
-                                  </form>
-                                </div>
-                              </div>
+                        <form role="form" method="get" action="/intervieweeProfile/Improvements">
+                          <div class="form-group">
+                            <textarea class="form-control" rows="3"name="improvements">{{improvements}}</textarea>
                             </div>
-                            <div class="panel panel-default">
-                              <div class="panel-heading">
-                                <h4 class="panel-title">
-                                  <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                    Create your own improvement
-                                  </a>
-                                </h4>
-                              </div>
-                              <div id="collapseTwo" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                them accusamus labore sustainable VHS.
-                                </div>
-                              </div>
-                            </div>
-                          </div> <!-- End of collapse menu -->
-                    
+                          <div class="form-group">
+                              <button type="submit" class="btn btn-default">Save</button>
+                          </div>
+                        </form>
                     </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>

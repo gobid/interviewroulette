@@ -1,3 +1,14 @@
+var data = require("../users.json");
+
 exports.viewIntervieweeAreasToImprove = function(req, res){
-  res.render('intervieweeAreasToImprove');
+	// Look up user in data JSON. 
+	var numberOfUsers = data["users"].length;
+	var unameEmail = req.params.uname;
+	for (i = 0; i < numberOfUsers; i++) {
+		if (data["users"][i].email == unameEmail) {
+			var mostRecentlyAddedUser = data["users"][i];
+			res.render('intervieweeAreasToImprove', mostRecentlyAddedUser);
+			return;
+		}
+	}
 };

@@ -51,6 +51,16 @@ exports.viewInterviewerProfile = function(req, res) {
 			mostRecentlyAddedUser.description1= req.query.description1;
 		if (req.query.description2 != "") 
 			mostRecentlyAddedUser.description2 = req.query.description2;
+	} else if(pageBefore == "Skills"){
+		if (req.query.programmingLang != "") 
+			mostRecentlyAddedUser.programmingLang = req.query.programmingLang;
+		if (req.query.frameworks != "") 
+			mostRecentlyAddedUser.frameworks  = req.query.frameworks;
+		if (req.query.softSkills != "") 
+			mostRecentlyAddedUser.softSkills  = req.query.softSkills;
+	} else if(pageBefore == "Improvements"){
+		if (req.query.improvements!= "") 
+			mostRecentlyAddedUser.improvements = req.query.improvements;
 	} else if (pageBefore == "Sidebar"){
 		console.log("Previous Page was sidebar");
 		// Look up user in data JSON. 
