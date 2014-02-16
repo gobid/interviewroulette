@@ -1,3 +1,3 @@
 exports.viewIntervieweeFeedback = function(req, res){
-  res.render('IntervieweeFeedback');
+  res.render('intervieweeFeedback');
 };
