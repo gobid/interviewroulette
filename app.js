@@ -13,8 +13,6 @@ var project = require('./routes/project');
 var login = require('./routes/login');
 var intervieweeSurvey = require('./routes/intervieweeSurvey');
 var interviewerSurvey = require('./routes/interviewerSurvey');
-var match = require('./routes/match');
-var match1 = require('./routes/match1');
 var detailInfo = require('./routes/detailInfo');
 var detailInfo1 = require('./routes/detailInfo1');
 var startInterview = require('./routes/startInterview');
@@ -33,6 +31,13 @@ var intervieweePublicRatings = require('./routes/intervieweePublicRatings');
 var intervieweeSkills = require('./routes/intervieweeSkills');
 var intervieweeAreasToImprove = require('./routes/intervieweeAreasToImprove');
 var editIntervieweeProfile = require('./routes/editIntervieweeProfile');
+
+
+// DUMMY MATCH PAGES
+var match = require('./routes/match');
+var match1 = require('./routes/match1');
+var matchInterviewee = require('./routes/matchInterviewee');
+var matchInterviewee1 = require('./routes/matchInterviewee1');
 
 var partialsDir="views/partials/";
 
@@ -67,27 +72,34 @@ app.get('/signup', signup.view);
 app.get('/project/:name', project.viewProject);
 app.get("/intervieweeSurvey", intervieweeSurvey.dosurveyInterviewee);
 app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
-app.get("/match", match.viewMatchPage);
-app.get("/match1",match1.viewMatch1Page);
 app.get("/detailInfo",detailInfo.viewDetail);
 app.get("/detailInfo1",detailInfo1.viewDetail);
-app.get("/startInterview",startInterview.kickoff);
+
+//withWhomType is either an withInterviewer OR withInterviewee
+app.get("/startInterview/:withWhomType",startInterview.kickoff);
+
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);
 
 //INTERVIEWEE PAGES
 app.get('/intervieweeProfile/:pageBefore', intervieweeProfile.viewIntervieweeProfile);
-app.get('/intervieweeFeedback',intervieweeFeedback.viewIntervieweeFeedback);
-app.get('/intervieweeSkills',intervieweeSkills.viewIntervieweeSkills);
-app.get('/intervieweePublicRatings',intervieweePublicRatings.viewIntervieweePublicRatings);
-app.get('/intervieweeAreasToImprove',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
-app.get('/editIntervieweeProfile', editIntervieweeProfile.viewEditIntervieweeProfile);
+app.get('/intervieweeFeedback/:uname',intervieweeFeedback.viewIntervieweeFeedback);
+app.get('/intervieweeSkills/:uname',intervieweeSkills.viewIntervieweeSkills);
+app.get('/intervieweePublicRatings/:uname',intervieweePublicRatings.viewIntervieweePublicRatings);
+app.get('/intervieweeAreasToImprove/:uname',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
+app.get('/editIntervieweeProfile/:uname', editIntervieweeProfile.viewEditIntervieweeProfile);
 
 //INTERVIEWER PAGES
 app.get('/interviewerProfile/:pageBefore', interviewerProfile.viewInterviewerProfile);
-app.get('/interviewerPastExp', interviewerPastExp.viewInterviewerPastExp);
-app.get('/interviewerAboutMe', interviewerAboutMe.viewInterviewerAboutMe);
-app.get('/editInterviewerProfile', editInterviewerProfile.viewEditInterviewerProfile);
+app.get('/interviewerPastExp/:uname', interviewerPastExp.viewInterviewerPastExp);
+app.get('/interviewerAboutMe/:uname', interviewerAboutMe.viewInterviewerAboutMe);
+app.get('/editInterviewerProfile/:uname', editInterviewerProfile.viewEditInterviewerProfile);
+
+// DUMMY MATCH PAGES
+app.get("/match", match.viewMatchPage);
+app.get("/match1",match1.viewMatch1Page);
+app.get("/matchInterviewee", matchInterviewee.viewMatchIntervieweePage);
+app.get("/matchInterviewee1",matchInterviewee1.viewMatchInterviewee1Page);
 
 // Example route
 // app.get('/users', user.list);

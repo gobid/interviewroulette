@@ -6,10 +6,16 @@ exports.dosurveyInterviewee = function(req, res) { 
 			"firstname": req.query.fname, 
 			"lastname": req.query.lname,
 			"email": req.query.email,
+			"password": req.query.password,
+			"ghangout": req.query.ghangout,
 			"interviewer": false,
-			"education": "",
-			"occupation": "",
-			"location": ""
+			"education": req.query.education,
+			"occupation": req.query.occupation,
+			"location": req.query.location,
+			"programmingLang": "For example: Java, C++, Python",
+			"softSkills": "For example: Good communication skills, Experience managing teams",
+			"frameworks": "For example: DJango, MongoDB, Google AppEngine",
+			"improvements": "For example: practicing more technical questions, learning to clearly express ideas"
 		}; 
 
 	data["users"].push(newUser);
