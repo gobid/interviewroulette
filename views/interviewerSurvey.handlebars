@@ -6,32 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body style = "background-image: url(/images/interview.jpg);">   
-
     <div class="jumbotron" align="center">
-
       <h4 class="lead"> Let us know how to serve you better within 30 seconds. </h4>
       
       <form role="form" id = "interviewer-survey-form" method="get" action="/interviewerProfile/Survey">
-        <div class="form-group">
-          
-          <label class="clear"><h4>Which is your field of specialty?</h4></label><br>
-          <select class="form-control">
-             <option>Software Engineer</option>
-             <option>Product Manager</option>
-             <option>Investment Banking</option>
-             <option>Consulting</option>    
-          </select>
-          
-        </div>
-
-          <div class="form-group">
+        <div class = "row">
+          <div class = "col-md-6">
+            <div class="form-group">
+              <label class="clear"><h4>Which is your field of specialty?</h4></label><br>
+              <select class="form-control">
+                <option>Software Engineer</option>
+                <option>Product Manager</option>
+                <option>Investment Banking</option>
+                <option>Consulting</option>    
+              </select>
+            </div>
+            <div class="form-group">
               <label class="clear" for="company"><h4>Where do you work?</h4></label><br>
               <input type="text" class="form-control" placeholder="Company name" id="company" name="company"> 
+            </div>
           </div>
-        <button type="submit" class="btn btn-default">Continue</button>
+          <div class = "col-md-6">
+            <label class="clear"><h4>Education</h4></label><br>
+            <input type="text" class="form-control" placeholder="Education" id="education" name="education">
+            <label class="clear"><h4>Location</h4></label><br>
+            <input type="text" class="form-control" placeholder="Location" id="location" name="location">  
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success btn-lg pull-right">Continue</button>
       </form>
     </div>
-
     <script src="https://code.jquery.com/jquery.js"></script>
    <script src="/js/bootstrap.min.js"></script>
 </body>

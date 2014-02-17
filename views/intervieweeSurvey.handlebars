@@ -6,33 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body style = "background-image: url(/images/interview.jpg);">   
-
     <div class="jumbotron" align="center">
-
-    <h4 class="lead"> Let us know how to serve you better within 30 seconds. </h4>
-    
-
-    <div class="form-group">
-      
-      <label class="clear"><h4>Which field do you feel passioate about?</h4></label><br>
-      <select class="form-control">
-         <option>Software Engineer</option>
-         <option>Product Manager</option>
-         <option>Investment Banking</option>
-         <option>Consulting</option>    
-      </select>
-      
+      <h4 class="lead"> Let us know how to serve you better within 30 seconds. </h4>
+      <div class="form-group">
+        <div class = "row">
+          <div class = "col-md-6">
+            <label class="clear"><h4>Which field do you feel passioate about?</h4></label><br>
+            <select class="form-control">
+               <option>Software Engineer</option>
+               <option>Product Manager</option>
+               <option>Investment Banking</option>
+               <option>Consulting</option>    
+            </select>
+            <label class="clear"><h4>Education</h4></label><br>
+            <input class = "form-control" type = "education" placeholder = "Education">
+          </div>
+          <div class = "col-md-6">
+            <label class="clear"><h4>Location</h4></label><br>
+            <input class = "form-control" type = "location" placeholder = "Location">
+          </div>
+        </div>
+      </div>
+      <p><a class="btn btn-success btn-lg pull-right" href="/intervieweeProfile/Survey" role="button">continue</a></p>
     </div>
-
-    <div class="form-group">
-      <label class="clear"><h4>Which company you particularly want to work for?</h4></label><br>
-      <input type="text" class="form-control" placeholder="Company name">
-    </div>
-
-    <p><a class="btn btn-success btn-lg" href="/intervieweeProfile/Survey" role="button">continue</a></p>
-
-    </div>
-
     <script src="https://code.jquery.com/jquery.js"></script>
   <script src="/js/bootstrap.min.js"></script>
 </body>
