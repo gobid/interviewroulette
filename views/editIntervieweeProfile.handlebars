@@ -44,9 +44,10 @@
                                 </div>
                                 <div class = "col-md-6">
                                   <label for="email">Email address</label>
-                                  <input type="email" class="form-control" id="email" placeholder="{{email}}" name="email">
+                                  <!-- This is a hack! Used to get the username -->
+                                  <textarea class="form-control" rows="1"name="email">{{email}}</textarea>
                                 </div>
-                                <div class = "row">`
+                                <div class = "row">
                                   <div class = "col-md-6">
                                     <label for="education">Education</label>
                                     <input type="text" class="form-control" id="education" placeholder="{{education}}" name="education">
