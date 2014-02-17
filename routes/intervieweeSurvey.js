@@ -9,7 +9,11 @@ exports.dosurveyInterviewee = function(req, res) { 
 			"interviewer": false,
 			"education": "",
 			"occupation": "",
-			"location": ""
+			"location": "",
+			"programmingLang": "For example: Java, C++, Python",
+			"softSkills": "For example: Good communication skills, Experience managing teams",
+			"frameworks": "For example: DJango, MongoDB, Google AppEngine",
+			"improvements": "For example: practicing more technical questions, learning to clearly express ideas"
 		}; 
 
 	data["users"].push(newUser);

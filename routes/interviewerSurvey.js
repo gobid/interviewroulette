@@ -9,7 +9,11 @@ exports.dosurveyInterviewer = function(req, res) { 
 			"education": "",
 			"occupation": "",
 			"location": "",
-			"company": ""
+			"company": "",
+			"mission": "Tell us more about yourself.",
+			"hobbies": "What are your hobbies?",
+			"description1": "What did you do? Where did you work?",
+			"description2": "What did you do? Where did you work?"
 		}; 
 
 	data["users"].push(newUser);

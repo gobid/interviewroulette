@@ -42,7 +42,7 @@
 
                     <!-- Edit Button -->
                     <div class="row">
-                      <a href="/editInterviewerProfile">
+                      <a href="/editInterviewerProfile/{{email}}">
                       <button type="submit" class="edit-button btn btn-primary">
                         
                           <i class="edit-icon glyphicon glyphicon-pencil"></i>
@@ -65,6 +65,9 @@
                           <strong>{{company}}</strong><br>
                           {{location}}<br>
                         </address>
+                        <address>
+                          <strong>{{education}}</strong><br>
+                        </address>
                       </div>
                         <div class="col-md-4 extrainfo">
                         <address>
@@ -73,7 +76,7 @@
                         </address>
                       </div>
                     </div>
-                      <a class="btn btn-primary btn-lg active" href="/unimplemented" role="button">Match with an interviewee</a>
+                      <a class="btn btn-primary btn-lg active" href="/matchInterviewee" role="button">Match with an interviewee</a>
                     </div>
                   </div>
                     
