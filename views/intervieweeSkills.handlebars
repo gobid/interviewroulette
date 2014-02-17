@@ -25,12 +25,15 @@
                 
               
                 <div class="padding">
-                    <h1>My Skills </h1>
+                  <div class="row" id="content">
+                  <form role="form" method="get" action="/intervieweeProfile/Skills">
+                    <div class="form-group">
+                      <span class="textarea-group-addon">Logged In As:</span>
+                      <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+                    </div>
                     <div class="full col-sm-9">
+                        <h1>My Skills </h1>
                         <h5>Enter your knowlegde in the following areas:</h5>
-                        <!-- content -->                      
-                        <div class="row" id="content">
-                           <form role="form" method="get" action="/intervieweeProfile/Skills">
                             <div class="form-group">
                               <strong>Programming Languages: </strong><br>
                               <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>

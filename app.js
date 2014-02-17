@@ -87,7 +87,7 @@ app.get('/intervieweeFeedback/:uname',intervieweeFeedback.viewIntervieweeFeedbac
 app.get('/intervieweeSkills/:uname',intervieweeSkills.viewIntervieweeSkills);
 app.get('/intervieweePublicRatings/:uname',intervieweePublicRatings.viewIntervieweePublicRatings);
 app.get('/intervieweeAreasToImprove/:uname',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
-app.get('/editIntervieweeProfile', editIntervieweeProfile.viewEditIntervieweeProfile);
+app.get('/editIntervieweeProfile/:uname', editIntervieweeProfile.viewEditIntervieweeProfile);
 
 //INTERVIEWER PAGES
 app.get('/interviewerProfile/:pageBefore', interviewerProfile.viewInterviewerProfile);

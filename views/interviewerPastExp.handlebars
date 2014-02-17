@@ -38,10 +38,15 @@
               
                 <div class="padding">
                     <div class="full col-sm-9">
-                      <h1> Past Experiences </h1>
+                      
                         <!-- content -->                      
                     <div class = "row">
                         <form role="form" method="get" action="/interviewerProfile/PastExp">
+                          <div class="form-group" style="float:left">
+                            <span class="textarea-group-addon">Logged In As:</span>
+                            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+                          </div>
+                          <h1> Past Experiences </h1>
                             <div class="form-group">
                               <strong>Description: </strong><br>
                               <textarea class="form-control" rows="3"name="description1">{{description1}}</textarea>

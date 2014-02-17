@@ -33,39 +33,37 @@
       <div class = "row profile-header">
         <!-- Edit Button -->
         <div class="row">
-          <a href="/editIntervieweeProfile">
+          <a href="/editIntervieweeProfile/{{email}}">
           <button type="submit" class="edit-button btn btn-primary">
-            
               <i class="edit-icon glyphicon glyphicon-pencil"></i>
-            
           </button>
           </a>
-        </div> <!--/Edit Button -->
-        <div class="col-md-4">
-         <div class="profile-circle"> Edit Photo
-        <!-- <img data-src="holder.js/140x140" class="img-circle" style="width:140px; height: 140px;" > -->
-         </div>
-        </div>
-        <div class="col-md-8 extrainfo">
-          <p><h1>{{firstname}} {{lastname}}</h1></p>
-          <p><h4><small>interviewee</h4></small><br>
-          <div class="row">
-            <div class="col-md-4 extrainfo">
-            <address>
-              <strong>{{education}} </strong><br>
-              {{location}} 
-            </address>
-            </div>
-            <div class="col-md-4 extrainfo">
-            <address>
-              <strong>{{occupation}} </strong><br>
-              <a href="mailto:#">{{email}}</a>
-            </address>
-            </div>
+          </div> <!--/Edit Button -->
+          <div class="col-md-4">
+           <div class="profile-circle"> Edit Photo
+          <!-- <img data-src="holder.js/140x140" class="img-circle" style="width:140px; height: 140px;" > -->
+           </div>
           </div>
-          <a class="btn btn-primary btn-lg active" href="/match" role="button"> Match with a interviewer</a>
+          <div class="col-md-8 extrainfo">
+            <p><h1>{{firstname}} {{lastname}}</h1></p>
+            <p><h4><small>interviewee</h4></small><br>
+            <div class="row">
+              <div class="col-md-4 extrainfo">
+              <address>
+                <strong>{{education}} </strong><br>
+                {{location}} 
+              </address>
+              </div>
+              <div class="col-md-4 extrainfo">
+              <address>
+                <strong>{{occupation}} </strong><br>
+                <a href="mailto:#">{{email}}</a>
+              </address>
+              </div>
+            </div>
+            <a class="btn btn-primary btn-lg active" href="/match" role="button"> Match with a interviewer</a>
+          </div>
         </div>
-      </div>
     
                        </div><!--/row-->
                       
