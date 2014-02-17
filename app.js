@@ -74,7 +74,10 @@ app.get("/intervieweeSurvey", intervieweeSurvey.dosurveyInterviewee);
 app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
 app.get("/detailInfo",detailInfo.viewDetail);
 app.get("/detailInfo1",detailInfo1.viewDetail);
-app.get("/startInterview",startInterview.kickoff);
+
+//withWhomType is either an withInterviewer OR withInterviewee
+app.get("/startInterview/:withWhomType",startInterview.kickoff);
+
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);
 
