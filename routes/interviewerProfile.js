@@ -2,12 +2,13 @@ var data = require("../users.json");
 
 exports.viewInterviewerProfile = function(req, res) {
 	var pageBefore = req.params.pageBefore;
-	console.log(req.params.pageBefore);
+	console.log("Page before: "+req.params.pageBefore);
 
 	var numberOfUsers = data["users"].length;
 	var mostRecentlyAddedUser = data["users"][numberOfUsers - 1];
 
 	if(pageBefore == "Survey") {
+		console.log("Reached Survey");
 		var company = req.query.company;
 		mostRecentlyAddedUser.company = company;
 	} else if (pageBefore == "editInterviewerProfile") {
@@ -45,22 +46,12 @@ exports.viewInterviewerProfile = function(req, res) {
 			mostRecentlyAddedUser.mission = req.query.missionStatement;
 		if (req.query.hobbies != "") 
 			mostRecentlyAddedUser.hobbies = req.query.hobbies;
-
 	} else if(pageBefore == "PastExp"){
+		console.log("Reached PastExp");
 		if (req.query.description1 != "") 
 			mostRecentlyAddedUser.description1= req.query.description1;
 		if (req.query.description2 != "") 
 			mostRecentlyAddedUser.description2 = req.query.description2;
-	} else if(pageBefore == "Skills"){
-		if (req.query.programmingLang != "") 
-			mostRecentlyAddedUser.programmingLang = req.query.programmingLang;
-		if (req.query.frameworks != "") 
-			mostRecentlyAddedUser.frameworks  = req.query.frameworks;
-		if (req.query.softSkills != "") 
-			mostRecentlyAddedUser.softSkills  = req.query.softSkills;
-	} else if(pageBefore == "Improvements"){
-		if (req.query.improvements!= "") 
-			mostRecentlyAddedUser.improvements = req.query.improvements;
 	} else if (pageBefore == "Sidebar"){
 		console.log("Previous Page was sidebar");
 		// Look up user in data JSON. 

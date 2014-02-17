@@ -80,9 +80,9 @@ app.get("/unimplemented", unimplemented.viewUnimplemented);
 
 //INTERVIEWEE PAGES
 app.get('/intervieweeProfile/:pageBefore', intervieweeProfile.viewIntervieweeProfile);
-app.get('/intervieweeFeedback',intervieweeFeedback.viewIntervieweeFeedback);
+app.get('/intervieweeFeedback/:uname',intervieweeFeedback.viewIntervieweeFeedback);
 app.get('/intervieweeSkills/:uname',intervieweeSkills.viewIntervieweeSkills);
-app.get('/intervieweePublicRatings',intervieweePublicRatings.viewIntervieweePublicRatings);
+app.get('/intervieweePublicRatings/:uname',intervieweePublicRatings.viewIntervieweePublicRatings);
 app.get('/intervieweeAreasToImprove/:uname',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
 app.get('/editIntervieweeProfile', editIntervieweeProfile.viewEditIntervieweeProfile);
 

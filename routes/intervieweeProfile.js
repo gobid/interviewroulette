@@ -34,6 +34,22 @@ exports.viewIntervieweeProfile = function(req, res) {
 		if (req.query.location != "") {
 			mostRecentlyAddedUser.location = req.query.location;
 		}
+	} else if(pageBefore == "Skills"){
+		console.log("Reached Skills");
+		if (req.query.programmingLang != "") {
+			console.log("Reached programming langs "+req.query.programmingLang);
+			mostRecentlyAddedUser.programmingLang = req.query.programmingLang;
+		}
+		if (req.query.frameworks != "") {
+			mostRecentlyAddedUser.frameworks  = req.query.frameworks;
+			console.log("Reached frameworks "+mostRecentlyAddedUser.frameworks);
+		}
+		if (req.query.softSkills != "") 
+			mostRecentlyAddedUser.softSkills  = req.query.softSkills;
+	} else if(pageBefore == "Improvements"){
+		console.log("Reached improvements");
+		if (req.query.improvements!= "") 
+			mostRecentlyAddedUser.improvements = req.query.improvements;
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
