@@ -1,6 +1,6 @@
 var data = require("../users.json");
 
-exports.viewIntervieweeProfile = function(req, res) {
+function get_interviewee_session(req, res) {
 	var pageBefore = req.params.pageBefore;
 	console.log("Page before "+pageBefore);
 
@@ -103,11 +103,19 @@ exports.viewIntervieweeProfile = function(req, res) {
 				mostRecentlyAddedUser = data["users"][i];
 				//Check if user is an interviewER or interviewEE
 				if (mostRecentlyAddedUser.interviewer) {
+					req.session.user = mostRecentlyAddedUser
+					console.log(req.session)
 					res.render('interviewerProfile', mostRecentlyAddedUser);
 					return;
 				}
 			}
 		}
 	}
+	return mostRecentlyAddedUser
+}
+
+exports.viewIntervieweeProfile = function(req, res) {
+	mostRecentlyAddedUser = get_interviewee_session(req, res)
+	req.session.user = mostRecentlyAddedUser // will trigger "can't set headers"
 	res.render('intervieweeProfile', mostRecentlyAddedUser);
 }
