@@ -7,7 +7,7 @@ $(document).ready(function(){
 			$('#signup-form').prop('action', '/intervieweeSurvey')
 		}
 		else {
-			$('#signup-form').prop('action', '/interviewerSurvey')
+			$('#signup-forcm').prop('action', '/interviewerSurvey')
 		}
 	})
 })
