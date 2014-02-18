@@ -15,8 +15,10 @@ var intervieweeSurvey = require('./routes/intervieweeSurvey');
 var interviewerSurvey = require('./routes/interviewerSurvey');
 var detailInfo = require('./routes/detailInfo');
 var detailInfo1 = require('./routes/detailInfo1');
-var startInterview = require('./routes/startInterview');
 var unimplemented = require('./routes/unimplemented');
+
+var startInterview = require('./routes/startInterview');
+var startInterviewWithInterviewee = require('./routes/startInterviewWithInterviewee');
 
 // INTERVIEWER PROFILE PAGES
 var interviewerProfile = require('./routes/interviewerProfile');
@@ -75,8 +77,8 @@ app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
 app.get("/detailInfo",detailInfo.viewDetail);
 app.get("/detailInfo1",detailInfo1.viewDetail);
 
-//withWhomType is either an withInterviewer OR withInterviewee
-app.get("/startInterview/:withWhomType",startInterview.kickoff);
+app.get("/startInterview/:uname",startInterview.kickoff);
+app.get("/startInterviewWithInterviewee/:uname",startInterviewWithInterviewee.kickoffWithInterviewee);
 
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);

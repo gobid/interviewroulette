@@ -99,18 +99,36 @@ exports.viewIntervieweeProfile = function(req, res) {
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
+		console.log(req.query.uname);
 		for (i = 0; i < numberOfUsers; i++) {
 			if (data["users"][i].email == unameEmail) {
 				mostRecentlyAddedUser = data["users"][i];
+				console.log(mostRecentlyAddedUser)
 				//Check if user is an interviewER or interviewEE
-				if (mostRecentlyAddedUser.interviewer) {
-					console.log("got here!");
+				if(mostRecentlyAddedUser.interviewer)
 					res.render('interviewerProfile', mostRecentlyAddedUser);
-					return;
-				}
+				else 
+					res.render('intervieweeProfile', mostRecentlyAddedUser);
+				return;
 			}
 		}
 	} else if (pageBefore == "match") {
+		var unameEmail = req.query.email;
+		console.log(req);
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				console.log(mostRecentlyAddedUser)
+				//Check if user is an interviewER or interviewEE
+				if(mostRecentlyAddedUser.interviewer)
+					res.render('interviewerProfile', mostRecentlyAddedUser);
+				else 
+					res.render('intervieweeProfile', mostRecentlyAddedUser);
+				return;
+			}
+		}
+	} else if (pageBefore == "startInterview") {
 		var unameEmail = req.query.email;
 		console.log(req);
 		console.log("Email: "+unameEmail);
@@ -123,7 +141,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 				}
 			}
 		}
-	}
+	} 
 
 	res.render('intervieweeProfile', mostRecentlyAddedUser);
 }
