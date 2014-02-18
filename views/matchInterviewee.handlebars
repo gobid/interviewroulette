@@ -16,38 +16,33 @@
           <div class="col-md-8" >
             <div class="row">
               <div class="col-md-8 extraoinfo">
-                <h1 style="color:black">Jean Kono</h1>
+                <h1 style="color:black">{{ match.firstname }} {{ match.lastname }}</h1>
               </div> 
-                <p class="lead">Wants to become a software developer.</p>
+              <p class="lead">{{ match.description1 }} {{ match.description2 }}</p>
             </div> 
             <div class="row">
               <div class="col-md-6 extrainfo">
                 <address>
-                  <strong></strong><br>
-                  Lehi, UT<br>
+                  <br>{{ match.location }}<br>
                 </address>
               </div>       
               <div class="col-md-6 extrainfo">
                 <address>
-                  <a href="mailto:#">jean.kono@gmail.com</a>
+                  <a href="mailto:#">{{ match.email }}</a>
                 </address>
               </div>  
             </div>   
           </div>
         </div>
         <div class="row">
-          <div class="col-md-2"> 
-          </div>	
           <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/startInterview/iAmInterviewer" role="button">Request an interview</a>
+            <a class="btn btn-primary btn-lg match active" href="/startInterview/iAmInterviewer/{{ match.email }}" role="button">Request an interview</a>
           </div>
           <div class="col-md-4 extrainfo"> 
             <a class="btn btn-primary btn-lg match active" href="/matchInterviewee1" role="button">Try another roulette</a>
           </div>
           <div class="col-md-4 extrainfo"> 
             <a class="btn btn-primary btn-lg match active" href="/interviewerProfile/match" role="button">Back To My Profile</a>
-          </div>
-          <div class="col-md-2"> 
           </div>
         </div>	
       </div>

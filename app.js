@@ -56,12 +56,12 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.cookieParser('Intro HCI secret key'));
+app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.cookieParser('secret'))
-app.use(express.cookieSession())
+
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -78,7 +78,7 @@ app.get("/detailInfo",detailInfo.viewDetail);
 app.get("/detailInfo1",detailInfo1.viewDetail);
 
 //withWhomType is either an withInterviewer OR withInterviewee
-app.get("/startInterview/:withWhomType",startInterview.kickoff);
+app.get("/startInterview/:withWhomType/:match",startInterview.kickoff);
 
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);

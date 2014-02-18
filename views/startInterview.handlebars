@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/profiles.css">
     {{> head}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src = "/js/startInterview.js"></script>
   </head>
   <!DOCTYPE html>
   <body>
@@ -22,9 +23,12 @@
             </ol>
           </div>
           <div class="input-group">
-            <span class="input-group-addon">Copy This: </span>
-            <input type = 'text' class = 'form-control' id = 'invitee' value = 'govinda@govindadasu.com'>
+            <span class="input-group-btn">
+              <button id = "copier" class="btn btn-default" type="button">Select Text</button>
+            </span>
+            <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{ match }}'>
           </div>
+
           <br>
           <div style="text-align:center">
           <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
