@@ -25,7 +25,12 @@ exports.viewMatchIntervieweePage = function(req, res) { 
 	// console.log('matched user: ')
 	// console.log(matched_user.firstname) 
 
+	var curr_user = req.params.uname
+	console.log('curr user:')
+	console.log(curr_user)
+
 	res.render('matchInterviewee', {
-		'match': matched_user
+		'match': matched_user,
+		'curr_user': curr_user
 	});
  }
