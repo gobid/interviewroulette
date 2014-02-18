@@ -49,7 +49,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 		}
 
 		if (req.query.occupation != "") {
-			mostRecentlyAddedUser .occupation = req.query.occupation;
+			mostRecentlyAddedUser.interested field = req.query.interested field;
 		}
 
 		if (req.query.location != "") {
