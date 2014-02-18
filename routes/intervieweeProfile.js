@@ -99,20 +99,39 @@ function get_interviewee_session(req, res) {
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
+		console.log(req.query.uname);
 		for (i = 0; i < numberOfUsers; i++) {
 			if (data["users"][i].email == unameEmail) {
 				mostRecentlyAddedUser = data["users"][i];
+				console.log(mostRecentlyAddedUser)
 				//Check if user is an interviewER or interviewEE
 				if (mostRecentlyAddedUser.interviewer) {
 					req.session.user = mostRecentlyAddedUser
 					console.log(req.session)
 					console.log("got here!");
 					res.render('interviewerProfile', mostRecentlyAddedUser);
-					return;
-				}
+				else 
+					res.render('intervieweeProfile', mostRecentlyAddedUser);
+				return;
 			}
 		}
 	} else if (pageBefore == "match") {
+		var unameEmail = req.query.email;
+		console.log(req);
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				console.log(mostRecentlyAddedUser)
+				//Check if user is an interviewER or interviewEE
+				if(mostRecentlyAddedUser.interviewer)
+					res.render('interviewerProfile', mostRecentlyAddedUser);
+				else 
+					res.render('intervieweeProfile', mostRecentlyAddedUser);
+				return;
+			}
+		}
+	} else if (pageBefore == "startInterview") {
 		var unameEmail = req.query.email;
 		console.log(req);
 		console.log("Email: "+unameEmail);
