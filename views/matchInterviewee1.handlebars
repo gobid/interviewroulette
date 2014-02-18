@@ -7,6 +7,19 @@
   </head>
   <body>
     <div class="container">
+
+      <!-- HACK! Displays login info. Used to grab email to pass in URL --> 
+      <form role="form" method="get" action="/interviewerProfile/match">
+        <div class="form-group">
+            <span class="textarea-group-addon">Logged In As:</span>
+            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">Back To My Profile</button>
+        </div>
+      </form>
+      <!-- End of login info -->
+
       <div class="jumbotron">
         <p class="lead"> Congraluations!  We have matched an interviewee for you.</p>
         <div class = "row profile-header">
@@ -42,10 +55,7 @@
             <a class="btn btn-primary btn-lg match active" href="/startInterview/iAmInterviewer" role="button">Request an interview</a>
           </div>
           <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/matchInterviewee" role="button">Try another roulette</a>
-          </div>
-          <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/interviewerProfile/match" role="button">Back To My Profile</a>
+            <a class="btn btn-primary btn-lg match active" href="/matchInterviewee/{{email}}" role="button">Try another roulette</a>
           </div>
           <div class="col-md-2"> 
           </div>

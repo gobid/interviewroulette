@@ -11,6 +11,7 @@ exports.viewInterviewerProfile = function(req, res) {
 		console.log("Reached Survey");
 		var company = req.query.company;
 		mostRecentlyAddedUser.company = company;
+
 	} else if (pageBefore == "editInterviewerProfile") {
 		var unameEmail = req.query.email;
 		console.log("Email: "+unameEmail);
@@ -53,6 +54,7 @@ exports.viewInterviewerProfile = function(req, res) {
 			mostRecentlyAddedUser.company = req.query.company;
 		}
 		console.log(mostRecentlyAddedUser);
+
 	} else if (pageBefore == "AboutMe") {
 		var unameEmail = req.query.email;
 		console.log(req);
@@ -71,6 +73,7 @@ exports.viewInterviewerProfile = function(req, res) {
 			mostRecentlyAddedUser.mission = req.query.missionStatement;
 		if (req.query.hobbies != "") 
 			mostRecentlyAddedUser.hobbies = req.query.hobbies;
+
 	} else if(pageBefore == "PastExp"){
 		var unameEmail = req.query.email;
 		console.log(req);
@@ -90,6 +93,7 @@ exports.viewInterviewerProfile = function(req, res) {
 			mostRecentlyAddedUser.description1= req.query.description1;
 		if (req.query.description2 != "") 
 			mostRecentlyAddedUser.description2 = req.query.description2;
+
 	} else if (pageBefore == "Sidebar"){
 		console.log("Previous Page was sidebar");
 		// Look up user in data JSON. 
@@ -104,6 +108,19 @@ exports.viewInterviewerProfile = function(req, res) {
 				}
 			}
 		}
-	}	
+	} else if (pageBefore == "match") {
+		var unameEmail = req.query.email;
+		console.log(req);
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				//Check if user is an interviewER or interviewEE
+				if (mostRecentlyAddedUser.interviewer) {
+					break;
+				}
+			}
+		}
+	}
 	res.render('interviewerProfile', mostRecentlyAddedUser);
 }

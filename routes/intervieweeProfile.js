@@ -95,6 +95,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 		console.log("Reached improvements");
 		if (req.query.improvements!= "") 
 			mostRecentlyAddedUser.improvements = req.query.improvements;
+
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
@@ -103,11 +104,26 @@ exports.viewIntervieweeProfile = function(req, res) {
 				mostRecentlyAddedUser = data["users"][i];
 				//Check if user is an interviewER or interviewEE
 				if (mostRecentlyAddedUser.interviewer) {
+					console.log("got here!");
 					res.render('interviewerProfile', mostRecentlyAddedUser);
 					return;
 				}
 			}
 		}
+	} else if (pageBefore == "match") {
+		var unameEmail = req.query.email;
+		console.log(req);
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				//Check if user is an interviewER or interviewEE
+				if (mostRecentlyAddedUser.interviewer) {
+					break;
+				}
+			}
+		}
 	}
+
 	res.render('intervieweeProfile', mostRecentlyAddedUser);
 }
