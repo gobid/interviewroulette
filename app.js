@@ -98,10 +98,10 @@ app.get('/interviewerAboutMe/:uname', interviewerAboutMe.viewInterviewerAboutMe)
 app.get('/editInterviewerProfile/:uname', editInterviewerProfile.viewEditInterviewerProfile);
 
 // DUMMY MATCH PAGES
-app.get("/match", match.viewMatchPage);
-app.get("/match1",match1.viewMatch1Page);
-app.get("/matchInterviewee", matchInterviewee.viewMatchIntervieweePage);
-app.get("/matchInterviewee1",matchInterviewee1.viewMatchInterviewee1Page);
+app.get("/match/:uname", match.viewMatchPage);
+app.get("/match1/:uname",match1.viewMatch1Page);
+app.get("/matchInterviewee/:uname", matchInterviewee.viewMatchIntervieweePage);
+app.get("/matchInterviewee1/:uname",matchInterviewee1.viewMatchInterviewee1Page);
 
 // Example route
 // app.get('/users', user.list);

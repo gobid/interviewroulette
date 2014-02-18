@@ -49,7 +49,7 @@ function get_interviewee_session(req, res) {
 		}
 
 		if (req.query.occupation != "") {
-			mostRecentlyAddedUser .occupation = req.query.occupation;
+			mostRecentlyAddedUser.occupation = req.query.occupation;
 		}
 
 		if (req.query.location != "") {
@@ -95,6 +95,7 @@ function get_interviewee_session(req, res) {
 		console.log("Reached improvements");
 		if (req.query.improvements!= "") 
 			mostRecentlyAddedUser.improvements = req.query.improvements;
+
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
@@ -105,8 +106,22 @@ function get_interviewee_session(req, res) {
 				if (mostRecentlyAddedUser.interviewer) {
 					req.session.user = mostRecentlyAddedUser
 					console.log(req.session)
+					console.log("got here!");
 					res.render('interviewerProfile', mostRecentlyAddedUser);
 					return;
+				}
+			}
+		}
+	} else if (pageBefore == "match") {
+		var unameEmail = req.query.email;
+		console.log(req);
+		console.log("Email: "+unameEmail);
+		for (i = 0; i < numberOfUsers; i++) {
+			if (data["users"][i].email == unameEmail) {
+				mostRecentlyAddedUser = data["users"][i];
+				//Check if user is an interviewER or interviewEE
+				if (mostRecentlyAddedUser.interviewer) {
+					break;
 				}
 			}
 		}

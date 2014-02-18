@@ -31,6 +31,13 @@
                         <div class="row" id="content">
                          
       <div class = "row profile-header">
+        <!-- HACK: Use a form to extract temail (username) lookup in the JSON-->
+        <form role="form" method="get">
+          <div class="form-group">
+              <span class="textarea-group-addon">Logged In As:</span>
+              <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+          </div>
+        </form>
         <!-- Edit Button -->
         <div class="row">
           <a href="/editIntervieweeProfile/{{email}}">
@@ -61,7 +68,7 @@
               </address>
               </div>
             </div>
-            <a class="btn btn-primary btn-lg active" href="/match" role="button"> Match with a interviewer</a>
+            <a class="btn btn-primary btn-lg active" href="/match/{{email}}" role="button"> Match with a interviewer</a>
           </div>
         </div>
     
