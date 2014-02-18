@@ -10,7 +10,7 @@ exports.dosurveyInterviewee = function(req, res) { 
 			"ghangout": req.query.ghangout,
 			"interviewer": false,
 			"education": req.query.education,
-			"occupation": req.query.interested field,
+			"occupation": req.query.occupation,
 			"location": req.query.location,
 			"programmingLang": "For example: Java, C++, Python",
 			"softSkills": "For example: Good communication skills, Experience managing teams",
