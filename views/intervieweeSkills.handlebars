@@ -22,7 +22,7 @@
           
             <!-- main right col -->
             <div class="column col-sm-10 col-xs-11" id="main">
-                
+                {{> logout}}
               
                 <div class="padding">
                   <div class="row" id="content">
@@ -33,9 +33,9 @@
                     </div>
                     <div class="full col-sm-9">
                         <h1>My Skills </h1>
-                        <h5>Enter your knowlegde in the following areas:</h5>
+                        <h5>Show the interviewer your strength</h5>
                             <div class="form-group">
-                              <strong>Programming Languages: </strong><br>
+                              <strong>Job specific skills: </strong><br>
                               <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
                               </div>
                             <div class="form-group">
@@ -43,7 +43,7 @@
                               <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
                             </div>
                              <div class="form-group">
-                              <strong>Frameworks I've Worked With: </strong><br>
+                              <strong>Other relevant skills you want let the interviewer know</strong><br>
                               <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
                             </div>
                             <div class="form-group">
