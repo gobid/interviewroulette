@@ -110,6 +110,7 @@ function get_interviewee_session(req, res) {
 					console.log(req.session)
 					console.log("got here!");
 					res.render('interviewerProfile', mostRecentlyAddedUser);
+				}
 				else 
 					res.render('intervieweeProfile', mostRecentlyAddedUser);
 				return;

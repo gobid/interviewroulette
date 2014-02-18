@@ -4,5 +4,4 @@ exports.kickoff = function(req, res) { 
 	console.log(match)
 	var urlParam = {"match": match};
 	res.render('startInterview', urlParam);
-	}
 };
