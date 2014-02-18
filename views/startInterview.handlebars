@@ -4,6 +4,7 @@
     <link rel="stylesheet" type="text/css" href="/css/profiles.css">
     {{> head}}
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src = "/js/startInterview.js"></script>
   </head>
   <!DOCTYPE html>
   <body>
@@ -21,21 +22,24 @@
         </div>
       </form>
       <!-- End of login info -->
+
+  {{> logout}}
   
-    <h4 style="padding-top:10%;text-align:center">Kick off your interview now!</h4>
+    <h4 style="padding-top:10%;text-align:center">Follow the easy steps to kick off.</h4>
       <br>
       <div class = "row">
         <div class = "col-md-4">
           <div class="alert alert-info" style="text-align:left">
-            <ol>
-              <li>Copy the email of invitee.</li>
-              <li>Start Google Hangout</li> 
-              <li>Paste the invitee's email into the google hangout prompt to add participants.</li>
-            </ol>
+            <ul>
+              <li>Open Google Hangout App</li>
+              <li>Copy and paste the invitee's email into the google hangout prompt to add participants.</li>
+            </ul>
           </div>
           <div class="input-group">
-            <span class="input-group-addon">Copy This: </span>
-            <input type = 'text' class = 'form-control' id = 'invitee' value = 'govinda@govindadasu.com'>
+            <span class="input-group-btn">
+              <button id = "copier" class="btn btn-default" type="button">Select Text</button>
+            </span>
+            <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{ match }}'>
           </div>
           <br>
           <div style="text-align:center">

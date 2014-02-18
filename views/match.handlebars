@@ -7,6 +7,9 @@
   </head>
   <body>
     <div class="container">
+
+      {{> logout}}
+
       
       <!-- HACK! Displays login info. Used to grab email to pass in URL --> 
       <form role="form" method="get" action="/intervieweeProfile/match">
@@ -19,12 +22,11 @@
         </div>
       </form>
       <!-- End of login info -->
-
       <div class="jumbotron">
         <p class="lead"> Congraluations!  We have matched a interviewer for you.</p>
         <div class = "row profile-header">
           <div class="col-md-4">
-            <div class="profile-circle">Photo </div>      
+            <div class="profile-circle">Photo</div>      
           </div>
           <div class="col-md-8" >
             <div class="row">

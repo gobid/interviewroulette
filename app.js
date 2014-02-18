@@ -58,10 +58,12 @@ app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use(express.methodOverride());
-app.use(express.cookieParser('Intro HCI secret key'));
+app.use(express.cookieParser('your secret here'));
 app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 // development only
 if ('development' == app.get('env')) {
@@ -77,8 +79,8 @@ app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
 app.get("/detailInfo",detailInfo.viewDetail);
 app.get("/detailInfo1",detailInfo1.viewDetail);
 
-app.get("/startInterview/:uname",startInterview.kickoff);
-app.get("/startInterviewWithInterviewee/:uname",startInterviewWithInterviewee.kickoffWithInterviewee);
+app.get("/startInterview/:match",startInterview.kickoff);
+app.get("/startInterviewWithInterviewee/:match",startInterviewWithInterviewee.kickoffWithInterviewee);
 
 app.get("/login", login.viewLogin);
 app.get("/unimplemented", unimplemented.viewUnimplemented);
