@@ -7,7 +7,19 @@
   </head>
   <body>
     <div class="container">
-      {{> logout}}
+      {{> logout}}     
+      <!-- HACK! Displays login info. Used to grab email to pass in URL --> 
+      <form role="form" method="get" action="/interviewerProfile/match">
+        <div class="form-group">
+            <span class="textarea-group-addon">Logged In As:</span>
+            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-default">Back To My Profile</button>
+        </div>
+      </form>
+      <!-- End of login info -->
+
       <div class="jumbotron">
         <p class="lead"> Congraluations!  We have matched an interviewee for you.</p>
         <div class = "row profile-header">
@@ -17,38 +29,30 @@
           <div class="col-md-8" >
             <div class="row">
               <div class="col-md-8 extraoinfo">
-                <h1 style="color:black">Jean Kono</h1>
+                <h1 style="color:black">{{ match.firstname }} {{ match.lastname }}</h1>
               </div> 
-                <p class="lead">Wants to become a software developer.</p>
+              <p class="lead">{{ match.description1 }} {{ match.description2 }}</p>
             </div> 
             <div class="row">
               <div class="col-md-6 extrainfo">
                 <address>
-                  <strong></strong><br>
-                  Lehi, UT<br>
+                  <br>{{ match.location }}<br>
                 </address>
               </div>       
               <div class="col-md-6 extrainfo">
                 <address>
-                  <a href="mailto:#">jean.kono@gmail.com</a>
+                  <a href="mailto:#">{{ match.email }}</a>
                 </address>
               </div>  
             </div>   
           </div>
         </div>
         <div class="row">
-          <div class="col-md-2"> 
-          </div>	
           <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/startInterview/iAmInterviewer" role="button">Request an interview</a>
+            <a class="btn btn-primary btn-lg match active" href="/startInterview/iAmInterviewer/{{ match.email }}" role="button">Request an interview</a>
           </div>
           <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/matchInterviewee1" role="button">Try another roulette</a>
-          </div>
-          <div class="col-md-4 extrainfo"> 
-            <a class="btn btn-primary btn-lg match active" href="/interviewerProfile/match" role="button">Back To My Profile</a>
-          </div>
-          <div class="col-md-2"> 
+            <a class="btn btn-primary btn-lg match active" href="/matchInterviewee1/{{email}}" role="button">Try another roulette</a>
           </div>
         </div>	
       </div>
