@@ -1,15 +1,16 @@
 var data = require("../users.json");
 
-function get_interviewee_session(req, res) {
+exports.viewIntervieweeProfile = function(req, res) {
+	var session_set = 0
 	var pageBefore = req.params.pageBefore;
-	console.log("Page before "+pageBefore);
+	console.log("Page before: " + pageBefore);
 
 	var numberOfUsers = data["users"].length;
 	var mostRecentlyAddedUser = data["users"][numberOfUsers - 1];
 
 	if(pageBefore == "Sidebar") {
 		var unameEmail = req._parsedUrl.query;
-		console.log("Email: "+unameEmail);
+		console.log("Email: " + unameEmail);
 		for (i = 0; i < numberOfUsers; i++) {
 			if (data["users"][i].email == unameEmail) {
 				mostRecentlyAddedUser = data["users"][i];
@@ -99,16 +100,17 @@ function get_interviewee_session(req, res) {
 	} else if (pageBefore == "login") {
 		// Look up user in data JSON. 
 		var unameEmail = req.query.uname;
-		console.log(req.query.uname);
+		// console.log(req.query.uname);
 		for (i = 0; i < numberOfUsers; i++) {
 			if (data["users"][i].email == unameEmail) {
 				mostRecentlyAddedUser = data["users"][i];
-				console.log(mostRecentlyAddedUser)
+				//console.log(mostRecentlyAddedUser)
 				//Check if user is an interviewER or interviewEE
+				req.session.user = mostRecentlyAddedUser
+				session_set = 1
+				console.log(req.session)
 				if (mostRecentlyAddedUser.interviewer) {
-					req.session.user = mostRecentlyAddedUser
-					console.log(req.session)
-					console.log("got here!");
+					// console.log("got here!");
 					res.render('interviewerProfile', mostRecentlyAddedUser);
 				}
 				else 
@@ -124,6 +126,8 @@ function get_interviewee_session(req, res) {
 			if (data["users"][i].email == unameEmail) {
 				mostRecentlyAddedUser = data["users"][i];
 				console.log(mostRecentlyAddedUser)
+				req.session.user = mostRecentlyAddedUser
+				session_set = 1
 				//Check if user is an interviewER or interviewEE
 				if(mostRecentlyAddedUser.interviewer)
 					res.render('interviewerProfile', mostRecentlyAddedUser);
@@ -146,11 +150,8 @@ function get_interviewee_session(req, res) {
 			}
 		}
 	}
-	return mostRecentlyAddedUser
-}
-
-exports.viewIntervieweeProfile = function(req, res) {
-	mostRecentlyAddedUser = get_interviewee_session(req, res)
-	req.session.user = mostRecentlyAddedUser // will trigger "can't set headers"
-	res.render('intervieweeProfile', mostRecentlyAddedUser);
+	if (!session_set) {
+		req.session.user = mostRecentlyAddedUser // will trigger "can't set headers"
+		res.render('intervieweeProfile', mostRecentlyAddedUser);
+	}
 }

@@ -1,6 +1,6 @@
 var data = require("../users.json");
 
-function get_interviewer_session(req, res) {
+exports.viewInterviewerProfile = function(req, res) {
 	var pageBefore = req.params.pageBefore;
 	console.log("Page before: "+req.params.pageBefore);
 
@@ -122,15 +122,6 @@ function get_interviewer_session(req, res) {
 			}
 		}
 	}
-	console.log('im here now')
-	console.log(req.session)
-	req.session.user = mostRecentlyAddedUser 
-	// has to be checked at signup, which is the only time this is called
-	return mostRecentlyAddedUser
-}
-
-exports.viewInterviewerProfile = function(req, res) {
-	console.log('getting interviewer');
-	mostRecentlyAddedUser = get_interviewer_session(req, res);
+	req.session.user = mostRecentlyAddedUser
 	res.render('interviewerProfile', mostRecentlyAddedUser);
 }
