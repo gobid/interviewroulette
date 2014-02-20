@@ -5,7 +5,19 @@
         <meta charset="utf-8">
 
         <title>Interview Profile</title>
-        {{> bootplyBoilerplate}}
+        <meta name="generator" content="Bootply" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+        
+        <!--[if lt IE 9]>
+          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+
+        <link rel="stylesheet" type="text/css" href="/css/profiles.css">
     </head>
     
     <!-- HTML code from Bootply.com editor -->
@@ -17,40 +29,39 @@
         <div class="row row-offcanvas row-offcanvas-left">
           
             <!-- sidebar -->
-            {{> intervieweeProfileSidebar}}
+            {{> interviewerProfileSidebar}}
             <!-- /sidebar -->
           
             <!-- main right col -->
             <div class="column col-sm-10 col-xs-11" id="main">
-                {{> logout}}
+              {{> logout}}
+                
               
                 <div class="padding">
-                  <div class="row" id="content">
-                  <form role="form" method="get" action="/intervieweeProfile/Skills">
-                    <div class="form-group">
-                      <span class="textarea-group-addon">Logged In As:</span>
-                      <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
-                    </div>
                     <div class="full col-sm-9">
-                        <h1>My Skills </h1>
-                        <h5>Show the interviewer your strength</h5>
+                      
+                        <!-- content -->                      
+                    <div class = "row">
+                        <form role="form" method="get" action="/interviewerPastExp">
+                          <div class="form-group" style="float:left">
+                            <span class="textarea-group-addon">Logged In As:</span>
+                            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+                          </div>
+                          <br>
+                          <h1>Past Experiences</h1>
                             <div class="form-group">
-                              <strong>Job specific skills: </strong><br>
-                              <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
+                              <strong>Previous positions and projects</strong><br>
+                              <textarea class="form-control" rows="3"name="description1">{{description1}}</textarea>
                               </div>
                             <div class="form-group">
-                              <strong>Soft Skills: </strong><br>
-                              <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
-                            </div>
-                             <div class="form-group">
-                              <strong>Other relevant skills you want let the interviewer know</strong><br>
-                              <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
+                              <strong>My specialties</strong><br>
+                              <textarea class="form-control" rows="3" name="description2">{{description2}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-default">Save</button>
                             </div>
                           </form>
-                       </div><!--/row-->
+                      </div>
                       
                     
                     </div><!-- /col-9 -->

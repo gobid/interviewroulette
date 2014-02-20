@@ -4,7 +4,7 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
 
-        <title>My Areas To Improve</title>
+        <title>Interview Profile</title>
         {{> bootplyBoilerplate}}
     </head>
     
@@ -25,21 +25,34 @@
                 {{> logout}}
               
                 <div class="padding">
+                  <div class="row" id="content">
+                  <form role="form" method="get" action="/intervieweeSkills">
+                    <div class="form-group">
+                      <span class="textarea-group-addon">Logged In As:</span>
+                      <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
+                    </div>
                     <div class="full col-sm-9">
-                      <form role="form" method="get" action="/intervieweeProfile/Improvements">
-                        <div class="form-group">
-                            <span class="textarea-group-addon">Logged In As:</span>
-                            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
-                        </div>
-                      <h2>I think I still need the following to land the job:</h2>
-                        <!-- content -->     
-                          <div class="form-group">
-                            <textarea class="form-control" rows="3"name="improvements">{{improvements}}</textarea>
+                        <h1>My Skills </h1>
+                        <h5>Show the interviewer your strength</h5>
+                            <div class="form-group">
+                              <strong>Job specific skills: </strong><br>
+                              <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
+                              </div>
+                            <div class="form-group">
+                              <strong>Soft Skills: </strong><br>
+                              <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
                             </div>
-                          <div class="form-group">
-                              <button type="submit" class="btn btn-default">Save</button>
-                          </div>
-                        </form>
+                             <div class="form-group">
+                              <strong>Other relevant skills you want let the interviewer know</strong><br>
+                              <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Save</button>
+                            </div>
+                          </form>
+                       </div><!--/row-->
+                      
+                    
                     </div><!-- /col-9 -->
                 </div><!-- /padding -->
             </div>

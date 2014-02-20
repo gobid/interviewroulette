@@ -7,44 +7,9 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars')
 
-var index = require('./routes/index');
-var signup = require('./routes/signup');
-var project = require('./routes/project');
-var login = require('./routes/login');
-var intervieweeSurvey = require('./routes/intervieweeSurvey');
-var interviewerSurvey = require('./routes/interviewerSurvey');
-var detailInfo = require('./routes/detailInfo');
-var detailInfo1 = require('./routes/detailInfo1');
-var unimplemented = require('./routes/unimplemented');
-
-var startInterview = require('./routes/startInterview');
-var startInterviewWithInterviewee = require('./routes/startInterviewWithInterviewee');
-
-// INTERVIEWER PROFILE PAGES
-var interviewerProfile = require('./routes/interviewerProfile');
-var interviewerPastExp = require('./routes/interviewerPastExp');
-var interviewerAboutMe = require('./routes/interviewerAboutMe');
-var editInterviewerProfile = require('./routes/editInterviewerProfile');
-
-// INTERVIEWEE PROFILE PAGES
-var intervieweeProfile = require('./routes/intervieweeProfile');
-var intervieweeFeedback = require('./routes/intervieweeFeedback');
-var intervieweePublicRatings = require('./routes/intervieweePublicRatings');
-var intervieweeSkills = require('./routes/intervieweeSkills');
-var intervieweeAreasToImprove = require('./routes/intervieweeAreasToImprove');
-var editIntervieweeProfile = require('./routes/editIntervieweeProfile');
-
-
-// DUMMY MATCH PAGES
-var match = require('./routes/match');
-var match1 = require('./routes/match1');
-var matchInterviewee = require('./routes/matchInterviewee');
-var matchInterviewee1 = require('./routes/matchInterviewee1');
+var routes = require('./routes/routes')
 
 var partialsDir="views/partials/";
-
-// Example route
-// var user = require('./routes/user');
 
 var app = express();
 
@@ -63,50 +28,41 @@ app.use(express.session());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
 // Add routes here
-app.get('/', index.view);
-app.get('/signup', signup.view);
-app.get('/project/:name', project.viewProject);
-app.get("/intervieweeSurvey", intervieweeSurvey.dosurveyInterviewee);
-app.get("/interviewerSurvey", interviewerSurvey.dosurveyInterviewer);
-app.get("/detailInfo",detailInfo.viewDetail);
-app.get("/detailInfo1",detailInfo1.viewDetail);
+app.get('/', routes.view);
+app.get('/logout', routes.logout)
+app.get('/signup', routes.viewSignup);
+app.get("/intervieweeSurvey", routes.dosurveyInterviewee);
+app.get("/interviewerSurvey", routes.dosurveyInterviewer);
 
-app.get("/startInterview/:match",startInterview.kickoff);
-app.get("/startInterviewWithInterviewee/:match",startInterviewWithInterviewee.kickoffWithInterviewee);
+app.get("/startInterview/:match",routes.kickoff);
+app.get("/startInterviewWithInterviewee/:match",routes.kickoffWithInterviewee);
 
-app.get("/login", login.viewLogin);
-app.get("/unimplemented", unimplemented.viewUnimplemented);
+app.get("/login", routes.viewLogin);
+app.get("/unimplemented", routes.viewUnimplemented);
 
 //INTERVIEWEE PAGES
-app.get('/intervieweeProfile/:pageBefore', intervieweeProfile.viewIntervieweeProfile);
-app.get('/intervieweeFeedback/:uname',intervieweeFeedback.viewIntervieweeFeedback);
-app.get('/intervieweeSkills/:uname',intervieweeSkills.viewIntervieweeSkills);
-app.get('/intervieweePublicRatings/:uname',intervieweePublicRatings.viewIntervieweePublicRatings);
-app.get('/intervieweeAreasToImprove/:uname',intervieweeAreasToImprove.viewIntervieweeAreasToImprove);
-app.get('/editIntervieweeProfile/:uname', editIntervieweeProfile.viewEditIntervieweeProfile);
+app.get('/intervieweeProfile', routes.viewIntervieweeProfile);
+app.get('/intervieweeFeedback',routes.viewIntervieweeFeedback);
+app.get('/intervieweeSkills',routes.viewIntervieweeSkills);
+app.get('/intervieweePublicRatings',routes.viewIntervieweePublicRatings);
+app.get('/intervieweeAreasToImprove',routes.viewIntervieweeAreasToImprove);
+app.get('/editIntervieweeProfile', routes.viewEditIntervieweeProfile);
 
 //INTERVIEWER PAGES
-app.get('/interviewerProfile/:pageBefore', interviewerProfile.viewInterviewerProfile);
-app.get('/interviewerPastExp/:uname', interviewerPastExp.viewInterviewerPastExp);
-app.get('/interviewerAboutMe/:uname', interviewerAboutMe.viewInterviewerAboutMe);
-app.get('/editInterviewerProfile/:uname', editInterviewerProfile.viewEditInterviewerProfile);
+app.get('/interviewerProfile', routes.viewInterviewerProfile);
+app.get('/interviewerPastExp', routes.viewInterviewerPastExp);
+app.get('/interviewerAboutMe', routes.viewInterviewerAboutMe);
+app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);
 
 // DUMMY MATCH PAGES
-app.get("/match/:uname", match.viewMatchPage);
-app.get("/match1/:uname",match1.viewMatch1Page);
-app.get("/matchInterviewee/:uname", matchInterviewee.viewMatchIntervieweePage);
-app.get("/matchInterviewee1/:uname",matchInterviewee1.viewMatchInterviewee1Page);
-
-// Example route
-// app.get('/users', user.list);
+app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
+app.get("/matchForInterviewer", routes.viewMatchForInterviewer);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
