@@ -9,7 +9,7 @@
     {{> logout}}
     <div class="jumbotron" align="center">
       <h4 class="lead"> Let us know how to serve you better within 30 seconds. </h4>
-      <form role="form" id = "interviewer-survey-form" method="get" action="/interviewerProfile">
+      <form role="form" id = "interviewer-survey-form" method="get" action="/intervieweeProfile"><!--this also goes to interviewee profile-->
         <div class = "row">
           <div class = "col-md-6">
             <div class="form-group">
@@ -33,7 +33,7 @@
             <input type="text" class="form-control" placeholder="Location" id="location" name="location">  
           </div>
         </div>
-        <input type = "hidden" id = "person-type" name = "person-type" val = "interviewer"/>
+        <input type = "hidden" id = "persontype" name = "persontype" value = "interviewer"/>
         <button type="submit" class="btn btn-success btn-lg pull-right">Continue</button>
       </form>
     </div>

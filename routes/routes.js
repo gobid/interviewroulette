@@ -148,6 +148,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 	data["users"].push(newUser);
 	var numberOfUsers = data["users"].length
 	req.session.user = data["users"][numberOfUsers-1]
+	console.log(req.session)
     res.render("interviewer/interviewerSurvey");
 };
 
@@ -156,6 +157,7 @@ exports.viewLogin = function(req, res){
 };
 
 exports.viewMatchForInterviewer = function(req, res){
+
 	// get occupation
 	console.log(req.session)
 	if (req.session.user) 
@@ -164,6 +166,11 @@ exports.viewMatchForInterviewer = function(req, res){
 		occupation = ''
 
 	// find users with matching occupation
+	
+	// eventually create req.session.set and store people already viewed
+	// only allow non-viewed people into matching_occupation_users
+
+	// also allow match page to let you know when you have exhausted all options
 	matching_occupation_users = []
 	var numberOfUsers = data["users"].length;
 	for (i = 0; i < numberOfUsers; i++) {
@@ -194,6 +201,11 @@ exports.viewMatchForInterviewee = function(req, res){
 		occupation = ''
 
 	// find users with matching occupation
+
+	// eventually create req.session.set and store people already viewed
+	// only allow non-viewed people into matching_occupation_users
+
+	// also allow match page to let you know when you have exhausted all options
 	matching_occupation_users = []
 	var numberOfUsers = data["users"].length;
 	for (i = 0; i < numberOfUsers; i++) {
@@ -251,17 +263,18 @@ exports.viewInterviewerProfile = function(req, res) {
 
 exports.viewIntervieweeProfile = function(req, res) {
 	if (req.session && req.session.user){
-		if (req.query['person-type']) { // means came from signup surveys
+		console.log('persontype')
+		console.log(req.query.persontype)
+		if (req.query.persontype) { // means came from signup surveys
 			console.log('came from signup')
 			var index = findUserIndex(req.session.user.email)
-			if (req.query['person-type'] == "interviee") {
+			if (req.query.persontype == "interviewee") {
 				console.log('interviewee')
 				// update user obj in db
 				data["users"][index]['occupation'] = req.query.occupation
 				data["users"][index]['education'] = req.query.education
 				data["users"][index]['location'] = req.query.location
-				data["users"][index]['occupation'] = req.query.occupation
-				req.session.user = data["users"]["index"]
+				req.session.user = data["users"][index]
 				res.render('interviewee/intervieweeProfile', req.session.user);
 			}
 			else {
@@ -270,7 +283,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 				data["users"][index]['company'] = req.query.company
 				data["users"][index]['education'] = req.query.education
 				data["users"][index]['location'] = req.query.location
-				req.session.user = data["users"]["index"]
+				req.session.user = data["users"][index]
 				res.redirect('interviewerProfile')
 			}
 
