@@ -50,7 +50,6 @@ app.get("/unimplemented", routes.viewUnimplemented);
 app.get('/intervieweeProfile', routes.viewIntervieweeProfile);
 app.get('/intervieweeFeedback',routes.viewIntervieweeFeedback);
 app.get('/intervieweeSkills',routes.viewIntervieweeSkills);
-app.get('/intervieweePublicRatings',routes.viewIntervieweePublicRatings);
 app.get('/intervieweeAreasToImprove',routes.viewIntervieweeAreasToImprove);
 app.get('/editIntervieweeProfile', routes.viewEditIntervieweeProfile);
 

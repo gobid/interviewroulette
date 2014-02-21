@@ -24,6 +24,10 @@
             <div class="column col-sm-10 col-xs-11" id="main">
               <div class="padding">
                   <div class="full col-sm-9">
+
+                    <!-- Placeholder for "saved" notfication -->
+                    <div id="save-notification"></div>
+                    
                     <!-- content -->                      
                     <div class="row" id="content">
                                          
@@ -65,7 +69,7 @@
                                   </div>
                                 </div>
                                 <br>
-                                  <button type="submit" class="btn btn-default">Save</button>
+                                  <button type="submit" id="submit" class="btn btn-default">Save</button>
                                 </div>
                               </form>
                         </div><!--/row-->                
@@ -82,8 +86,6 @@
 
 
         <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-
 
         
         <!-- JavaScript jQuery code from Bootply.com editor -->
@@ -102,11 +104,13 @@
                   $('#btnShow').toggle();
               });
 
-              $('#feedback').click(function(e) {
-                $("#content").html(
-
-                  );
-
+              // Handles "saved" notification when submit changes.
+              $('#submit').click(function(e) {
+                e.preventDefault();
+                $('#save-notification').empty();
+                var notification = $('<div class="alert alert-success alert-dismissable" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>You changes have been saved!</strong></div>'); 
+                $('#save-notification').append(notification);
+                notification.fadeIn('slow');
               });
           });
         

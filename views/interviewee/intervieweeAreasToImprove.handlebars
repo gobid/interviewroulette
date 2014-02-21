@@ -26,18 +26,18 @@
               
                 <div class="padding">
                     <div class="full col-sm-9">
+
+                      <!-- Placeholder for "saved" notfication -->
+                      <div id="save-notification"></div>
+
                       <form role="form" method="get" action="/intervieweeAreasToImprove">
-                        <div class="form-group">
-                            <span class="textarea-group-addon">Logged In As:</span>
-                            <i><textarea class="form-control" rows="1" name="email">{{email}}</textarea></i>
-                        </div>
                       <h2>I think I still need the following to land the job:</h2>
                         <!-- content -->     
                           <div class="form-group">
                             <textarea class="form-control" rows="3"name="improvements">{{improvements}}</textarea>
                             </div>
                           <div class="form-group">
-                              <button type="submit" class="btn btn-default">Save</button>
+                              <button id="submit" type="submit" class="btn btn-default">Save</button>
                           </div>
                         </form>
                     </div><!-- /col-9 -->
@@ -73,6 +73,15 @@
                   $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
                   $('#btnShow').toggle();
               });
+
+            // Handles "saved" notification when submit changes.
+            $('#submit').click(function(e) {
+              e.preventDefault();
+              $('#save-notification').empty();
+              var notification = $('<div class="alert alert-success alert-dismissable" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>You changes have been saved!</strong></div>'); 
+              $('#save-notification').append(notification);
+              notification.fadeIn('slow');
+            });
           });
         
         </script>
