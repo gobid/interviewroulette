@@ -238,8 +238,14 @@ exports.viewSignup = function(req, res){
 
 exports.kickoff = function(req, res) { 
 	res.render('startInterview', {
-		"match": req.params.match,
+		"match":req.params.match,
 	});
+};
+
+exports.postFeedback = function(req,res){
+	res.render('feedback',{
+		match:req.params.match,
+	})
 };
 
 exports.kickoffWithInterviewee = function(req, res){

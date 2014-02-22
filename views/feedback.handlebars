@@ -7,15 +7,14 @@
   </head>
   <body>
   	<div class="container">
-
       <div class="form-group">
         <a href = '/intervieweeProfile'><button type="submit" class="btn btn-default">Back To My Profile</button>
       </div>
-  {{> logout}}
+      {{> logout}}
       <form role="form" id = "edit-profile-form" method="get" action="/intervieweeProfile">
-      <label for="feedback">Share your feedback for the interview</label>
-      <input type="text" class="form-control" id="feedback" name="feedback">
-  </form>
-  </div>
-</body>
+        <label for="feedback">Share your feedback for interview with {{ match.firstname }} {{ match.lastname }}</label>
+        <input type="text" class="form-control" id="feedback" name="feedback">
+      </form>
+    </div>
+ </body>
 </html>
