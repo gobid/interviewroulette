@@ -1,94 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <meta charset="utf-8">
-
-        <title>Interview Profile</title>
-        {{> bootplyBoilerplate}}
-    </head>
-    
-    <!-- HTML code from Bootply.com editor -->
-    
-    <body>
-        
-    <div class="wrapper">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <meta charset="utf-8">
+  <title>Interview Profile</title>
+  {{> bootplyBoilerplate}}
+</head>
+<!-- HTML code from Bootply.com editor -->
+<body>
+  <div class="wrapper">
     <div class="box">
-        <div class="row row-offcanvas row-offcanvas-left">
-          
-            <!-- sidebar -->
-            {{> intervieweeProfileSidebar}}
-            <!-- /sidebar -->
-          
-            <!-- main right col -->
-            <div class="column col-sm-10 col-xs-11" id="main">
-                {{> logout}}
-              
-                <div class="padding">
-                  <div class="row" id="content">
-                  <form role="form" name = "skills" id = "skills" method="get" action="/intervieweeSkills">
-
-                    <div class="full col-sm-9">
-
-                      <!-- Placeholder for "saved" notfication -->
-                      <div id="save-notification"></div>
-
-                        <h1>My Skills </h1>
-                        <h5>Show the interviewer your strength</h5>
-                            <div class="form-group">
-                              <strong>Job specific skills: </strong><br>
-                              <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
-                              </div>
-                            <div class="form-group">
-                              <strong>Soft Skills: </strong><br>
-                              <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
-                            </div>
-                             <div class="form-group">
-                              <strong>Other relevant skills you want let the interviewer know</strong><br>
-                              <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
-                            </div>
-                            <div class="form-group">
-                                <button id="submit" type="submit" class="btn btn-default">Save</button>
-                            </div>
-                          </form>
-                       </div><!--/row-->
-                      
-                    
-                    </div><!-- /col-9 -->
-                </div><!-- /padding -->
+      <div class="row row-offcanvas row-offcanvas-left">
+        {{> intervieweeProfileSidebar}}
+        <div class="column col-sm-10 col-xs-11" id="main">
+          {{> logout}}
+          <div class="padding">
+            <div class="row" id="content">
+              <form role="form" name = "skills" id = "skills" method="get" action="/intervieweeSkills">
+                <div class="full col-sm-9">
+                  <div id="save-notification"></div>
+                  <h1>My Skills </h1>
+                  <h5>Show the interviewer your strength</h5>
+                  <div class="form-group">
+                    <strong>Job specific skills: </strong><br>
+                    <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <strong>Soft Skills: </strong><br>
+                    <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <strong>Other relevant skills you want let the interviewer know</strong><br>
+                    <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <button id="submit" type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </form>
+              </div>
             </div>
-            <!-- /main -->
-          
+          </div>
         </div>
+      </div>
     </div>
-</div>
-
-        
-        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
-        <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-
-
-        
-        <!-- JavaScript jQuery code from Bootply.com editor -->
-        
-        <script type='text/javascript'>
-        
-          $(document).ready(function() {
-              /* off-canvas sidebar toggle */
-
-              $('[data-toggle=offcanvas]').click(function() {
-                  $(this).toggleClass('visible-xs text-center');
-                  $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-                  $('.row-offcanvas').toggleClass('active');
-                  $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-                  $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-                  $('#btnShow').toggle();
-              });
-        
-        </script>
-        
-    </body>
+  </div>
+  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <!-- JavaScript jQuery code from Bootply.com editor -->
+  <script type='text/javascript'>
+  $(document).ready(function() {
+    /* off-canvas sidebar toggle */
+    $('[data-toggle=offcanvas]').click(function() {
+      $(this).toggleClass('visible-xs text-center');
+      $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+      $('.row-offcanvas').toggleClass('active');
+      $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+      $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+      $('#btnShow').toggle();
+    });
+  </script>
+</body>
 </html>
