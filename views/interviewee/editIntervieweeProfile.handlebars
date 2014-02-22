@@ -3,21 +3,26 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <meta charset="utf-8">
-  <title>Interviewee Profile</title>
+  <title>Edit Profile</title>
   {{> bootplyBoilerplate}}
-</head>  
+</head>    
 <body>
-  {{> logout}}    
-  <div class="row row-offcanvas row-offcanvas-left">
-    {{> intervieweeProfileSidebar}}
-    <div class="column col-sm-10 col-xs-11" id="main">
-      <div class="padding">
-        <div class="full col-sm-9">
-          <!-- Placeholder for "saved" notfication -->
-          <div id="save-notification"></div>
-          <div class="row" id="content">
-            <div class = "row profile-header">
-              <div class="row">
+  <div class="wrapper"><!--from bootply-->
+    <div class="box"><!--from bootply-->
+      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
+        {{> intervieweeProfileSidebar}}
+        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
+          <div class="padding">
+            {{> logout}}
+            <br>
+            <div class="row">
+              <div class = "col-md-12">
+                <!-- Placeholder for "saved" notfication -->
+                <div id="save-notification"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col-md-12">
                 <h1>Edit Your Info</h1>
                 <form role="form" id = "signup-form" method="get" action="/editIntervieweeProfile">
                   <div class="form-group">
@@ -31,15 +36,17 @@
                         <input type="text" class="form-control" id="lname" value="{{lastname}}" name="lname">
                       </div>
                     </div>
-                    <div class = "col-md-6">
-                      <label for="email">Email address</label>
-                      <textarea class="form-control" rows="1"name="email">{{email}}</textarea>
-                    </div>
                     <div class = "row">
+                      <div class = "col-md-6">
+                        <label for="email">Email address</label>
+                        <textarea class="form-control" rows="1"name="email">{{email}}</textarea>
+                      </div>
                       <div class = "col-md-6">
                         <label for="education">Education</label>
                         <input type="text" class="form-control" id="education" value="{{education}}" name="education">
                       </div>
+                    </div>
+                    <div class = "row">
                       <div class = "col-md-6">
                         <label for="occupation">Interested field</label>
                         <input type="text" class="form-control" id="occupation" value="{{occupation}}" name="occupation">
@@ -55,15 +62,14 @@
                 </form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </div><!--from bootply-->
+      </div><!--from bootply-->
+    </div><!--from bootply-->
+  </div><!--from bootply-->
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>        
-  <!-- JavaScript jQuery code from Bootply.com editor -->
-  <script type='text/javascript'>        
+  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <!-- JavaScript jQuery code from Bootply.com editor -->  
+  <script type='text/javascript'> 
   $(document).ready(function() {
     /* off-canvas sidebar toggle */
     $('[data-toggle=offcanvas]').click(function() {
@@ -73,8 +79,8 @@
       $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
       $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
       $('#btnShow').toggle();
-    });            
-  });        
+    });
+  });
   </script>
 </body>
 </html>
