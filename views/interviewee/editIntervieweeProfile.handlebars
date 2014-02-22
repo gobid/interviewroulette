@@ -6,12 +6,10 @@
   <title>Interviewee Profile</title>
   {{> bootplyBoilerplate}}
 </head>  
-<body>
-  {{> logout}}    
-  <div class="row row-offcanvas row-offcanvas-left">
+<body>  
     {{> intervieweeProfileSidebar}}
-    <div class="column col-sm-10 col-xs-11" id="main">
       <div class="padding">
+        {{> logout}} 
         <div class="full col-sm-9">
           <!-- Placeholder for "saved" notfication -->
           <div id="save-notification"></div>
@@ -58,7 +56,6 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>        
