@@ -1,120 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
-        <meta charset="utf-8">
-
-        <title>Interview Profile</title>
-        <meta name="generator" content="Bootply" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-        
-        <!--[if lt IE 9]>
-          <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-        <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-        <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-        <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-
-        <link rel="stylesheet" type="text/css" href="/css/profiles.css">
-    </head>
-    
-    <!-- HTML code from Bootply.com editor -->
-    
-    <body>
-        
-    <div class="wrapper">
-    <div class="box">
-        <div class="row row-offcanvas row-offcanvas-left">
-          
-            <!-- sidebar -->
-            {{> interviewerProfileSidebar}}
-            <!-- /sidebar -->
-          
-            <!-- main right col -->
-            <div class="column col-sm-10 col-xs-11" id="main">
-              {{> logout}}
-                
-              <div class="padding">
-                <div class="full col-sm-9">
-                  <!-- content -->                      
-                  <div class = "row profile-header">
-
-                    <!-- Edit Button -->
-                    <div class="row">
-                      <a href="/editInterviewerProfile">
-                      <button type="submit" class="edit-button btn btn-primary">
-                        
-                          <i class="edit-icon glyphicon glyphicon-pencil"></i>
-                        
-                      </button>
-                      </a>
-                    </div> <!--/Edit Button -->
-
-                    <div class="col-md-4">
-
-                    </div>
-                    <div class="col-md-8 extrainfo">
-                      <h1>{{firstname}} {{lastname}}</h1><br>
-                      <p><h4><small>interviewer</h4></small><br>
-                      <div class="row">
-                        <div class="col-md-4 extrainfo">
-                        <address>
-                          <strong>{{company}}</strong><br>
-                          {{location}}<br>
-                        </address>
-                        <address>
-                          <strong>{{education}}</strong><br>
-                        </address>
-                      </div>
-                        <div class="col-md-4 extrainfo">
-                        <address>
-                          <strong>{{occupation}}</strong><br>
-                          <a href="mailto:#">{{email}}</a>
-                        </address>
-                      </div>
-                    </div>
-                      <a class="btn btn-primary btn-lg active" href="/matchForInterviewer" role="button">Match with an interviewee</a>
-                    </div>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <meta charset="utf-8">
+  <title>Interview Profile</title>
+  <meta name="generator" content="Bootply" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
+  <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
+  <link rel="stylesheet" type="text/css" href="/css/profiles.css">
+</head>    
+<body>
+<div class="wrapper">
+  <div class="box">
+    <div class="row row-offcanvas row-offcanvas-left">
+      {{> interviewerProfileSidebar}}
+      <div class="column col-sm-10 col-xs-11" id="main">
+        {{> logout}}
+        <div class="padding">
+          <div class="full col-sm-9">
+            <div class = "row profile-header">
+              <div class="row">
+                <a href="/editInterviewerProfile">
+                  <button type="submit" class="edit-button btn btn-primary">
+                    <i class="edit-icon glyphicon glyphicon-pencil"></i>
+                  </button>
+                </a>
+              </div>
+              <div class="col-md-4"></div>
+              <div class="col-md-8 extrainfo">
+                <h1>{{firstname}} {{lastname}}</h1><br>
+                <p><h4><small>interviewer</h4></small><br>
+                <div class="row">
+                  <div class="col-md-4 extrainfo">
+                    <address>
+                      <strong>{{company}}</strong><br>
+                      {{location}}<br>
+                    </address>
+                    <address>
+                      <strong>{{education}}</strong><br>
+                    </address>
                   </div>
-                    
-                  </div><!-- /col-9 -->
-                </div><!-- /padding -->
+                  <div class="col-md-4 extrainfo">
+                    <address>
+                      <strong>{{occupation}}</strong><br>
+                      <a href="mailto:#">{{email}}</a>
+                    </address>
+                  </div>
+                </div>
+                <a class="btn btn-primary btn-lg active" href="/matchForInterviewer" role="button">Match with an interviewee</a>
+                </div>
+              </div>
             </div>
-            <!-- /main -->
-          
-        </div>
+          </div>
+        </div>          
+      </div>
     </div>
-</div>
-
-        
-        <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-
-
-        <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-
-
-
-        
-        <!-- JavaScript jQuery code from Bootply.com editor -->
-        
-        <script type='text/javascript'>
-        
-          $(document).ready(function() {
-              /* off-canvas sidebar toggle */
-
-              $('[data-toggle=offcanvas]').click(function() {
-                  $(this).toggleClass('visible-xs text-center');
-                  $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-                  $('.row-offcanvas').toggleClass('active');
-                  $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-                  $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-                  $('#btnShow').toggle();
-              });
-          });
-        
-        </script>
-        
-    </body>
+  </div>
+  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  <!-- JavaScript jQuery code from Bootply.com editor -->  
+  <script type='text/javascript'> 
+  $(document).ready(function() {
+    /* off-canvas sidebar toggle */
+    $('[data-toggle=offcanvas]').click(function() {
+      $(this).toggleClass('visible-xs text-center');
+      $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+      $('.row-offcanvas').toggleClass('active');
+      $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+      $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+      $('#btnShow').toggle();
+    });
+  });
+  </script>
+</body>
 </html>
