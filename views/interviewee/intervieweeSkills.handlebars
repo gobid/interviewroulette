@@ -26,7 +26,7 @@
               
                 <div class="padding">
                   <div class="row" id="content">
-                  <form role="form" method="get" action="/intervieweeSkills">
+                  <form role="form" name = "skills" id = "skills" method="get" action="/intervieweeSkills">
 
                     <div class="full col-sm-9">
 
@@ -87,16 +87,6 @@
                   $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
                   $('#btnShow').toggle();
               });
-
-            // Handles "saved" notification when submit changes.
-            $('#submit').click(function(e) {
-              e.preventDefault();
-              $('#save-notification').empty();
-              var notification = $('<div class="alert alert-success alert-dismissable" style="display:none;"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button><strong>You changes have been saved!</strong></div>'); 
-              $('#save-notification').append(notification);
-              notification.fadeIn('slow');
-            });
-          });
         
         </script>
         

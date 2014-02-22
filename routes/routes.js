@@ -60,7 +60,7 @@ exports.view = function(req, res){
 };
 
 exports.viewIntervieweeAreasToImprove = function(req, res){
-	if (req.query.email){ // form submit
+	if (req.query.improvements){ // form submit
 		index = findUserIndex(req.session.user.email)
 		data["users"][index]["improvements"] = req.query.improvements
 		req.session.user = data["users"][index]
@@ -77,8 +77,9 @@ exports.viewIntervieweePublicRatings = function(req, res){
 };
 
 exports.viewIntervieweeSkills = function(req, res){
-	if (req.query.email){ // form submit
+	if (req.query.programmingLang){ // form submit
 		index = findUserIndex(req.session.user.email)
+		console.log('im updating skill')
 		data["users"][index]["programmingLang"] = req.query.programmingLang
 		data["users"][index]["softSkills"] = req.query.softSkills
 		data["users"][index]["frameworks"] = req.query.frameworks
@@ -110,7 +111,7 @@ exports.dosurveyInterviewee = function(req, res) { 
  }
 
 exports.viewInterviewerAboutMe = function(req, res){
-	if (req.query.email){ // form submit
+	if (req.query.mission){ // form submit
 		index = findUserIndex(req.session.user.email)
 		data["users"][index]["mission"] = req.query.mission
 		data["users"][index]["hobbies"] = req.query.hobbies
@@ -120,7 +121,7 @@ exports.viewInterviewerAboutMe = function(req, res){
 };
 
 exports.viewInterviewerPastExp = function(req, res){
-	if (req.query.email){ // form submit
+	if (req.query.description1){ // form submit
 		index = findUserIndex(req.session.user.email)
 		data["users"][index]["description1"] = req.query.description1
 		data["users"][index]["description2"] = req.query.description2
