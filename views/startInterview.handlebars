@@ -6,44 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src = "/js/startInterview.js"></script>
   </head>
-  <!DOCTYPE html>
+<!DOCTYPE html>
   <body>
-
-<div class="container">
-
+    <div class="container">
       <div class="form-group">
-        <a href = '/intervieweeProfile'><button type="submit" class="btn btn-default">Back To My Profile</button>
+            <a href = '/intervieweeProfile'><button type="submit" class="btn btn-default">Back To My Profile</button>
       </div>
-
-  {{> logout}}
-  
-    <h4 style="padding-top:10%;text-align:center">Follow the easy steps to kick off.</h4>
+      {{> logout}} 
+      <h4 style="padding-top:10%;text-align:center">Follow the easy steps to kick off.</h4>
       <br>
       <div class = "row">
         <div class = "col-md-4">
           <div class="alert alert-info" style="text-align:left">
             <ul>
-              <li>Open Google Hangout App</li>
-              <li>Copy and paste the invitee's email into the google hangout prompt to add participants.</li>
+              <li>Start Google Hangout</li>
+              <li>Copy and paste the invitee's email into the Google Hangout prompt to add participants.</li>
             </ul>
           </div>
           <div class="input-group">
             <span class="input-group-btn">
-              <button id = "copier" class="btn btn-default" type="button">Select Text</button>
+              <button id = "copier" class="btn btn-default" type="button">Copy to clipboard</button>
             </span>
             <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{ match }}'>
           </div>
           <br>
           <div style="text-align:center">
-          <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
-          <g:hangout render="createhangout"></g:hangout>
-          <br>
-          <br>
+            <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
+            <g:hangout render="createhangout"></g:hangout>
+            <br>
+            <br>
+            <a class="btn btn-primary btn-lg active" href="/feedback/{{match.email}}"role="button">Give feedbacks</a>
+          </div>
         </div>
-
-        </div>
-    
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
