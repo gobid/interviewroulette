@@ -40,8 +40,8 @@ app.get('/signup', routes.viewSignup);
 app.get("/intervieweeSurvey", routes.dosurveyInterviewee);
 app.get("/interviewerSurvey", routes.dosurveyInterviewer);
 
-app.get("/startInterview/:match",routes.kickoff);
-app.get("/startInterviewWithInterviewee/:match",routes.kickoffWithInterviewee);
+//app.get("/startInterview/:match",routes.kickoff);
+//app.get("/startInterviewWithInterviewee/:match",routes.kickoffWithInterviewee);
 app.get("/feedback/:match",routes.postFeedback);
 
 app.get("/login", routes.viewLogin);
