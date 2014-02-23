@@ -232,15 +232,24 @@ exports.viewMatchForInterviewee = function(req, res){
 	});
 };
 
-exports.kickoff = function(req, res) { 
-	res.render('startInterview', {
-		"match":req.params.match
+
+exports.postFeedback = function(req,res){
+	console.log(req.params.match)
+    var numberOfUsers = data["users"].length;
+	for (i = 0; i < numberOfUsers; i++) {	
+	    user = data['users'][i]	
+		if (user.email == req.params.match)
+			var match_user = user
+	}
+	console.log(match_user)
+	res.render('feedback', {
+		'match': req.params.match
 	});
 };
 
-exports.postFeedback = function(req,res){
-	res.render('feedback', {
-		'match': req.params.match
+exports.kickoff = function(req, res) { 
+	res.render('startInterview', {
+		"match":req.params.match
 	});
 };
 
@@ -256,6 +265,10 @@ exports.logout = function(req, res){
 	req.session.destroy()
 	console.log('cleared session')
 	res.redirect('/');
+};
+
+exports.viewSignup = function(req, res){
+	res.render('prelogin/signup');
 };
 
 exports.viewInterviewerProfile = function(req, res) {

@@ -12,8 +12,13 @@
       </div>
       {{> logout}}
       <form role="form" id = "edit-profile-form" method="get" action="/intervieweeProfile">
-        <p for="feedback">Share your feedback for interview with {{ match}} </p>
-        <input type="text" class="form-control" id="feedback" name="feedback">
+        <p for="feedback">Share your feedback for interview with 
+          {{ match }} </p>
+        <textarea class="form-control" rows="3" name="feedback">{{feedback}}
+        </textarea>
+        <br>
+        <br>
+        <button id="submit" type="submit" class="btn btn-primary match btn-lg active">Save</button>
       </form>
     </div>
  </body>
