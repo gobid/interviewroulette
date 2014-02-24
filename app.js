@@ -8,10 +8,16 @@ var path = require('path');
 var handlebars = require('express3-handlebars')
 
 var routes = require('./routes/routes')
-
 var partialsDir="views/partials/";
-
 var app = express();
+
+// database
+var mongoose = require('mongoose');
+var local_database_name = 'ir';
+var local_database_uri  = 'mongodb://localhost/' + local_database_name
+var database_uri = process.env.MONGOLAB_URI || local_database_uri
+mongoose.connect(database_uri);
+
 
 // all environments
 app.set('port', process.env.PORT || 3000);

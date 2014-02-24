@@ -1,4 +1,5 @@
 var data = require("../users.json");
+var model = require('../model');
 
 // FUNCTIONS
 
@@ -24,13 +25,16 @@ function findUserIndex(uname){
 
 exports.viewEditIntervieweeProfile = function(req, res) {   
 	if (req.query.email){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["fname"] = req.query.fname
 		data["users"][index]["lname"] = req.query.lname
 		data["users"][index]["email"] = req.query.email
 		data["users"][index]["education"] = req.query.education
 		data["users"][index]["occupation"] = req.query.occupation
 		data["users"][index]["location"] = req.query.location
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	} 
 	res.render('interviewee/editIntervieweeProfile', req.session.user);
@@ -38,7 +42,9 @@ exports.viewEditIntervieweeProfile = function(req, res) { 
 
 exports.viewEditInterviewerProfile = function(req, res) {   
 	if (req.query.email){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["fname"] = req.query.fname
 		data["users"][index]["lname"] = req.query.lname
 		data["users"][index]["email"] = req.query.email
@@ -46,11 +52,13 @@ exports.viewEditInterviewerProfile = function(req, res) { 
 		data["users"][index]["occupation"] = req.query.occupation
 		data["users"][index]["company"] = req.query.company
 		data["users"][index]["location"] = req.query.location
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	} 
 	res.render('interviewer/editInterviewerProfile', req.session.user);
  }
 
+/* DELETE THIS ROUTE IF ITS NOT USED EVER: */
 exports.viewEditProfile = function(req, res) {   
 	res.render('editProfile', data);
  }
@@ -61,8 +69,11 @@ exports.view = function(req, res){
 
 exports.viewIntervieweeAreasToImprove = function(req, res){
 	if (req.query.improvements){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["improvements"] = req.query.improvements
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	} 
 	res.render('interviewee/intervieweeAreasToImprove', req.session.user);
@@ -78,43 +89,69 @@ exports.viewIntervieweePublicRatings = function(req, res){
 
 exports.viewIntervieweeSkills = function(req, res){
 	if (req.query.programmingLang){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
 		console.log('im updating skill')
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["programmingLang"] = req.query.programmingLang
 		data["users"][index]["softSkills"] = req.query.softSkills
 		data["users"][index]["frameworks"] = req.query.frameworks
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	} 
 	res.render('interviewee/intervieweeSkills', req.session.user);
 };
 
 exports.dosurveyInterviewee = function(req, res) {   
-	var newUser = {
-			"firstname": req.query.fname, 
-			"lastname": req.query.lname,
-			"email": req.query.email,
-			"password": req.query.password,
-			"ghangout": req.query.ghangout,
-			"interviewer": false,
-			"education": req.query.education,
-			"occupation": req.query.occupation,
-			"location": req.query.location,
-			"programmingLang": "For example: Java, C++, Python",
-			"softSkills": "For example: Good communication skills, Experience managing teams",
-			"frameworks": "For example: DJango, MongoDB, Google AppEngine",
-			"improvements": "For example: practicing more technical questions, learning to clearly express ideas"
-		}; 
-	data["users"].push(newUser);
-	var numberOfUsers = data["users"].length
-	req.session.user = data["users"][numberOfUsers-1]
-	res.render('interviewee/intervieweeSurvey');
+	model.User.find({
+		"email": req.query.email
+	}).exec(function(err, users){
+		if (err) 
+			console.log(err);
+		else {
+			if (users.length == 0){
+				var newUser = model.User({
+					"firstname": req.query.fname, 
+					"lastname": req.query.lname,
+					"email": req.query.email,
+					"password": req.query.password,
+					"ghangout": req.query.ghangout,
+					"interviewer": false,
+					"education": req.query.education,
+					"occupation": req.query.occupation,
+					"location": req.query.location,
+					"programmingLang": "For example: Java, C++, Python",
+					"softSkills": "For example: Good communication skills, Experience managing teams",
+					"frameworks": "For example: DJango, MongoDB, Google AppEngine",
+					"improvements": "For example: practicing more technical questions, learning to clearly express ideas"
+				}); 
+				newUser.save(function(err){
+					if (err) {
+						console.log(err)
+						res.send(500)
+					}
+					else {
+						req.session.user = newUser
+						res.render('interviewee/intervieweeSurvey');
+					}
+				});
+			}
+			else {
+				console.log('Associated email address already used.')
+				res.send(500)
+			}
+		}
+	});
  }
 
 exports.viewInterviewerAboutMe = function(req, res){
 	if (req.query.mission){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["mission"] = req.query.mission
 		data["users"][index]["hobbies"] = req.query.hobbies
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	}
 	res.render('interviewer/interviewerAboutMe', req.session.user);
@@ -122,15 +159,19 @@ exports.viewInterviewerAboutMe = function(req, res){
 
 exports.viewInterviewerPastExp = function(req, res){
 	if (req.query.description1){ // form submit
+		/* ONE MONGO FIND THE WAY IT IS DONE in dosurveyInterviewee HERE: */
 		index = findUserIndex(req.session.user.email)
+		/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile: */
 		data["users"][index]["description1"] = req.query.description1
 		data["users"][index]["description2"] = req.query.description2
+		/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 		req.session.user = data["users"][index]
 	}
 	res.render('interviewer/interviewerPastExp', req.session.user);
 };
 
 exports.dosurveyInterviewer = function(req, res) { 
+	/* ALTER THIS TO LOOK EXACTLY LIKE dosurveyInterviewee except render interviewer/interviewerSurvey */
 	var newUser = {
 			"firstname": req.query.fname, 
 			"lastname": req.query.lname,
@@ -173,6 +214,12 @@ exports.viewMatchForInterviewer = function(req, res){
 
 	// also allow match page to let you know when you have exhausted all options
 	matching_occupation_users = []
+	/* INSTEAD OF THIS LOOP DO MONGO 
+		.find({
+			occupation: occupation, 
+			interviewer: false
+		})
+	*/
 	var numberOfUsers = data["users"].length;
 	for (i = 0; i < numberOfUsers; i++) {
 		user = data['users'][i]
@@ -208,6 +255,12 @@ exports.viewMatchForInterviewee = function(req, res){
 
 	// also allow match page to let you know when you have exhausted all options
 	matching_occupation_users = []
+	/* INSTEAD OF THIS LOOP DO MONGO 
+		.find({
+			occupation: occupation, 
+			interviewer: true
+		})
+	*/
 	var numberOfUsers = data["users"].length;
 	for (i = 0; i < numberOfUsers; i++) {
 		user = data['users'][i]
@@ -235,6 +288,11 @@ exports.viewMatchForInterviewee = function(req, res){
 
 exports.postFeedback = function(req,res){
 	console.log(req.params.match)
+	/* INSTEAD OF THIS LOOP DO MONGO 
+		.find({
+			email: req.params.match
+		})
+	*/
     var numberOfUsers = data["users"].length;
 	for (i = 0; i < numberOfUsers; i++) {	
 	    user = data['users'][i]	
@@ -287,18 +345,43 @@ exports.viewIntervieweeProfile = function(req, res) {
 			if (req.query.persontype == "interviewee") {
 				console.log('interviewee')
 				// update user obj in db
-				data["users"][index]['occupation'] = req.query.occupation
-				data["users"][index]['education'] = req.query.education
-				data["users"][index]['location'] = req.query.location
-				req.session.user = data["users"][index]
-				res.render('interviewee/intervieweeProfile', req.session.user);
+				model.User.update({
+					'_id': req.session.user._id
+				},
+				{
+					'occupation': req.query.occupation,
+					'education': req.query.education,
+					'location': req.query.location
+				}).exec(function(err){
+					if (err) {
+						console.log(err)
+						res.send(500)
+					}
+					else {
+						model.User.find({
+							'_id': req.session.user._id
+						}).exec(function(err, users){
+							if (err) {
+								console.log(err)
+								res.send(500)
+							}
+							else {
+								var found = users[0]
+								req.session.user = found
+								res.render('interviewee/intervieweeProfile', req.session.user);
+							}
+						})
+					}
+				})				
 			}
 			else {
 				console.log('interviewer')
+				/* ONE MONGO UPDATE HERE as done in viewIntervieweeProfile */
 				data["users"][index]['occupation'] = req.query.occupation
 				data["users"][index]['company'] = req.query.company
 				data["users"][index]['education'] = req.query.education
 				data["users"][index]['location'] = req.query.location
+				/* SET SESSION THE WAY IT IS DONE IN dosurveyInterviewee HERE: */
 				req.session.user = data["users"][index]
 				res.redirect('interviewerProfile')
 			}
@@ -309,7 +392,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 			if (user.interviewer)
 				res.redirect('interviewerProfile')
 			else 
-				res.render('interviewee/intervieweeProfile', user);
+				res.render('interviewee/inter vieweeProfile', user);
 		}
 	}
 	else if (req.query && req.query.uname){ // means came from login
