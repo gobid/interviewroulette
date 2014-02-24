@@ -3,9 +3,9 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <meta charset="utf-8">
-  <title>Interviewer Profile</title>
+  <title>Edit Profile</title>
   {{> bootplyBoilerplate}}
-</head>
+</head>    
 <body>
   <div class="wrapper"><!--from bootply-->
     <div class="box"><!--from bootply-->
@@ -14,21 +14,29 @@
         <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
           <div class="padding">
             {{> logout}}
-              <!--<div id="save-notification"></div> -->
-              <div id="content">            
-                  <h1>Edit Your Info</h1>
-                  <form role="form" id = "edit-form" method="get" action="/editInterviewerProfile">
-                    <div class="form-group">
-                      <div class = "row" >
-                        <div class = "col-md-6">
-                          <label for="fname">First Name</label>
-                          <input type="text" class="form-control" id="fname" value="{{firstname}}" name="fname">
-                        </div>
+            <br>
+            <div class="row">
+              <div class = "col-md-12">
+                <div id="save-notification" class="notification-hidden">
+                  <div class="alert alert-success">
+                    <strong>Your changes have been saved!</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col-md-12">
+                <h1>Edit Your Info</h1>
+                <form role="form" id = "edit-form" method="get" action="/editInterviewerProfile">
+                  <div class="form-group">
+                    <div class = "row">
+                      <div class = "col-md-6">
+                        <label for="fname">First Name</label>
+                        <input type="text" class="form-control" id="fname" value="{{firstname}}" name="fname">
                         <div class = "col-md-6">
                           <label for="lname">Last Name</label>
                           <input type="text" class="form-control" id="lname" value="{{lastname}}" name="lname">
                         </div>
-                      </div>
                       <div class = "row">
                         <div class = "col-md-6">
                           <label for="email">Email address</label>
@@ -58,29 +66,36 @@
                       </div>
                     </div>
                     <br>
-                    <button id="submit" type="submit" class="btn btn-large btn-primary">Save</button>
-                  </form>
+                    <button id="submit" type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </form>
               </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>    
+        </div><!--from bootply-->
+      </div><!--from bootply-->
+    </div><!--from bootply-->
+  </div><!--from bootply-->
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-  <!-- JavaScript jQuery code from Bootply.com editor -->
-  <script type='text/javascript'>
-    $(document).ready(function() {
-      /* off-canvas sidebar toggle */
-      $('[data-toggle=offcanvas]').click(function() {
-        $(this).toggleClass('visible-xs text-center');
-        $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-        $('.row-offcanvas').toggleClass('active');
-        $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-        $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-        $('#btnShow').toggle();
-      });
+  <!-- JavaScript jQuery code from Bootply.com editor -->  
+  <script type='text/javascript'> 
+  $(document).ready(function() {
+    //Handle notificaitons
+    var url = window.location.href;
+    if(url.indexOf("?")!= -1) {
+      $("#save-notification").fadeIn('slow'); 
+    }
+
+    /* off-canvas sidebar toggle */
+    $('[data-toggle=offcanvas]').click(function() {
+      $(this).toggleClass('visible-xs text-center');
+      $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+      $('.row-offcanvas').toggleClass('active');
+      $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+      $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+      $('#btnShow').toggle();
     });
+  });
   </script>
 </body>
 </html>
