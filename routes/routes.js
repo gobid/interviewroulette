@@ -32,7 +32,7 @@ exports.viewEditIntervieweeProfile = function(req, res) { 
 		data["users"][index]["occupation"] = req.query.occupation
 		data["users"][index]["location"] = req.query.location
 		req.session.user = data["users"][index]
-	} 
+	}
 	res.render('interviewee/editIntervieweeProfile', req.session.user);
  }
 
