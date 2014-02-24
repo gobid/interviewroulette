@@ -33,30 +33,36 @@
                       <div class = "col-md-6">
                         <label for="fname">First Name</label>
                         <input type="text" class="form-control" id="fname" value="{{firstname}}" name="fname">
+                        <div class = "col-md-6">
+                          <label for="lname">Last Name</label>
+                          <input type="text" class="form-control" id="lname" value="{{lastname}}" name="lname">
+                        </div>
+                      <div class = "row">
+                        <div class = "col-md-6">
+                          <label for="email">Email address</label>
+                          <!-- This is a hack! Used to get the username -->
+                          <textarea class="form-control" rows="1"name="email">{{email}}</textarea>
+                        </div>
+                        <div class = "col-md-6">
+                          <label for="education">Education</label>
+                          <input type="text" class="form-control" id="education" value="{{education}}" name="education">
+                        </div>
                       </div>
-                      <div class = "col-md-6">
-                        <label for="lname">Last Name</label>
-                        <input type="text" class="form-control" id="lname" value="{{lastname}}" name="lname">
+                      <div class = "row">  
+                        <div class = "col-md-6">
+                          <label for="occupation">Occupation</label>
+                          <input type="text" class="form-control" id="occupation" value="{{occupation}}" name="occupation">
+                        </div>
+                        <div class = "col-md-6">
+                          <label for="occupation">Current Company</label>
+                          <input type="text" class="form-control" id="company" value="{{company}}" name="company">
+                        </div>
                       </div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-6">
-                        <label for="email">Email address</label>
-                        <textarea class="form-control" rows="1"name="email">{{email}}</textarea>
-                      </div>
-                      <div class = "col-md-6">
-                        <label for="education">Education</label>
-                        <input type="text" class="form-control" id="education" value="{{education}}" name="education">
-                      </div>
-                    </div>
-                    <div class = "row">
-                      <div class = "col-md-6">
-                        <label for="occupation">Current Company</label>
-                        <input type="text" class="form-control" id="company" value="{{company}}" name="company">
-                      </div>
-                      <div class = "col-md-6">
-                        <label for="location">Current Location</label>
-                        <input type="text" class="form-control" id="location" value="{{location}}" name="location">
+                      <div class = "row">
+                        <div class = "col-md-6">
+                          <label for="location">Current Location</label>
+                          <input type="text" class="form-control" id="location" value="{{location}}" name="location">
+                        </div>
                       </div>
                     </div>
                     <br>
@@ -64,7 +70,6 @@
                   </div>
                 </form>
               </div>
-            </div>
           </div>
         </div><!--from bootply-->
       </div><!--from bootply-->

@@ -25,7 +25,7 @@
             <span class="input-group-btn">
               <button id = "copier" class="btn btn-default" type="button">Copy to clipboard</button>
             </span>
-            <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{ match }}'>
+            <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{match}}'>
           </div>
           <br>
           <div style="text-align:center">
@@ -33,7 +33,9 @@
             <g:hangout render="createhangout"></g:hangout>
             <br>
             <br>
-            <a class="btn btn-primary btn-lg active" href="/feedback/{{match.email}}"role="button">Give feedbacks</a>
+            <a href='/feedback/{{ match }}'>
+              <button type="button" class="btn btn-primary match btn-lg active"> Give feedbacks </button>
+            </a>
           </div>
         </div>
       </div>
