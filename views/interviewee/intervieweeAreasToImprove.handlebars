@@ -14,8 +14,16 @@
         <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
           <div class="padding">
             {{> logout}}
-            <!-- Placeholder for "saved" notfication -->
-            <div id="save-notification"></div>
+            <br>
+            <div class="row">
+              <div class = "col-md-12">
+                <div id="save-notification" class="notification-hidden">
+                  <div class="alert alert-success">
+                    <strong>Your changes have been saved!</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="row">
               <div class = "col-md-12">
                 <form role="form" method="get" action="/intervieweeAreasToImprove">
@@ -39,6 +47,12 @@
   <!-- JavaScript jQuery code from Bootply.com editor -->
   <script type='text/javascript'>
   $(document).ready(function() {
+    //Handle notificaitons
+    var url = window.location.href;
+    if(url.indexOf("?")!= -1) {
+      $("#save-notification").fadeIn('slow'); 
+    }
+
     /* off-canvas sidebar toggle */
     $('[data-toggle=offcanvas]').click(function() {
       $(this).toggleClass('visible-xs text-center');

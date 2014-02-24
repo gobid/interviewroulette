@@ -17,8 +17,11 @@
             <br>
             <div class="row">
               <div class = "col-md-12">
-                <!-- Placeholder for "saved" notfication -->
-                <div id="save-notification"></div>
+                <div id="save-notification" class="notification-hidden">
+                  <div class="alert alert-success">
+                    <strong>Your changes have been saved!</strong>
+                  </div>
+                </div>
               </div>
             </div>
             <div class="row">
@@ -71,17 +74,25 @@
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->  
   <script type='text/javascript'> 
-  $(document).ready(function() {
+    $(document).ready(function() {
+    
+      //Handle notificaitons
+      var url = window.location.href;
+      if(url.indexOf("?")!= -1) {
+        $("#save-notification").fadeIn('slow'); 
+      }
+
     /* off-canvas sidebar toggle */
-    $('[data-toggle=offcanvas]').click(function() {
-      $(this).toggleClass('visible-xs text-center');
-      $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-      $('.row-offcanvas').toggleClass('active');
-      $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-      $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-      $('#btnShow').toggle();
+      $('[data-toggle=offcanvas]').click(function() {
+        $(this).toggleClass('visible-xs text-center');
+        $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+        $('.row-offcanvas').toggleClass('active');
+        $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+        $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+        $('#btnShow').toggle();
+      });
     });
-  });
+
   </script>
 </body>
 </html>
