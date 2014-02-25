@@ -139,6 +139,10 @@ exports.viewIntervieweeFeedback = function(req, res){
 	res.render('interviewee/intervieweeFeedback', req.session.user);
 };
 
+exports.viewInterviewerFeedback = function(req, res){
+	res.render('interviewer/interviewerFeedback', req.session.user);
+};
+
 
 exports.viewInterviewerFeedback = function(req, res){
 	res.render('interviewer/interviewerFeedback', req.session.user);

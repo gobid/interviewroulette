@@ -66,6 +66,8 @@ app.get('/interviewerProfile', routes.viewInterviewerProfile);
 app.get('/interviewerPastExp', routes.viewInterviewerPastExp);
 app.get('/interviewerAboutMe', routes.viewInterviewerAboutMe);
 app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);
+app.get('/interviewerFeedback',routes.viewInterviewerFeedback);
+
 
 // DUMMY MATCH PAGES
 app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
