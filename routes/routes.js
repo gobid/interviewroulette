@@ -3,6 +3,27 @@ var model = require('../model');
 // ROUTES
 
 exports.viewEditIntervieweeProfile = function(req, res) {   
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;
+						res.render('interviewee/editIntervieweeProfile', req.session.user);							
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.email){ // form submit
 		/*  fname or firstname?? */
 		model.User.update({"email":req.session.user.email},
@@ -13,32 +34,34 @@ exports.viewEditIntervieweeProfile = function(req, res) { 
 				"education":req.query.education,
 				"occupation":req.query.occupation,
 				"location":req.query.location
-		}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;
-							res.render('interviewee/editIntervieweeProfile', req.session.user);							
-					   }
-					}   
-				)
-			}
-		}			
-	} 
+		}).exec(afterFind);			
+	}
+	else
+		afterFind(null) 
  }
 
 exports.viewEditInterviewerProfile = function(req, res) {   
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;
+						res.render('interviewer/editInterviewerProfile', req.session.user);							
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.email){ // form submit
 		/*  fname or firstname?? */
 		model.User.update({"email":req.session.user.email},
@@ -51,29 +74,10 @@ exports.viewEditInterviewerProfile = function(req, res) { 
 				"location":req.query.location,
 				"company":req.query.company
 		}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;
-							res.render('interviewer/editInterviewerProfile', req.session.user);							
-					   }
-					}   
-				)
-			}
-		}
 		
 	} 
+	else
+		afterFind(null)
  }
 
 exports.view = function(req, res){
