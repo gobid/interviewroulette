@@ -1,29 +1,29 @@
-var data = require("../users.json");
 var model = require('../model');
-
-// FUNCTIONS
-
-function findUser(uname){
-	var numberOfUsers = data["users"].length
-	for (i = 0; i < numberOfUsers; i++) {
-		if (data["users"][i].email == uname) {
-			return data["users"][i]
-		}
-	}
-}
-
-function findUserIndex(uname){
-	var numberOfUsers = data["users"].length
-	for (i = 0; i < numberOfUsers; i++) {
-		if (data["users"][i].email == uname) {
-			return i
-		}
-	}
-}
 
 // ROUTES
 
 exports.viewEditIntervieweeProfile = function(req, res) {   
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;
+						res.render('interviewee/editIntervieweeProfile', req.session.user);							
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.email){ // form submit
 		/*  fname or firstname?? */
 		model.User.update({"email":req.session.user.email},
@@ -34,32 +34,34 @@ exports.viewEditIntervieweeProfile = function(req, res) { 
 				"education":req.query.education,
 				"occupation":req.query.occupation,
 				"location":req.query.location
-		}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}			
-	} 
-	res.render('interviewee/editIntervieweeProfile', req.session.user);
+		}).exec(afterFind);			
+	}
+	else
+		afterFind(null) 
  }
 
 exports.viewEditInterviewerProfile = function(req, res) {   
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;
+						res.render('interviewer/editInterviewerProfile', req.session.user);							
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.email){ // form submit
 		/*  fname or firstname?? */
 		model.User.update({"email":req.session.user.email},
@@ -72,67 +74,64 @@ exports.viewEditInterviewerProfile = function(req, res) { 
 				"location":req.query.location,
 				"company":req.query.company
 		}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}
 		
 	} 
-	res.render('interviewer/editInterviewerProfile', req.session.user);
+	else
+		afterFind(null)
  }
 
-/* DELETE THIS ROUTE IF ITS NOT USED EVER: */
-exports.viewEditProfile = function(req, res) {   
-	res.render('editProfile', data);
- }
+exports.saveFeedback = function(req,res){
+	function afterUpdate(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			res.render('feedbackSaved', {'match':req.params.match});								
+		}
+	}
+	
+	if(req.query.feedback){
+		console.log("I came here!")
+		model.User.update({"email":req.params.match},
+		{"feedback":req.query.feedback}).exec(afterUpdate);
+	}
+	else
+		afterUpdate(null);
+}
 
 exports.view = function(req, res){
   res.render('prelogin/index');
 };
 
 exports.viewIntervieweeAreasToImprove = function(req, res){
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;	
+						res.render('interviewee/intervieweeAreasToImprove', req.session.user);						
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.improvements){ // form submit
 		model.User.update({"email":req.session.user.email},
 		{"improvements":req.query.improvements}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}		
-		
 	} 
-	res.render('interviewee/intervieweeAreasToImprove', req.session.user);
+	else
+		afterFind(null)
 };
 
 
@@ -147,32 +146,40 @@ exports.viewInterviewerFeedback = function(req, res){
 
 
 exports.viewIntervieweeSkills = function(req, res){
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;
+						res.render('interviewee/intervieweeSkills', req.session.user);							
+				   }
+				}   
+			)
+		}
+	}	
 	if (req.query.programmingLang){ // form submit
-		model.User.update({"email":req.session.user.email},
-		{"programmingLang":req.query.programmingLang,"softSkills":req.query.softSkills,"frameworks":req.query.frameworks})
-		.exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}		
-	} 
-	res.render('interviewee/intervieweeSkills', req.session.user);
+		model.User.update({
+			"email":req.session.user.email
+		},
+		{
+			"programmingLang":req.query.programmingLang,
+			"softSkills":req.query.softSkills,
+			"frameworks":req.query.frameworks
+		})
+		.exec(afterFind);	
+	}
+	else
+		afterFind(null) 
 };
 
 exports.dosurveyInterviewee = function(req, res) {   
@@ -221,59 +228,68 @@ exports.dosurveyInterviewee = function(req, res) { 
  }
 
 exports.viewInterviewerAboutMe = function(req, res){
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({"email":req.session.user.email}).exec(
+				function(err,users){
+					if (err) {
+						console.log(err)
+						res.send(500)
+						}
+					else {
+						var found = users[0]
+						req.session.user = found;	
+						res.render('interviewer/interviewerAboutMe', req.session.user);						
+				   }
+				}   
+			)
+		}
+	}
 	if (req.query.mission){ // form submit
 		model.User.update({"email":req.session.user.email},
 			{"mission":req.query.mission,"hobbies":req.query.hobbies}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}
 	}
-	res.render('interviewer/interviewerAboutMe', req.session.user);
+	else 
+		afterFind(null)
 };
 
 exports.viewInterviewerPastExp = function(req, res){
-	if (req.query.description1){ // form submit
-		model.User.update({"email":req.session.user.email},
-			{"description1":req.query.description1,"description2":req.query.description2}).exec(afterFind);
-		function afterFind(err){
-			if(err) {
-				console.log(err)
-				res.send(500)
-			}
-			else {
-				model.User.find({"email":req.session.user.email}).exec(
-					function(err,users){
-						if (err) {
-							console.log(err)
-							res.send(500)
-							}
-						else {
-							var found = users[0]
-							req.session.user = found;							
-					   }
-					}   
-				)
-			}
-		}		
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({
+				"email":req.session.user.email
+			}).exec(function(err,users){
+				if (err) {
+					console.log(err)
+					res.send(500)
+					}
+				else {
+					var found = users[0]
+					req.session.user = found;	
+					res.render('interviewer/interviewerPastExp', req.session.user);						
+			   }
+			})
+		}
 	}
-	res.render('interviewer/interviewerPastExp', req.session.user);
+	if (req.query.description1){ // form submit
+		model.User.update({
+			"email":req.session.user.email
+		},
+		{
+			"description1":req.query.description1,
+			"description2":req.query.description2
+		}).exec(afterFind);		
+	}
+	else
+		afterFind(null)
 };
 
 exports.dosurveyInterviewer = function(req, res) { 
@@ -352,20 +368,20 @@ exports.viewMatchForInterviewer = function(req, res){
         	for (i = 0; i < users.length; i++){
         		matching_occupation_users.push(users[i]);
         	};
+
+        	// select a random person
+			num_matching = matching_occupation_users.length
+			rand_index = Math.floor(Math.random() * num_matching)
+			matched_user = matching_occupation_users[rand_index]
+
+			var curr_user = req.session.user
+
+			res.render('matchForInterviewer', {
+				'match': matched_user,
+				'curr_user': curr_user
+			});
         }
 	};
-	
-	// select a random person
-	num_matching = matching_occupation_users.length
-	rand_index = Math.floor(Math.random() * num_matching)
-	matched_user = matching_occupation_users[rand_index]
-
-	var curr_user = req.session.user
-
-	res.render('matchForInterviewer', {
-		'match': matched_user,
-		'curr_user': curr_user
-	});
 };
 
 exports.viewMatchForInterviewee = function(req, res){
@@ -395,19 +411,19 @@ exports.viewMatchForInterviewee = function(req, res){
         	for (i = 0; i < users.length; i++){
         		matching_occupation_users.push(users[i]);
         	};
+        	// select a random person
+			num_matching = matching_occupation_users.length
+			rand_index = Math.floor(Math.random() * num_matching)
+			matched_user = matching_occupation_users[rand_index]
+
+			var curr_user = req.session.user
+
+			res.render('matchForInterviewee', {
+				'match': matched_user,
+				'curr_user': curr_user
+			});
         }
 	};
-	// select a random person
-	num_matching = matching_occupation_users.length
-	rand_index = Math.floor(Math.random() * num_matching)
-	matched_user = matching_occupation_users[rand_index]
-
-	var curr_user = req.session.user
-
-	res.render('matchForInterviewee', {
-		'match': matched_user,
-		'curr_user': curr_user
-	});
 };
 
 
@@ -433,9 +449,11 @@ exports.viewUnimplemented = function(req, res){
 };
 
 exports.logout = function(req, res){
-	req.session.destroy()
-	console.log('cleared session')
-	res.redirect('/');
+	req.session.destroy(function(err){
+		if (err) console.log(err)
+		console.log('cleared session')
+		res.redirect('/');
+	})
 };
 
 exports.viewSignup = function(req, res){
@@ -525,32 +543,36 @@ exports.viewIntervieweeProfile = function(req, res) {
 				res.render('interviewee/intervieweeProfile', user);
 		}
 	}
-	else if (req.query && req.query.uname){
+	else if (req.query && req.query.uname){ // after login
 		console.log('came from login')
-		model.User.find({"email": req.query.uname}).exec(afterFind);
+		console.log('email:', req.query.uname)
+		console.log('password:', req.query.password)
+		model.User.find({
+			"email": req.query.uname,
+			"password": req.query.password
+		}).exec(afterFind);
 
 		function afterFind(err, users){
 		    if (err) {
-					console.log(err)
-					res.send(500)
-				}
-			else {
+				console.log(err)
+				res.send(500)
+			}
+			else if (users.length > 0){
 				var user = users[0]
 				console.log(user);
 				console.log(user.password);
-				if(user && req.query.password == user.password) {
-					req.session.user = user
-					if (user.interviewer)
-						res.redirect('interviewerProfile')
-					else {
-						console.log('I AM HERE')
-						res.render('interviewee/intervieweeProfile', user);
-					}
-				}
-				else 
-					res.redirect('/')				
+				req.session.user = user
+				if (user.interviewer)
+					res.redirect('interviewerProfile')
+				else {
+					console.log('I AM HERE')
+					res.render('interviewee/intervieweeProfile', user);
+				}				
 			}
+			else 
+				res.redirect('/')
 		}
 	}	
-	else res.redirect('/');
+	else 
+		res.redirect('/');
 }

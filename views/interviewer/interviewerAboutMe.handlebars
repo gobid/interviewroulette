@@ -3,33 +3,30 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <meta charset="utf-8">
-  <title>Interview Profile</title>
-  <meta name="generator" content="Bootply" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
-  <!--[if lt IE 9]>
-  <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
-  <link rel="shortcut icon" href="/bootstrap/img/favicon.ico">
-  <link rel="apple-touch-icon" href="/bootstrap/img/apple-touch-icon.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/bootstrap/img/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/bootstrap/img/apple-touch-icon-114x114.png">
-  <link rel="stylesheet" type="text/css" href="/css/profiles.css">
+  <title>About Me</title>
+  {{> bootplyBoilerplate}}
 </head>
 <body>
-  <div class="wrapper">
-    <div class="box">
-      <div class="row row-offcanvas row-offcanvas-left">
+  <div class="wrapper"><!--from bootply-->
+    <div class="box"><!--from bootply-->
+      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
         {{> interviewerProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main">
-          {{> logout}}
+        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
           <div class="padding">
-            <div class="full col-sm-9">
-              <div id="save-notification"></div>
-              <div class = "row">
-                <address>
-                  <strong> </strong>
-                </address> 
+            {{> logout}}
+            <br>
+            <div class="row">
+              <div class = "col-md-12">
+                <div id="save-notification" class="notification-hidden">
+                  <div class="alert alert-success">
+                    <strong>Your changes have been saved!</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="save-notification"></div>
+            <div class = "row">
+              <div class = "col-md-12">
                 <form role="form" method="get" action="/interviewerAboutMe">
                   <h1>ABOUT {{firstname}}:</h1></br>
                   <div class="form-group">
@@ -47,15 +44,21 @@
               </div>
             </div>
           </div>
-        </div>          
-      </div>
-    </div>
-  </div>
+        </div><!--from bootply-->          
+      </div><!--from bootply-->
+    </div><!--from bootply-->
+  </div><!--from bootply-->
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->
   <script type='text/javascript'>
   $(document).ready(function() {
+    //Handle notificaitons
+    var url = window.location.href;
+    if(url.indexOf("?")!= -1) {
+      $("#save-notification").fadeIn('slow'); 
+    }
+
     /* off-canvas sidebar toggle */
     $('[data-toggle=offcanvas]').click(function() {
       $(this).toggleClass('visible-xs text-center');

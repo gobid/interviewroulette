@@ -1,25 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    {{> head}}
-    <link rel="stylesheet" type="text/css" href="/css/profiles.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  </head>
-  <body>
-  	<div class="container">
-      <div class="form-group">
-        <a href = '/intervieweeProfile'><button type="submit" class="btn btn-default">Back To My Profile</button>
+<head>
+  {{> head}}
+  <link rel="stylesheet" type="text/css" href="/css/interviewRoulette.css">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
+  <meta charset="utf-8">
+</head>
+<body>
+ <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-12">
+        <a href= '/intervieweeProfile'><button type="submit" class="btn btn-default">Back To My Profile</button></a>
       </div>
-      {{> logout}}
-      <form role="form" id = "edit-profile-form" method="get" action="/intervieweeProfile">
-        <p for="feedback">Share your feedback for interview with 
-          {{ match }} </p>
-        <textarea class="form-control" rows="3" name="feedback">{{feedback}}
-        </textarea>
+    </div>
+    {{> logout}}
+    <form role="form" method="get" action="/feedbackSaved/{{ match }}">
+      <label for="feedback">Share your feedback for interview with {{ match }}</label>
+      <textarea class="form-control" rows="3" name="feedback"></textarea>
         <br>
         <br>
         <button id="submit" type="submit" class="btn btn-primary match btn-lg active">Save</button>
-      </form>
-    </div>
- </body>
+    </form>
+  </div> 
+</body>
 </html>

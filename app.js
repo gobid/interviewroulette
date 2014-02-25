@@ -71,6 +71,9 @@ app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);
 app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
 app.get("/matchForInterviewer", routes.viewMatchForInterviewer);
 
+// Post feedbacks
+app.get("/feedbackSaved/:match",routes.saveFeedback);
+
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });

@@ -7,35 +7,52 @@
   {{> bootplyBoilerplate}}
 </head>
 <body>
-  <div class="wrapper">
-    <div class="box">
-      <div class="row row-offcanvas row-offcanvas-left">
+  <div class="wrapper"><!--from bootply-->
+    <div class="box"><!--from bootply-->
+      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
         {{> intervieweeProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main">
-          {{> logout}}
+        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
           <div class="padding">
-            <div class="full col-sm-9">
-              <div id="save-notification"></div>
-              <form role="form" method="get" action="/intervieweeAreasToImprove">
-                <h2>I think I still need the following to land the job:</h2>
-                <div class="form-group">
-                  <textarea class="form-control" rows="3"name="improvements">{{improvements}}</textarea>
+            {{> logout}}
+            <br>
+            <div class="row">
+              <div class = "col-md-12">
+                <div id="save-notification" class="notification-hidden">
+                  <div class="alert alert-success">
+                    <strong>Your changes have been saved!</strong>
+                  </div>
                 </div>
-                <div class="form-group">
-                  <button id="submit" type="submit" class="btn btn-default">Save</button>
-                </div>
-              </form>
+              </div>
+            </div>
+            <div class="row">
+              <div class = "col-md-12">
+                <form role="form" method="get" action="/intervieweeAreasToImprove">
+                  <h2>I think I still need the following to land the job:</h2>
+                  <div class="form-group">
+                    <textarea class="form-control" rows="3"name="improvements">{{improvements}}</textarea>
+                  </div>
+                  <div class="form-group">
+                    <button id="submit" type="submit" class="btn btn-default">Save</button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
+        </div><!--from bootply-->
+      </div><!--from bootply-->
+    </div><!--from bootply-->
+  </div><!--from bootply-->
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->
   <script type='text/javascript'>
   $(document).ready(function() {
+    //Handle notificaitons
+    var url = window.location.href;
+    if(url.indexOf("?")!= -1) {
+      $("#save-notification").fadeIn('slow'); 
+    }
+
     /* off-canvas sidebar toggle */
     $('[data-toggle=offcanvas]').click(function() {
       $(this).toggleClass('visible-xs text-center');
