@@ -172,6 +172,8 @@ exports.dosurveyInterviewee = function(req, res) { 
 		}
 		else {
 			if (users.length == 0){
+				var randnum = Math.random()
+				var isAlternate = randnum > 0.5
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -186,7 +188,8 @@ exports.dosurveyInterviewee = function(req, res) { 
 					"softSkills": "For example: Good communication skills, Experience managing teams",
 					"frameworks": "For example: DJango, MongoDB, Google AppEngine",
 					"improvements": "For example: practicing more technical questions, learning to clearly express ideas",
-					"feedback": "there is currently no feedback"
+					"feedback": "there is currently no feedback",
+					"isAlternate": isAlternate
 				}); 
 				newUser.save(function(err){
 					if (err) {
@@ -280,6 +283,8 @@ exports.dosurveyInterviewer = function(req, res) { 
 			console.log(err);
 		else {
 			if (users.length == 0){
+				var randnum =  Math.random()
+				var isAlternate = randnum > 0.5
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -295,7 +300,8 @@ exports.dosurveyInterviewer = function(req, res) { 
 					"hobbies": "What are your hobbies?",
 					"description1": "What did you do? Where did you work?",
 					"description2": "What did you do? Where did you work?",
-					"feedback": "there is currently no feedback"
+					"feedback": "there is currently no feedback",
+					"isAlternate": isAlternate
 				}); 
 				newUser.save(function(err){
 					if (err) {
