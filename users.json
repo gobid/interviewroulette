@@ -13,7 +13,8 @@
 			"mission": "Solve client's problems",
 			"hobbies": "country music",
 			"description1": "Worked on various projects for IT giants like Google,Facebook",
-			"description2": "Organization restructuring"
+			"description2": "Organization restructuring",
+			"feedback":"John is a very energetic and funny interviewer"
 		},
 		{
 			"firstname": "Ron", 
@@ -28,7 +29,8 @@
 			"mission": "Solve client's problems",
 			"hobbies": "soccer",
 			"description1": "Worked in Bain for three years. Mainly deal with market entry projects",
-			"description2": "Market entry"
+			"description2": "Market entry",
+			"feedback":"Ron is a very energetic and funny interviewer"
 		},
 		{
 			"firstname": "Peter", 
@@ -43,7 +45,8 @@
 			"mission": "Solve client's problems",
 			"hobbies": "soccer",
 			"description1": "Worked in Bain for three years. Mainly deal with market entry projects",
-			"description2": "Market entry"
+			"description2": "Market entry",
+			"feedback":"Ron is very familiar with his field"
 		},
 		{
 			"firstname": "Hill", 
@@ -58,7 +61,8 @@
 			"mission": "Be the best hacker in the world",
 			"hobbies": "country music",
 			"description1": "Worked on Google Gmail team for 5 years",
-			"description2": "hacking websites"
+			"description2": "hacking websites",
+			"feedback":"Hill is very familiar with his field"
 		},
 		{
 			"firstname": "Tom", 
@@ -73,7 +77,8 @@
 			"mission": "fixed every possible bugs",
 			"hobbies": "Running",
 			"description1": "Worked in Facebook from 2007 to 2011",
-			"description2": "Build products no one ever built"
+			"description2": "Build products no one ever built",
+			"feedback":"Tom is very passionate for his field"
 		},
 		{
 			"firstname": "Frank", 
@@ -88,7 +93,8 @@
 			"mission": "fixed every possible bugs",
 			"hobbies": "Running",
 			"description1": "Worked in Facebook from 2007 to 2011",
-			"description2": "Build products no one ever built"
+			"description2": "Build products no one ever built",
+			"feedback":"Tom is very passionate for his field"
 		},
 
 		{
@@ -104,7 +110,8 @@
 			"mission": "Make information flow",
 			"hobbies": "Reading",
 			"description1": "With Twitter ever since graduation",
-			"description2": "lead a product team"
+			"description2": "lead a product team",
+			"feedback":"Peter asks very relevant questions to my real job interview"
 		},
 		{
 			"firstname": "Michelle", 
@@ -119,7 +126,8 @@
 			"mission": "thrive",
 			"hobbies": "thriving",
 			"description1": "i like",
-			"description2": "thriving and health"
+			"description2": "thriving and health",
+			"feedback":"Michelle asks very relevant questions to my real job interview"
 		},
 		{
 			"firstname": "Claire", 
@@ -131,10 +139,11 @@
 			"occupation": "Product Manager",
 			"location": "Chicago, Illinois",
 			"company": "Google",
-			"mission": "thrive",
-			"hobbies": "thriving",
-			"description1": "i like",
-			"description2": "thriving and health"
+			"mission": "Build the best music app ever",
+			"hobbies": "Running",
+			"description1": "Google 2007-2012",
+			"description2": "Android app produc",
+			"feedback":"Claire asks very insightful questions to push me think more about why I want this job"
 		},
 		{
 			"firstname": "John", 
@@ -146,10 +155,11 @@
 			"occupation": "Investment Banking",
 			"location": "Braintree, Massachusetts",
 			"company": "Morgan Staney",
-			"mission": "liberty",
-			"hobbies": "strolls",
-			"description1": "i like",
-			"description2": "natural rights"
+			"mission": "Deliver results that clients love",
+			"hobbies": "TV drama",
+			"description1": "Citi Group 2009-2013",
+			"description2": "Deal sourcing",
+			"feedback":"John asks very insightful questions to push me think more about why I want this job"
 		},
 		{
 			"firstname": "Abigail", 
@@ -164,7 +174,8 @@
 			"mission": "no slavery",
 			"hobbies": "womens lib",
 			"description1": "i hate slavery, so does john",
-			"description2": "i like womens lib"
+			"description2": "i like womens lib",
+			"feedback":"Abigail cares about her interviewee and she is a very nice person"
 		},
 		{
 			"firstname": "Jackie Sharp", 
@@ -176,10 +187,11 @@
 			"occupation": "Investment Banking",
 			"location": "Braintree, Massachusetts",
 			"company": "Morgan Staney",
-			"mission": "no slavery",
-			"hobbies": "womens lib",
-			"description1": "i hate slavery, so does john",
-			"description2": "i like womens lib"
+			"mission": "Be the best female banker in US",
+			"hobbies": "N/A",
+			"description1": "Goldmen Sachs since graduation",
+			"description2": "make clients happy",
+			"feedback":"Jackie is sometimes a harsh interviewer"
 		},
 		{
 			"firstname": "Govinda", 
@@ -193,7 +205,8 @@
 			"programmingLang": "C++",
 			"softSkills": "team management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more confident"
+			"improvements": "need to be more confident",
+			"feedback":"Govi is very smart to give concise answers"
 		},
 		{
 			"firstname": "Remy", 
@@ -207,7 +220,8 @@
 			"programmingLang": "C++",
 			"softSkills": "team management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more confident"
+			"improvements": "need to be more confident",
+			"feedback":"Remy knows a lot about software development"
 		},
 		{
 			"firstname": "Doug", 
@@ -221,7 +235,8 @@
 			"programmingLang": "C++",
 			"softSkills": "team management",
 			"frameworks": "ruby on rails",
-			"improvements": "need to be more confident"
+			"improvements": "need to be more confident",
+			"feedback":"Doug is sometimes too rushy to give his answers"
 		},
 		{
 			"firstname": "Anjana", 
@@ -235,7 +250,8 @@
 			"programmingLang": "PPT making",
 			"softSkills": "team management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more confident"
+			"improvements": "need to be more confident",
+			"feedback":"Anjana has a true passion for consulting"
 		},
 		{
 			"firstname": "Edward", 
@@ -249,7 +265,8 @@
 			"programmingLang": "PPT making",
 			"softSkills": "team management",
 			"frameworks": "nothing special",
-			"improvements": "industry knowledge"
+			"improvements": "industry knowledge",
+			"feedback":"Edward looks not committed enought to consulting"
 		},
 		{
 			"firstname": "Garret", 
@@ -263,7 +280,8 @@
 			"programmingLang": "note taking expert",
 			"softSkills": "team management",
 			"frameworks": "nothing special",
-			"improvements": "industry knowledge"
+			"improvements": "industry knowledge",
+			"feedback":"Garret gives very stuctured response to the case questions"
 		},
 		{
 			"firstname": "Girija", 
@@ -278,11 +296,12 @@
 			"programmingLang": "excel",
 			"softSkills": "team management",
 			"frameworks": "financial market knowledge",
-			"improvements": "need to be more assertive"
+			"improvements": "need to be more assertive",
+			"feedback":"Girija is a very talented candidate"
 		},
 		{
 			"firstname": "Tricia", 
-			"lastname": "walker",
+			"lastname": "Walker",
 			"email": "Tricia@gmail.com",
 			"password": "pass",
 			"interviewer": false,
@@ -292,7 +311,8 @@
 			"programmingLang": "excel",
 			"softSkills": "team management",
 			"frameworks": "financial market knowledge",
-			"improvements": "need to be more assertive"
+			"improvements": "need to be more assertive",
+			"feedback":"Tricia has a good understanding on how work in ibanking really is about"
 		},
 		{
 			"firstname": "Zoe", 
@@ -306,7 +326,8 @@
 			"programmingLang": "excel",
 			"softSkills": "interview skills",
 			"frameworks": "financial market knowledge",
-			"improvements": "need to be more assertive"
+			"improvements": "need to be more assertive",
+			"feedback":"Tricia has a good understanding on how work in ibanking really is about"
 		},
 		{
 			"firstname": "Sridhara", 
@@ -320,7 +341,8 @@
 			"programmingLang": "C++",
 			"softSkills": "team management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more assertive"
+			"improvements": "need to be more assertive",
+			"feedback":"Sridhara has a good understanding on how product manager's role really is about"
 		},
 		{
 			"firstname": "Tom", 
@@ -334,7 +356,8 @@
 			"programmingLang": "C++",
 			"softSkills": "project management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more attentive to details"
+			"improvements": "need to be more attentive to details",
+			"feedback":"Tom has a good understanding on how product manager's role really is about"
 		},
 		{
 			"firstname": "Joe", 
@@ -348,7 +371,8 @@
 			"programmingLang": "C++",
 			"softSkills": "project management",
 			"frameworks": "bootstrap",
-			"improvements": "need to be more attentive to details"
+			"improvements": "need to be more attentive to details",
+			"feedback":"Joe has a good understanding on how product manager's role really is about"
 		}
 	]
 }

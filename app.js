@@ -66,10 +66,15 @@ app.get('/interviewerProfile', routes.viewInterviewerProfile);
 app.get('/interviewerPastExp', routes.viewInterviewerPastExp);
 app.get('/interviewerAboutMe', routes.viewInterviewerAboutMe);
 app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);
+app.get('/interviewerFeedback',routes.viewInterviewerFeedback);
+
 
 // DUMMY MATCH PAGES
 app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
 app.get("/matchForInterviewer", routes.viewMatchForInterviewer);
+
+// Post feedbacks
+app.get("/feedbackSaved/:match",routes.saveFeedback);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
