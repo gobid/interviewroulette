@@ -562,3 +562,48 @@ exports.viewIntervieweeProfile = function(req, res) {
 	else 
 		res.redirect('/');
 }
+
+exports.saveFeedback = function(req,res){
+	function afterUpdate(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			res.render('feedbackSaved', {'match':req.params.match});								
+		}
+	}
+	
+	if(req.query.feedback){
+		console.log("I came here!")
+		model.User.update({"email":req.params.match},
+		{"feedback":req.query.feedback}).exec(afterUpdate);
+	}
+	else
+		afterUpdate(null);
+}
+
+exports.viewIntervieweeFeedback = function(req, res){
+	res.render('interviewee/intervieweeFeedback', req.session.user);
+};
+
+exports.viewInterviewerFeedback = function(req, res){
+	res.render('interviewer/interviewerFeedback', req.session.user);
+};
+
+exports.postFeedback = function(req,res){
+	console.log(req.params.match)
+	res.render('feedback', {
+		'match': req.params.match
+	});
+};
+
+exports.kickoff = function(req, res) { 
+	res.render('startInterview', {
+		"match":req.params.match
+	});
+};
+
+exports.kickoffWithInterviewee = function(req, res){
+	res.render('interviewee/intervieweeSkills', req.session.user);
+};
