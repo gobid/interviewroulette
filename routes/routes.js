@@ -80,26 +80,6 @@ exports.viewEditInterviewerProfile = function(req, res) { 
 		afterFind(null)
  }
 
-exports.saveFeedback = function(req,res){
-	function afterUpdate(err){
-		if(err) {
-			console.log(err)
-			res.send(500)
-		}
-		else {
-			res.render('feedbackSaved', {'match':req.params.match});								
-		}
-	}
-	
-	if(req.query.feedback){
-		console.log("I came here!")
-		model.User.update({"email":req.params.match},
-		{"feedback":req.query.feedback}).exec(afterUpdate);
-	}
-	else
-		afterUpdate(null);
-}
-
 exports.view = function(req, res){
   res.render('prelogin/index');
 };
@@ -137,10 +117,6 @@ exports.viewIntervieweeAreasToImprove = function(req, res){
 
 exports.viewIntervieweeFeedback = function(req, res){
 	res.render('interviewee/intervieweeFeedback', req.session.user);
-};
-
-exports.viewInterviewerFeedback = function(req, res){
-	res.render('interviewer/interviewerFeedback', req.session.user);
 };
 
 
@@ -196,6 +172,8 @@ exports.dosurveyInterviewee = function(req, res) { 
 		}
 		else {
 			if (users.length == 0){
+				var randnum = Math.random()
+				var isAlternate = randnum > 0.5
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -210,7 +188,8 @@ exports.dosurveyInterviewee = function(req, res) { 
 					"softSkills": "For example: Good communication skills, Experience managing teams",
 					"frameworks": "For example: DJango, MongoDB, Google AppEngine",
 					"improvements": "For example: practicing more technical questions, learning to clearly express ideas",
-					"feedback": "there is currently no feedback"
+					"feedback": "there is currently no feedback",
+					"isAlternate": isAlternate
 				}); 
 				newUser.save(function(err){
 					if (err) {
@@ -304,6 +283,8 @@ exports.dosurveyInterviewer = function(req, res) { 
 			console.log(err);
 		else {
 			if (users.length == 0){
+				var randnum =  Math.random()
+				var isAlternate = randnum > 0.5
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -319,7 +300,8 @@ exports.dosurveyInterviewer = function(req, res) { 
 					"hobbies": "What are your hobbies?",
 					"description1": "What did you do? Where did you work?",
 					"description2": "What did you do? Where did you work?",
-					"feedback": "there is currently no feedback"
+					"feedback": "there is currently no feedback",
+					"isAlternate": isAlternate
 				}); 
 				newUser.save(function(err){
 					if (err) {
@@ -701,5 +683,33 @@ exports.viewIntervieweeProfile = function(req, res) {
 		res.redirect('/');
 }
 
+exports.saveFeedback = function(req,res){
+	function afterUpdate(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			res.render('feedbackSaved', {'match':req.params.match});								
+		}
+	}
+	
+	if(req.query.feedback){
+		console.log("I came here!")
+		model.User.update({"email":req.params.match},
+		{"feedback":req.query.feedback}).exec(afterUpdate);
+	}
+	else
+		afterUpdate(null);
+}
+
+
+
+exports.postFeedback = function(req,res){
+	console.log(req.params.match)
+	res.render('feedback', {
+		'match': req.params.match
+	});
+};
 
 
