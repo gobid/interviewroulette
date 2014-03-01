@@ -7,54 +7,50 @@
   {{> bootplyBoilerplate}}
 </head>
 <body>
-  <div class="wrapper"><!--from bootply-->
-    <div class="box"><!--from bootply-->
-      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
-        {{> intervieweeProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
-          <div class="padding">
-            {{> logout}}
-            <br>
-            <div class="row">
-              <div class = "col-md-12">
-                <div id="save-notification" class="notification-hidden">
-                  <div class="alert alert-success">
-                    <strong>Your changes have been saved!</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row" id="content">
-              <div class = "col-md-12">
-                <form role="form" name = "skills" id = "skills" method="get" action="/intervieweeSkills">
-                    <h1>My Skills </h1>
-                    <h5>Show the interviewer your strength</h5>
-                    <div class="form-group">
-                      <strong>Job specific skills: </strong>
-                      <br>
-                      <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <strong>Soft Skills: </strong>
-                      <br>
-                      <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <strong>Other relevant skills you want let the interviewer know</strong>
-                      <br>
-                      <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
-                    </div>
-                    <div class="form-group">
-                      <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
-                    </div>
-                </form>
-              </div>
-            </div>
+  <div class="container">
+    {{> logout}}
+    <br>
+    <div class="row">
+      <div class = "col-md-12">
+        <div id="save-notification" class="notification-hidden">
+          <div class="alert alert-success">
+            <strong>Your changes have been saved!</strong>
           </div>
-        </div><!--from bootply-->
-      </div><!--from bootply-->
-    </div><!--from bootply-->
-  </div><!--from bootply-->
+        </div>
+      </div>
+    </div>
+    <div class="row" id="content">
+      <div class = "col-md-12">
+        <form role="form" name = "skills" id = "skills" method="get" action="/intervieweeSkills">
+            <h1>My Skills </h1>
+            <h5>Show the interviewer your strength</h5>
+            <div class="form-group">
+              <strong>Job specific skills: </strong>
+              <br>
+              <textarea class="form-control" rows="3"name="programmingLang">{{programmingLang}}</textarea>
+            </div>
+            <div class="form-group">
+              <strong>Soft Skills: </strong>
+              <br>
+              <textarea class="form-control" rows="3" name="softSkills">{{softSkills}}</textarea>
+            </div>
+            <div class="form-group">
+              <strong>Other relevant skills you want let the interviewer know</strong>
+              <br>
+              <textarea class="form-control" rows="3" name="frameworks">{{frameworks}}</textarea>
+            </div>
+            <div class="form-group">
+              <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  {{> persistantBarInterviewee}}
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->

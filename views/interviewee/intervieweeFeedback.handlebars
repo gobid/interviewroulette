@@ -7,29 +7,22 @@
   {{> bootplyBoilerplate}}
 </head>
 <body>
-  <div class="wrapper"><!--from bootply-->
-    <div class="box"><!--from bootply-->
-      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
-        {{> intervieweeProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
-          <div class="padding">
-            {{> logout}}
-            <!-- Placeholder for "saved" notfication -->
-            <div id="save-notification"></div>
-            <div class="row">
-              <div class = "col-md-12">
-                <h1>Feedback from interviewer</h1>
-              </form>
-              <div class="form-group">
-                  <textarea class="form-control" rows="3"name="improvements">{{feedback}}</textarea>
-              </div>
-            </div>
+  <div class="container">
+    {{> logout}}
+    <!-- Placeholder for "saved" notfication -->
+    <div id="save-notification"></div>
+    <div class="row">
+      <div class = "col-md-12">
+        <h1>Feedback from interviewer</h1>
+        <form>
+          <div class="form-group">
+              <textarea class="form-control" rows="3"name="improvements">{{feedback}}</textarea>
           </div>
-        </div><!--from bootply-->
-      </div><!--from bootply-->
-    </div><!--from bootply-->
-  </div><!--from bootply-->
-
+        </form>
+      </div>
+    </div>
+  </div>
+  {{> persistantBarInterviewee}}
   <!-- JavaScript jQuery code from Bootply.com editor -->
   <script type='text/javascript'>
   $(document).ready(function() {
