@@ -56,6 +56,7 @@ app.get("/unimplemented", routes.viewUnimplemented);
 
 //INTERVIEWEE PAGES
 app.get('/intervieweeProfile', routes.viewIntervieweeProfile);
+app.get('/intervieweeProfile/alternate',routes.viewIntervieweeProfileAlter);
 app.get('/intervieweeFeedback',routes.viewIntervieweeFeedback);
 app.get('/intervieweeSkills',routes.viewIntervieweeSkills);
 app.get('/intervieweeAreasToImprove',routes.viewIntervieweeAreasToImprove);
@@ -63,6 +64,7 @@ app.get('/editIntervieweeProfile', routes.viewEditIntervieweeProfile);
 
 //INTERVIEWER PAGES
 app.get('/interviewerProfile', routes.viewInterviewerProfile);
+app.get('/interviewerProfile/alternate',routes.viewInterviewerProfileAlter);
 app.get('/interviewerPastExp', routes.viewInterviewerPastExp);
 app.get('/interviewerAboutMe', routes.viewInterviewerAboutMe);
 app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);

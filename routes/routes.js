@@ -470,6 +470,125 @@ exports.viewInterviewerProfile = function(req, res) {
 	res.render('interviewer/interviewerProfile', user);
 };
 
+exports.viewInterviewerProfileAlter = function(req, res) {
+	// this route is only called after session is set
+	var user = req.session.user
+	res.render('interviewer/interviewerProfileAlter', user);
+};
+
+exports.viewIntervieweeProfileAlter = function(req, res) {
+	if (req.session && req.session.user){
+        console.log('persontype')
+		console.log(req.query.persontype)
+		if (req.query.persontype) { // means came from signup surveys
+			console.log('came from signup')		
+			if (req.query.persontype == "interviewee") {
+				console.log('interviewee'
+				// update user obj in db
+				model.User.update({
+					'_id': req.session.user._id
+				},
+				{
+					'occupation': req.query.occupation,
+					'education': req.query.education,
+					'location': req.query.location
+				}).exec(function(err){
+					if (err) {
+						console.log(err)
+						res.send(500)
+					}
+					else {
+						model.User.find({
+							'_id': req.session.user._id
+						}).exec(function(err, users){
+							if (err) {
+								console.log(err)
+								res.send(500)
+							}
+							else {
+								var found = users[0]
+								req.session.user = found
+								res.render('interviewee/intervieweeProfileAlter', req.session.user);
+							}
+						})
+					}
+				})			
+			}	
+			else {
+				console.log('interviewer')
+				model.User.update({'_id': req.session.user._id},
+				{
+					'occupation': req.query.occupation,
+					'education': req.query.education,
+					'location': req.query.location,
+					'company':req.query.company,
+					''
+				}).exec(function(err){
+					if (err) {
+						console.log(err)
+						res.send(500)
+					}
+					else {
+						model.User.find({
+							'_id': req.session.user._id
+						}).exec(function(err, users){
+							if (err) {
+								console.log(err)
+								res.send(500)
+							}
+							else {
+								var found = users[0]
+								req.session.user = found
+								res.redirect('interviewerProfile/alternate');
+							}
+						})
+					}
+				});		
+			}	    
+		}   	
+		else { // just returning to the page
+			var user = req.session.user
+			if (user.interviewer)
+				res.redirect('interviewerProfile/alternate')
+			else 
+				res.render('interviewee/intervieweeProfileAlter', user);
+		}
+	}
+	else if (req.query && req.query.uname){ // after login
+		console.log('came from login')
+		console.log('email:', req.query.uname)
+		console.log('password:', req.query.password)
+		model.User.find({
+			"email": req.query.uname,
+			"password": req.query.password
+		}).exec(afterFind);
+
+		function afterFind(err, users){
+		    if (err) {
+				console.log(err)
+				res.send(500)
+			}
+			else if (users.length > 0){
+				var user = users[0]
+				console.log(user);
+				console.log(user.password);
+				req.session.user = user
+				if (user.interviewer)
+					res.redirect('interviewerProfile/alternate')
+				else {
+					console.log('I AM HERE')
+					res.render('interviewee/intervieweeProfileAlter', user);
+				}				
+			}
+			else 
+				res.redirect('/')
+		}
+	}	
+	else 
+		res.redirect('/');
+}
+
+
 exports.viewIntervieweeProfile = function(req, res) {
 	if (req.session && req.session.user){
         console.log('persontype')
@@ -477,7 +596,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 		if (req.query.persontype) { // means came from signup surveys
 			console.log('came from signup')		
 			if (req.query.persontype == "interviewee") {
-				console.log('interviewee')
+				console.log('interviewee'
 				// update user obj in db
 				model.User.update({
 					'_id': req.session.user._id
@@ -515,7 +634,8 @@ exports.viewIntervieweeProfile = function(req, res) {
 					'occupation': req.query.occupation,
 					'education': req.query.education,
 					'location': req.query.location,
-					'company':req.query.company
+					'company':req.query.company,
+					''
 				}).exec(function(err){
 					if (err) {
 						console.log(err)
@@ -580,3 +700,6 @@ exports.viewIntervieweeProfile = function(req, res) {
 	else 
 		res.redirect('/');
 }
+
+
+
