@@ -457,16 +457,23 @@ exports.viewSignup = function(req, res){
 
 exports.viewInterviewerProfile = function(req, res) {
 	// this route is only called after session is set
-	if (req.session.user.isAlternate) res.render('interviewer/interviewerProfileAlter', req.session.user);
-	else res.render('interviewer/interviewerProfile', req.session.user);
+    res.render('interviewer/interviewerProfile', req.session.user);
 };
+
+exports.viewInterviewerProfileAlter = function(req,res){
+    res.render('interviewer/interviewerProfileAlter',req.session.user);
+}
+
+exports.viewIntervieweeProfileAlter = function(req,res){
+    res.render('interviewee/intervieweeProfileAlter',req.session.user);
+}
 
 exports.viewIntervieweeProfile = function(req, res) {
 	if (req.session && req.session.user){
 		console.log(req.session.user.isAlternate)
 		if (req.query.persontype) { // means came from signup surveys
 			console.log('came from signup')		
-			if (req.query.persontype == "interviewee") {
+			if (req.query.persontype == "interviewee") {// interviewee
 				console.log('interviewee')
 				// update user obj in db
 				model.User.update({
@@ -492,14 +499,14 @@ exports.viewIntervieweeProfile = function(req, res) {
 							else {
 								var user = users[0]
 								req.session.user = user
-								if(user.isAlternate) res.render('interviewee/intervieweeProfileAlter', req.session.user);
+								if(user.isAlternate) res.redirect('intervieweeProfile/alternate');
                                 else res.render('interviewee/intervieweeProfile', req.session.user);
 							}
 						})
 					}
 				})			
 			}	
-			else {
+			else {// interviewer
 				console.log('interviewer')
 				model.User.update({'_id': req.session.user._id},
 				{
@@ -523,7 +530,8 @@ exports.viewIntervieweeProfile = function(req, res) {
 							else {
 								var found = users[0]
 								req.session.user = found
-								res.redirect('interviewerProfile');
+								if(user.isAlternate) res.redirect('interviewerProfile/alternate');
+                                else res.redirect('interviewerProfile');							
 							}
 						})
 					}
@@ -531,11 +539,14 @@ exports.viewIntervieweeProfile = function(req, res) {
 			}	    
 		}   	
 		else { // just returning to the page
-			if (req.session.user.interviewer)
-				res.redirect('interviewerProfile')
-			else 
-				if(req.session.user.isAlternate) res.render('interviewee/intervieweeProfileAlter', req.session.user);
+			if (req.session.user.interviewer){
+				if(user.isAlternate) res.redirect('interviewerProfile/alternate');
+                else res.redirect('interviewerProfile');
+            }    
+			else {
+				if(req.session.user.isAlternate) res.redirect('intervieweeProfile/alternate');
                 else res.render('interviewee/intervieweeProfile', req.session.user);
+            }    
 		}
 	}
 	else if (req.query && req.query.uname){ // after login
@@ -558,12 +569,14 @@ exports.viewIntervieweeProfile = function(req, res) {
 				console.log(user.password);
 				console.log(user.isAlternate)
 				req.session.user = user
-				if (user.interviewer)
-					res.redirect('interviewerProfile')
+				if (user.interviewer){
+					if(user.isAlternate) res.redirect('interviewerProfile/alternate');
+                    else res.redirect('interviewerProfile');				
+				}	
 				else {
 					console.log('I AM HERE')
 					if(user.isAlternate) {
-						res.render('interviewee/intervieweeProfileAlter', req.session.user)
+						res.redirect('intervieweeProfile/alternate');
 						console.log('I AM HERE again');
 					}	
                     else res.render('interviewee/intervieweeProfile', req.session.user);
