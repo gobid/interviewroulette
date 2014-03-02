@@ -99,7 +99,8 @@ exports.viewIntervieweeAreasToImprove = function(req, res){
 						}
 					else {
 						var found = users[0]
-						req.session.user = found;	
+						req.session.user = found;
+						console.log(req.session.user.isAlternate)	
 						res.render('interviewee/intervieweeAreasToImprove', req.session.user);						
 				   }
 				}   
@@ -139,9 +140,9 @@ exports.viewIntervieweeSkills = function(req, res){
 						res.send(500)
 						}
 					else {
-						var found = users[0]
-						req.session.user = found;
-						res.render('interviewee/intervieweeSkills', req.session.user);							
+						var curr_user = users[0]
+						req.session.user = curr_user;
+						res.render('interviewee/intervieweeSkills',req.session.user);							
 				   }
 				}   
 			)
@@ -172,8 +173,10 @@ exports.dosurveyInterviewee = function(req, res) { 
 		}
 		else {
 			if (users.length == 0){
-				var randnum = Math.random()
-				var isAlternate = randnum > 0.5
+				var random = Math.random()
+				console.log(random)
+				var isAlternate = (random > 0.5)
+				console.log(isAlternate)
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -191,6 +194,7 @@ exports.dosurveyInterviewee = function(req, res) { 
 					"feedback": "there is currently no feedback",
 					"isAlternate": isAlternate
 				}); 
+				console.log(newUser)
 				newUser.save(function(err){
 					if (err) {
 						console.log(err)
@@ -198,7 +202,7 @@ exports.dosurveyInterviewee = function(req, res) { 
 					}
 					else {
 						req.session.user = newUser
-						res.render('interviewee/intervieweeSurvey');
+						res.render('interviewee/intervieweeSurvey',newUser);
 					}
 				});
 			}
@@ -284,7 +288,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 		else {
 			if (users.length == 0){
 				var randnum =  Math.random()
-				var isAlternate = randnum > 0.5
+				var isAlternate = (randnum > 0.5)				
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -303,6 +307,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 					"feedback": "there is currently no feedback",
 					"isAlternate": isAlternate
 				}); 
+				console.log(isAlternate)
 				newUser.save(function(err){
 					if (err) {
 						console.log(err)
@@ -310,7 +315,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 					}
 					else {
 						req.session.user = newUser
-						res.render('interviewer/interviewerSurvey');
+						res.render('interviewer/interviewerSurvey',newUser);
 					}
 				});
 			}
@@ -415,14 +420,18 @@ exports.viewMatchForInterviewee = function(req, res){
 
 exports.postFeedback = function(req,res){
 	console.log(req.params.match)
+	var curr_user = req.session.user
 	res.render('feedback', {
-		'match': req.params.match
+		'match': req.params.match,
+		'curr_user': curr_user
 	});
 };
 
 exports.kickoff = function(req, res) { 
+	var curr_user = req.session.user
 	res.render('startInterview', {
-		"match":req.params.match
+		'match':req.params.match,
+		'curr_user': curr_user
 	});
 };
 
@@ -448,137 +457,17 @@ exports.viewSignup = function(req, res){
 
 exports.viewInterviewerProfile = function(req, res) {
 	// this route is only called after session is set
-	var user = req.session.user
-	res.render('interviewer/interviewerProfile', user);
+	if (req.session.user.isAlternate) res.render('interviewer/interviewerProfileAlter', req.session.user);
+	else res.render('interviewer/interviewerProfile', req.session.user);
 };
-
-exports.viewInterviewerProfileAlter = function(req, res) {
-	// this route is only called after session is set
-	var user = req.session.user
-	res.render('interviewer/interviewerProfileAlter', user);
-};
-
-exports.viewIntervieweeProfileAlter = function(req, res) {
-	if (req.session && req.session.user){
-        console.log('persontype')
-		console.log(req.query.persontype)
-		if (req.query.persontype) { // means came from signup surveys
-			console.log('came from signup')		
-			if (req.query.persontype == "interviewee") {
-				console.log('interviewee'
-				// update user obj in db
-				model.User.update({
-					'_id': req.session.user._id
-				},
-				{
-					'occupation': req.query.occupation,
-					'education': req.query.education,
-					'location': req.query.location
-				}).exec(function(err){
-					if (err) {
-						console.log(err)
-						res.send(500)
-					}
-					else {
-						model.User.find({
-							'_id': req.session.user._id
-						}).exec(function(err, users){
-							if (err) {
-								console.log(err)
-								res.send(500)
-							}
-							else {
-								var found = users[0]
-								req.session.user = found
-								res.render('interviewee/intervieweeProfileAlter', req.session.user);
-							}
-						})
-					}
-				})			
-			}	
-			else {
-				console.log('interviewer')
-				model.User.update({'_id': req.session.user._id},
-				{
-					'occupation': req.query.occupation,
-					'education': req.query.education,
-					'location': req.query.location,
-					'company':req.query.company,
-					''
-				}).exec(function(err){
-					if (err) {
-						console.log(err)
-						res.send(500)
-					}
-					else {
-						model.User.find({
-							'_id': req.session.user._id
-						}).exec(function(err, users){
-							if (err) {
-								console.log(err)
-								res.send(500)
-							}
-							else {
-								var found = users[0]
-								req.session.user = found
-								res.redirect('interviewerProfile/alternate');
-							}
-						})
-					}
-				});		
-			}	    
-		}   	
-		else { // just returning to the page
-			var user = req.session.user
-			if (user.interviewer)
-				res.redirect('interviewerProfile/alternate')
-			else 
-				res.render('interviewee/intervieweeProfileAlter', user);
-		}
-	}
-	else if (req.query && req.query.uname){ // after login
-		console.log('came from login')
-		console.log('email:', req.query.uname)
-		console.log('password:', req.query.password)
-		model.User.find({
-			"email": req.query.uname,
-			"password": req.query.password
-		}).exec(afterFind);
-
-		function afterFind(err, users){
-		    if (err) {
-				console.log(err)
-				res.send(500)
-			}
-			else if (users.length > 0){
-				var user = users[0]
-				console.log(user);
-				console.log(user.password);
-				req.session.user = user
-				if (user.interviewer)
-					res.redirect('interviewerProfile/alternate')
-				else {
-					console.log('I AM HERE')
-					res.render('interviewee/intervieweeProfileAlter', user);
-				}				
-			}
-			else 
-				res.redirect('/')
-		}
-	}	
-	else 
-		res.redirect('/');
-}
-
 
 exports.viewIntervieweeProfile = function(req, res) {
 	if (req.session && req.session.user){
-        console.log('persontype')
-		console.log(req.query.persontype)
+		console.log(req.session.user.isAlternate)
 		if (req.query.persontype) { // means came from signup surveys
 			console.log('came from signup')		
 			if (req.query.persontype == "interviewee") {
-				console.log('interviewee'
+				console.log('interviewee')
 				// update user obj in db
 				model.User.update({
 					'_id': req.session.user._id
@@ -601,9 +490,10 @@ exports.viewIntervieweeProfile = function(req, res) {
 								res.send(500)
 							}
 							else {
-								var found = users[0]
-								req.session.user = found
-								res.render('interviewee/intervieweeProfile', req.session.user);
+								var user = users[0]
+								req.session.user = user
+								if(user.isAlternate) res.render('interviewee/intervieweeProfileAlter', req.session.user);
+                                else res.render('interviewee/intervieweeProfile', req.session.user);
 							}
 						})
 					}
@@ -617,7 +507,6 @@ exports.viewIntervieweeProfile = function(req, res) {
 					'education': req.query.education,
 					'location': req.query.location,
 					'company':req.query.company,
-					''
 				}).exec(function(err){
 					if (err) {
 						console.log(err)
@@ -642,11 +531,11 @@ exports.viewIntervieweeProfile = function(req, res) {
 			}	    
 		}   	
 		else { // just returning to the page
-			var user = req.session.user
-			if (user.interviewer)
+			if (req.session.user.interviewer)
 				res.redirect('interviewerProfile')
 			else 
-				res.render('interviewee/intervieweeProfile', user);
+				if(req.session.user.isAlternate) res.render('interviewee/intervieweeProfileAlter', req.session.user);
+                else res.render('interviewee/intervieweeProfile', req.session.user);
 		}
 	}
 	else if (req.query && req.query.uname){ // after login
@@ -667,12 +556,17 @@ exports.viewIntervieweeProfile = function(req, res) {
 				var user = users[0]
 				console.log(user);
 				console.log(user.password);
+				console.log(user.isAlternate)
 				req.session.user = user
 				if (user.interviewer)
 					res.redirect('interviewerProfile')
 				else {
 					console.log('I AM HERE')
-					res.render('interviewee/intervieweeProfile', user);
+					if(user.isAlternate) {
+						res.render('interviewee/intervieweeProfileAlter', req.session.user)
+						console.log('I AM HERE again');
+					}	
+                    else res.render('interviewee/intervieweeProfile', req.session.user);
 				}				
 			}
 			else 
@@ -690,7 +584,8 @@ exports.saveFeedback = function(req,res){
 			res.send(500)
 		}
 		else {
-			res.render('feedbackSaved', {'match':req.params.match});								
+			var curr_user = req.session.user
+			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user});								
 		}
 	}
 	
@@ -705,11 +600,6 @@ exports.saveFeedback = function(req,res){
 
 
 
-exports.postFeedback = function(req,res){
-	console.log(req.params.match)
-	res.render('feedback', {
-		'match': req.params.match
-	});
-};
+
 
 

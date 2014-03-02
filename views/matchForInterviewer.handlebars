@@ -9,11 +9,7 @@
   <div class="container">
     {{> logout}}     
     <div class="form-group">
-      {{#if curr_user.isAlternate }}
-        <a href = '/intervieweeProfile/alternate'>
-      {{else}}
-        <a href = '/intervieweeProfile'>
-      {{/if}}
+      <a href = '/intervieweeProfile'>
         <button type="submit" class="btn btn-default">Back To My Profile</button>
       </a>
     </div>

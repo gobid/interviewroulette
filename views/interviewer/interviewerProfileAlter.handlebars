@@ -3,9 +3,9 @@
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <meta charset="utf-8">
-  <title>About Me</title>
+  <title>Interview Profile</title>
   {{> bootplyBoilerplate}}
-</head>
+</head>    
 <body>
   <div class="wrapper"><!--from bootply-->
     <div class="box"><!--from bootply-->
@@ -14,50 +14,51 @@
         <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
           <div class="padding">
             {{> logout}}
+            <h1> I am alter! </h1>
+            <br>
             <div class="row">
               <div class = "col-md-12">
-                <div id="save-notification" class="notification-hidden">
-                  <div class="alert alert-success">
-                    <strong>Your changes have been saved!</strong>
-                  </div>
+                <a href="/editInterviewerProfile">
+                  <button type="submit" class="btn btn-primary btn-large edit-button">
+                    <i class="edit-icon glyphicon glyphicon-pencil"></i>
+                  </button>
+                </a>
+              </div>
+            </div>
+            <div class="col-md-8 extrainfo">
+              <h1>{{firstname}} {{lastname}}</h1><br>
+              <p><h4><small>interviewer</h4></small><br>
+              <div class="row">
+                <div class="col-md-4 extrainfo">
+                  <address>
+                    <strong>{{company}}</strong><br>
+                    {{location}}<br>
+                  </address>
+                  <address>
+                    <strong>{{education}}</strong><br>
+                  </address>
+                </div>
+                <div class="col-md-4 extrainfo">
+                  <address>
+                    <strong>{{occupation}}</strong><br>
+                    <a href="mailto:#">{{email}}</a>
+                  </address>
                 </div>
               </div>
-            </div>
-            <div id="save-notification"></div>
-            <div class = "row">
-              <div class = "col-md-12">
-                <form role="form" method="get" action="/interviewerAboutMe">
-                  <h1>ABOUT {{firstname}}:</h1></br>
-                  <div class="form-group">
-                    <strong>My mission: </strong><br>
-                    <textarea class="form-control" rows="3" placeholder="{{mission}}" name="mission">{{mission}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <strong>For fun, I like to: </strong><br>
-                    <textarea class="form-control" rows="3" placeholder="{{hobbies}}" name="hobbies">{{hobbies}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
-                  </div>
-                </form>
-              </div>
+              <a href="/matchForInterviewer">
+                <button type = "button" class = "btn btn-primary btn-large">Match with an interviewee</button>
+              </a>
             </div>
           </div>
-        </div><!--from bootply-->          
+        </div><!--from bootply-->
       </div><!--from bootply-->
     </div><!--from bootply-->
   </div><!--from bootply-->
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-  <!-- JavaScript jQuery code from Bootply.com editor -->
-  <script type='text/javascript'>
+  <!-- JavaScript jQuery code from Bootply.com editor -->  
+  <script type='text/javascript'> 
   $(document).ready(function() {
-    //Handle notificaitons
-    var url = window.location.href;
-    if(url.indexOf("?")!= -1) {
-      $("#save-notification").fadeIn('slow'); 
-    }
-
     /* off-canvas sidebar toggle */
     $('[data-toggle=offcanvas]').click(function() {
       $(this).toggleClass('visible-xs text-center');
