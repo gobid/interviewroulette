@@ -19,7 +19,8 @@ var UserSchema = new Mongoose.Schema({
 	"hobbies": String,
 	"description1": String,
 	"description2": String,
-	"feedback": String
+	"feedback": String,
+	"isAlternate": Boolean
 });
 
 exports.User = Mongoose.model('User', UserSchema);

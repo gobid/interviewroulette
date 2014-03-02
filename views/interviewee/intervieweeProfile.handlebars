@@ -8,10 +8,13 @@
 </head>    
 <body>
   <div class="container">
-    {{> logout}}
-    <br>
-    <div class="row">
-      <div class = "col-md-12">
+    <div class="row" style="height:5%">
+      <div class="col-md-6 header">
+        <ul class="nav nav-pills pull-right" style="padding-top:3%">
+          <li class="active"><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      <div class="col-md-6">
         <a href="/editIntervieweeProfile">
           <button type="submit" class="btn btn-primary btn-large edit-button">
             <i class="edit-icon glyphicon glyphicon-pencil"></i>
@@ -19,28 +22,40 @@
         </a>
       </div>
     </div>
-    <div class="col-md-8 extrainfo">
-      <h1>{{firstname}} {{lastname}}</h1><br>
-      <p><h4><small>interviewee</h4></small><br>
-      <div class="row">
-        <div class="col-md-4 extrainfo">
-          <address>
-            {{location}}<br>
-          </address>
-          <address>
-            <strong>{{education}}</strong><br>
-          </address>
-        </div>
-        <div class="col-md-4 extrainfo">
-          <address>
-            <strong>{{occupation}}</strong><br>
-            <a href="mailto:#">{{email}}</a>
-          </address>
-        </div>
+    <div class="row">
+      <div class="col-md-8 extrainfo">
+        <h1>{{firstname}} {{lastname}} </h1>
       </div>
-      <a href="/matchForInterviewee">
-        <button type = "button" class = "btn btn-primary btn-large">Match with an interviewer</button>
-      </a>
+    </div>
+    <div class="row">
+      <div class="col-md-8 extrainfo">
+        <h4><small>interviewee</h4></small><br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 extrainfo">
+        <address>
+          {{location}}<br>
+        </address>
+        <address>
+          <strong>{{education}}</strong><br>
+        </address>
+      </div>
+      <div class="col-md-4 extrainfo">
+        <address>
+          <strong>{{occupation}}</strong><br>
+          <a href="mailto:#">{{email}}</a>
+        </address>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 extrainfo">
+        <center>
+          <a href="/matchForInterviewee">
+            <button type = "button" class = "btn btn-primary btn-large">Match with an interviewer</button>
+          </a>
+        </center>
+      </div>
     </div>
   </div>
   <br>
