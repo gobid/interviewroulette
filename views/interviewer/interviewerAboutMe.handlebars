@@ -7,46 +7,43 @@
   {{> bootplyBoilerplate}}
 </head>
 <body>
-  <div class="wrapper"><!--from bootply-->
-    <div class="box"><!--from bootply-->
-      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
-        {{> interviewerProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
-          <div class="padding">
-            {{> logout}}
-            <div class="row">
-              <div class = "col-md-12">
-                <div id="save-notification" class="notification-hidden">
-                  <div class="alert alert-success">
-                    <strong>Your changes have been saved!</strong>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div id="save-notification"></div>
-            <div class = "row">
-              <div class = "col-md-12">
-                <form role="form" method="get" action="/interviewerAboutMe">
-                  <h1>ABOUT {{firstname}}:</h1></br>
-                  <div class="form-group">
-                    <strong>My mission: </strong><br>
-                    <textarea class="form-control" rows="3" placeholder="{{mission}}" name="mission">{{mission}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <strong>For fun, I like to: </strong><br>
-                    <textarea class="form-control" rows="3" placeholder="{{hobbies}}" name="hobbies">{{hobbies}}</textarea>
-                  </div>
-                  <div class="form-group">
-                    <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
-                  </div>
-                </form>
-              </div>
-            </div>
+  <div class="container">
+    {{> logout}}
+    <br>
+    <div class="row">
+      <div class = "col-md-12">
+        <div id="save-notification" class="notification-hidden">
+          <div class="alert alert-success">
+            <strong>Your changes have been saved!</strong>
           </div>
-        </div><!--from bootply-->          
-      </div><!--from bootply-->
-    </div><!--from bootply-->
-  </div><!--from bootply-->
+        </div>
+      </div>
+    </div>
+    <div id="save-notification"></div>
+    <div class = "row">
+      <div class = "col-md-12">
+        <form role="form" method="get" action="/interviewerAboutMe">
+          <h1>ABOUT {{firstname}}:</h1></br>
+          <div class="form-group">
+            <strong>My mission: </strong><br>
+            <textarea class="form-control" rows="3" placeholder="{{mission}}" name="mission">{{mission}}</textarea>
+          </div>
+          <div class="form-group">
+            <strong>For fun, I like to: </strong><br>
+            <textarea class="form-control" rows="3" placeholder="{{hobbies}}" name="hobbies">{{hobbies}}</textarea>
+          </div>
+          <div class="form-group">
+            <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  {{> persistantBarInterviewer}}
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->

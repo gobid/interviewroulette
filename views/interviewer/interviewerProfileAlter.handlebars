@@ -7,53 +7,48 @@
   {{> bootplyBoilerplate}}
 </head>    
 <body>
-  <div class="wrapper"><!--from bootply-->
-    <div class="box"><!--from bootply-->
-      <div class="row row-offcanvas row-offcanvas-left"><!--from bootply-->
-        {{> interviewerProfileSidebar}}
-        <div class="column col-sm-10 col-xs-11" id="main"><!--from bootply-->
-          <div class="padding">
-            {{> logout}}
-            <h1> I am alter! </h1>
-            <br>
-            <div class="row">
-              <div class = "col-md-12">
-                <a href="/editInterviewerProfile">
-                  <button type="submit" class="btn btn-primary btn-large edit-button">
-                    <i class="edit-icon glyphicon glyphicon-pencil"></i>
-                  </button>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-8 extrainfo">
-              <h1>{{firstname}} {{lastname}}</h1><br>
-              <p><h4><small>interviewer</h4></small><br>
-              <div class="row">
-                <div class="col-md-4 extrainfo">
-                  <address>
-                    <strong>{{company}}</strong><br>
-                    {{location}}<br>
-                  </address>
-                  <address>
-                    <strong>{{education}}</strong><br>
-                  </address>
-                </div>
-                <div class="col-md-4 extrainfo">
-                  <address>
-                    <strong>{{occupation}}</strong><br>
-                    <a href="mailto:#">{{email}}</a>
-                  </address>
-                </div>
-              </div>
-              <a href="/matchForInterviewer">
-                <button type = "button" class = "btn btn-primary btn-large">Match with an interviewee</button>
-              </a>
-            </div>
-          </div>
-        </div><!--from bootply-->
-      </div><!--from bootply-->
-    </div><!--from bootply-->
-  </div><!--from bootply-->
+  <div class="container">
+    {{> logout}}
+    <br>
+    <div class="row">
+      <div class = "col-md-12">
+        <a href="/editInterviewerProfile">
+          <button type="submit" class="btn btn-primary btn-large edit-button">
+            <i class="edit-icon glyphicon glyphicon-pencil"></i>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="col-md-8 extrainfo">
+      <h1>{{firstname}} {{lastname}}</h1><br>
+      <p><h4><small>interviewer</h4></small><br>
+      <div class="row">
+        <div class="col-md-4 extrainfo">
+          <address>
+            <strong>{{company}}</strong><br>
+            {{location}}<br>
+          </address>
+          <address>
+            <strong>{{education}}</strong><br>
+          </address>
+        </div>
+        <div class="col-md-4 extrainfo">
+          <address>
+            <strong>{{occupation}}</strong><br>
+            <a href="mailto:#">{{email}}</a>
+          </address>
+        </div>
+      </div>
+      <a href="/matchForInterviewer">
+        <button type = "button" class = "btn btn-primary btn-large">Match with an interviewee</button>
+      </a>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  {{> persistantBarInterviewer}}
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->  

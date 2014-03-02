@@ -364,3 +364,15 @@ small.text-muted {
 .notification-display {
   display: block;
 }
+
+.bar {
+  bottom: 5px;
+  position: fixed;
+  width: 100%;
+}
+
+.shadow {
+  box-shadow: 0px -5px 20px 1px #ddd;
+    -moz-box-shadow:    0px -5px 20px 1px #ddd;
+    -webkit-box-shadow: 0px -5px 20px 1px #ddd;
+}
