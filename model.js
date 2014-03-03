@@ -19,7 +19,7 @@ var UserSchema = new Mongoose.Schema({
 	"hobbies": String,
 	"description1": String,
 	"description2": String,
-	"feedback": String,
+	"feedback": [{'text':String,'by':String}],
 	"isAlternate": Boolean
 });
 

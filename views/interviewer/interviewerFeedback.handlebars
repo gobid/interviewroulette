@@ -12,7 +12,9 @@
     <form role="form" method="get" action="/intervieweeProfile">
       <h1>Feedback from interviewee</h1>
       <div class="form-group">
-        <textarea class="form-control" rows="3"name="improvements">{{feedback}}</textarea>
+        {{#each feedbacks}}
+          <h5>{{text}} by {{by}}</h5>
+          {{/each}}
       </div>
     </form>
   </div>

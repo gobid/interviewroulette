@@ -14,11 +14,9 @@
     <div class="row">
       <div class = "col-md-12">
         <h1>Feedback from interviewer</h1>
-        <form>
-          <div class="form-group">
-              <textarea class="form-control" rows="3"name="improvements">{{feedback}}</textarea>
-          </div>
-        </form>
+          {{#each feedbacks}}
+          <h5>{{text}} by {{by}}</h5>
+          {{/each}}
       </div>
     </div>
   </div>

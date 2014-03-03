@@ -117,12 +117,22 @@ exports.viewIntervieweeAreasToImprove = function(req, res){
 
 
 exports.viewIntervieweeFeedback = function(req, res){
-	res.render('interviewee/intervieweeFeedback', req.session.user);
+	model.User.find({"email":req.session.user.email}).exec(renderFeedbacks);
+	function renderFeedbacks(err, users) {
+        var user = users[0]
+        console.log(user.feedback)
+		res.render('interviewee/intervieweeFeedback', {'feedbacks': user.feedback});
+	}
 };
 
 
 exports.viewInterviewerFeedback = function(req, res){
-	res.render('interviewer/interviewerFeedback', req.session.user);
+	model.User.find({"email":req.session.user.email}).exec(renderFeedbacks);
+	function renderFeedbacks(err, users) {
+        var user = users[0]
+        console.log(user.feedback)
+		res.render('interviewer/interviewerFeedback', {'feedbacks': user.feedback});
+	}
 };
 
 
@@ -174,9 +184,7 @@ exports.dosurveyInterviewee = function(req, res) { 
 		else {
 			if (users.length == 0){
 				var random = Math.random()
-				console.log(random)
 				var isAlternate = (random > 0.5)
-				console.log(isAlternate)
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -191,7 +199,6 @@ exports.dosurveyInterviewee = function(req, res) { 
 					"softSkills": "For example: Good communication skills, Experience managing teams",
 					"frameworks": "For example: DJango, MongoDB, Google AppEngine",
 					"improvements": "For example: practicing more technical questions, learning to clearly express ideas",
-					"feedback": "there is currently no feedback",
 					"isAlternate": isAlternate
 				}); 
 				console.log(newUser)
@@ -288,7 +295,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 		else {
 			if (users.length == 0){
 				var randnum =  Math.random()
-				var isAlternate = (randnum > 0.5)				
+				var isAlternate = (randnum > 0.5)	
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -304,7 +311,6 @@ exports.dosurveyInterviewer = function(req, res) { 
 					"hobbies": "What are your hobbies?",
 					"description1": "What did you do? Where did you work?",
 					"description2": "What did you do? Where did you work?",
-					"feedback": "there is currently no feedback",
 					"isAlternate": isAlternate
 				}); 
 				console.log(isAlternate)
@@ -528,8 +534,8 @@ exports.viewIntervieweeProfile = function(req, res) {
 								res.send(500)
 							}
 							else {
-								var found = users[0]
-								req.session.user = found
+								var user = users[0]
+								req.session.user = user
 								if(user.isAlternate) res.redirect('interviewerProfile/alternate');
                                 else res.redirect('interviewerProfile');							
 							}
@@ -540,7 +546,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 		}   	
 		else { // just returning to the page
 			if (req.session.user.interviewer){
-				if(user.isAlternate) res.redirect('interviewerProfile/alternate');
+				if(req.session.user.isAlternate) res.redirect('interviewerProfile/alternate');
                 else res.redirect('interviewerProfile');
             }    
 			else {
@@ -596,16 +602,19 @@ exports.saveFeedback = function(req,res){
 			console.log(err)
 			res.send(500)
 		}
-		else {
-			var curr_user = req.session.user
-			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user});								
+		else {		
+			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user});											
 		}
 	}
 	
 	if(req.query.feedback){
 		console.log("I came here!")
+		var curr_user = req.session.user
+		console
 		model.User.update({"email":req.params.match},
-		{"feedback":req.query.feedback}).exec(afterUpdate);
+		{ $push: {"feedback":{"text":req.query.feedback,"by":curr_user.firstname}
+				}
+	}).exec(afterUpdate);
 	}
 	else
 		afterUpdate(null);
