@@ -5,6 +5,7 @@
   {{> head}}
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src = "/js/startInterview.js"></script>
+  <script type = "text/javascript" src = "http://cdn.dev.skype.com/uri/skype-uri.js"></script>
 </head>
 <body>
   <div class="container">
@@ -17,26 +18,18 @@
       <br>
       <div class = "row">
         <div class = "col-md-4">
-          <div class="alert alert-info" style="text-align:left">
-            <ul>
-              <li>Start Google Hangout App,then copy and paste the email to add participants.</li>
-            </ul>
-          </div>
-          <div class="input-group">
-            <span class="input-group-btn">
-              <button id = "copier" class="btn btn-default" type="button">Select Email</button>
-            </span>
-            <input id = "copytext" type = 'text' class = 'form-control' id = 'invitee' value = '{{match}}'>
-          </div>
-          <br>
           <div style="text-align:center">
-            <script type="text/javascript" src="https://apis.google.com/js/platform.js"></script>
-            <g:hangout render="createhangout"></g:hangout>
-            <br>
-            <br>
-            <a href='/feedback/{{ match }}'>
-              <button type="button" class="btn btn-primary match btn-lg active"> Give feedbacks </button>
-            </a>
+            <div id = "genSkypeCall">
+              <script type = "text/javascript">
+                Skype.ui({
+                  name: "call",
+                  element: "genSkypeCall",
+                  participants: ["{{match}}"],
+                  listParticipants: "true"
+                })
+              </script>
+            </div>
+            <a href='/feedback/{{ match }}'><button type="button" class="btn btn-primary match btn-lg active"> Give feedbacks </button></a>
           </div>
         </div>
       </div>
