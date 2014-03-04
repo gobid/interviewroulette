@@ -2,6 +2,27 @@ var model = require('../model');
 
 // ROUTES
 
+exports.saveAvailabilityChange = function(req, res) {
+	function afterSave(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+	}
+
+	if(req.query.optionsRadios == 'available') {
+		var curr_user = req.session.user
+		model.User.update({"email":req.session.user.email}, 
+				{"isAvailable":true}
+		).exec(afterSave)
+	}
+	else {
+		var curr_user = req.session.user
+		model.User.update({"email":req.session.user.email}, 
+				{"isAvailable":false}).exec(afterSave)
+	}
+}
+
 exports.viewEditIntervieweeProfile = function(req, res) {   
 	function afterFind(err){
 		if(err) {
@@ -121,7 +142,7 @@ exports.viewIntervieweeFeedback = function(req, res){
 	function renderFeedbacks(err, users) {
         var user = users[0]
         console.log(user.feedback)
-		res.render('interviewee/intervieweeFeedback', {'feedbacks': user.feedback});
+		res.render('interviewee/intervieweeFeedback', {'feedbacks': user.feedback, 'isAvailable':req.session.user.isAvailable});
 	}
 };
 
@@ -131,12 +152,13 @@ exports.viewInterviewerFeedback = function(req, res){
 	function renderFeedbacks(err, users) {
         var user = users[0]
         console.log(user.feedback)
-		res.render('interviewer/interviewerFeedback', {'feedbacks': user.feedback});
+		res.render('interviewer/interviewerFeedback', {'feedbacks': user.feedback, 'isAvailable':req.session.user.isAvailable});
 	}
 };
 
 
 exports.viewIntervieweeSkills = function(req, res){
+	console.log('Skills + isAvailable:' + req.session.user.isAvailable)
 	function afterFind(err){
 		if(err) {
 			console.log(err)
@@ -199,7 +221,8 @@ exports.dosurveyInterviewee = function(req, res) { 
 					"softSkills": "For example: Good communication skills, Experience managing teams",
 					"frameworks": "For example: DJango, MongoDB, Google AppEngine",
 					"improvements": "For example: practicing more technical questions, learning to clearly express ideas",
-					"isAlternate": isAlternate
+					"isAlternate": isAlternate,
+					"isAvailable": true
 				}); 
 				console.log(newUser)
 				newUser.save(function(err){
@@ -311,7 +334,8 @@ exports.dosurveyInterviewer = function(req, res) { 
 					"hobbies": "What are your hobbies?",
 					"description1": "What did you do? Where did you work?",
 					"description2": "What did you do? Where did you work?",
-					"isAlternate": isAlternate
+					"isAlternate": isAlternate,
+					"isAvailable": true
 				}); 
 				console.log(isAlternate)
 				newUser.save(function(err){
@@ -417,7 +441,8 @@ exports.viewMatchForInterviewee = function(req, res){
 
 			res.render('matchForInterviewee', {
 				'match': matched_user,
-				'curr_user': curr_user
+				'curr_user': curr_user,
+				'isAvailable':req.session.user.isAvailable
 			});
         }
 	};
@@ -429,7 +454,8 @@ exports.postFeedback = function(req,res){
 	var curr_user = req.session.user
 	res.render('feedback', {
 		'match': req.params.match,
-		'curr_user': curr_user
+		'curr_user': curr_user,
+		'isAvailable':req.session.user.isAvailable
 	});
 };
 
@@ -437,7 +463,8 @@ exports.kickoff = function(req, res) { 
 	var curr_user = req.session.user
 	res.render('startInterview', {
 		'match':req.params.match,
-		'curr_user': curr_user
+		'curr_user': curr_user,
+		'isAvailable':req.session.user.isAvailable
 	});
 };
 
@@ -603,7 +630,7 @@ exports.saveFeedback = function(req,res){
 			res.send(500)
 		}
 		else {		
-			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user});											
+			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user, 'isAvailable':req.session.user.isAvailable});											
 		}
 	}
 	
@@ -612,9 +639,8 @@ exports.saveFeedback = function(req,res){
 		var curr_user = req.session.user
 		console
 		model.User.update({"email":req.params.match},
-		{ $push: {"feedback":{"text":req.query.feedback,"by":curr_user.firstname}
-				}
-	}).exec(afterUpdate);
+		{ $push: {"feedback":{"text":req.query.feedback,"by":curr_user.firstname}}
+		}).exec(afterUpdate);
 	}
 	else
 		afterUpdate(null);

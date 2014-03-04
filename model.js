@@ -20,7 +20,8 @@ var UserSchema = new Mongoose.Schema({
 	"description1": String,
 	"description2": String,
 	"feedback": [{'text':String,'by':String}],
-	"isAlternate": Boolean
+	"isAlternate": Boolean,
+	"isAvailable": Boolean
 });
 
 exports.User = Mongoose.model('User', UserSchema);

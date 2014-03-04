@@ -6,7 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body style = "background-image: url(/images/interview.jpg);">   
-  {{> logout}}
+  <div class="row" style="height:5%">
+    <div class="header col-xs-12">
+      <ul class="nav nav-pills pull-right" style="padding-top:3%">
+        <li class="active"><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="jumbotron" align="center">
     <h4 class="lead"> Let us know how to serve you better within 30 seconds. </h4>
         <form role="form" id = "interviewer-survey-form" method="get" action="/intervieweeProfile"><!--this also goes to interviewee profile-->

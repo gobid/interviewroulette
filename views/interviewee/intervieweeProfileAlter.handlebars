@@ -8,12 +8,8 @@
 </head>    
 <body>
   <div class="container">
-    <div class="row" style="height:5%">
-      <div class="col-md-6 header">
-        <ul class="nav nav-pills pull-right" style="padding-top:3%">
-          <li class="active"><a href="/logout">Logout</a></li>
-        </ul>
-      </div>
+    {{> logout}}
+    <div class="row">
       <div class="col-md-6">
         <a href="/editIntervieweeProfile">
           <button type="submit" class="btn btn-primary btn-large edit-button">
@@ -21,8 +17,6 @@
           </button>
         </a>
       </div>
-    </div>
-    <div class="row">
       <div class="col-md-8 extrainfo">
         <h1>{{firstname}} {{lastname}} </h1>
       </div>
@@ -76,6 +70,13 @@
       $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
       $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
       $('#btnShow').toggle();
+    });
+    $('#available').click(function(e){
+        $('#toggle-availability').submit();
+    });
+
+    $('#unavailable').click(function(e){
+        $('#toggle-availability').submit();
     });
   });
   </script>

@@ -1,7 +1,23 @@
 <div class="row" style="height:5%">
-  <div class="header">
-    <ul class="nav nav-pills pull-right" style="padding-top:3%">
-      <li class="active"><a href="/logout">Logout</a></li>
-    </ul>
-  </div>
+	<div class="header col-xs-6">
+		<form role="form" id="toggle-availability" method="get" action="/saveAvailabilityChange">
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios" id="available" value="available" {{#if isAvailable}} checked {{else}}{{/if}}>
+					Is Avail: {{isAvailable}} {{email}}
+				</label>
+			</div>
+			<div class="radio">
+				<label>
+					<input type="radio" name="optionsRadios" id="unavailable" value="unavailable" {{#if isAvailable}} {{else}} checked {{/if}}>
+					Invisible
+				</label>
+			</div>
+		</form>
+	</div>
+	<div class="header col-xs-6">
+		<ul class="nav nav-pills pull-right" style="padding-top:3%">
+			<li class="active"><a href="/logout">Logout</a></li>
+		</ul>
+	</div>
 </div>

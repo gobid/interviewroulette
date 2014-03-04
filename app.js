@@ -71,6 +71,9 @@ app.get('/editInterviewerProfile', routes.viewEditInterviewerProfile);
 app.get('/interviewerFeedback',routes.viewInterviewerFeedback);
 
 
+// SAVE AVAILABILITY STATUS
+app.get('/saveAvailabilityChange', routes.saveAvailabilityChange); 
+
 // DUMMY MATCH PAGES
 app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
 app.get("/matchForInterviewer", routes.viewMatchForInterviewer);
