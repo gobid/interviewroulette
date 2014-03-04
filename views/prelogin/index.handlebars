@@ -7,6 +7,12 @@
 </head>
 <body style = "background-image: url(/images/interview.jpg);">
   {{> navbar}}
+  {{#if invalid}}
+  <div class="alert alert-danger">
+    <strong>Invalid email and/or password</strong> 
+    Please try logging in again
+  </div>
+  {{/if}}
   <div class="container"> 
     <br>
     <div class="jumbotron" style="padding-top:25%;">

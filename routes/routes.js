@@ -102,7 +102,12 @@ exports.viewEditInterviewerProfile = function(req, res) { 
  }
 
 exports.view = function(req, res){
-  res.render('prelogin/index');
+	if (req.query.invalid) 
+		res.render('prelogin/index', {
+			'invalid': req.query.invalid
+		})
+	else
+		res.render('prelogin/index');
 };
 
 exports.viewIntervieweeAreasToImprove = function(req, res){
@@ -616,11 +621,11 @@ exports.viewIntervieweeProfile = function(req, res) {
 				}				
 			}
 			else 
-				res.redirect('/')
+				res.redirect('/?invalid=1')
 		}
 	}	
 	else 
-		res.redirect('/');
+		res.redirect('/?invalid=1');
 }
 
 exports.saveFeedback = function(req,res){
