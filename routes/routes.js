@@ -211,7 +211,7 @@ exports.dosurveyInterviewee = function(req, res) { 
 		else {
 			if (users.length == 0){
 				var random = Math.random()
-				var isAlternate = (random > 0.5)
+				var isAlternate = true //(random > 0.5), chose alternate version
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -323,7 +323,7 @@ exports.dosurveyInterviewer = function(req, res) { 
 		else {
 			if (users.length == 0){
 				var randnum =  Math.random()
-				var isAlternate = (randnum > 0.5)	
+				var isAlternate = true; // (randnum > 0.5)	chose alternate version
 				var newUser = model.User({
 					"firstname": req.query.fname, 
 					"lastname": req.query.lname,
@@ -537,8 +537,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 							else {
 								var user = users[0]
 								req.session.user = user
-								if(user.isAlternate) res.redirect('intervieweeProfile/alternate');
-                                else res.render('interviewee/intervieweeProfile', req.session.user);
+								res.redirect('intervieweeProfile/alternate');
 							}
 						})
 					}
@@ -568,8 +567,7 @@ exports.viewIntervieweeProfile = function(req, res) {
 							else {
 								var user = users[0]
 								req.session.user = user
-								if(user.isAlternate) res.redirect('interviewerProfile/alternate');
-                                else res.redirect('interviewerProfile');							
+								res.redirect('interviewerProfile/alternate');
 							}
 						})
 					}
@@ -578,12 +576,10 @@ exports.viewIntervieweeProfile = function(req, res) {
 		}   	
 		else { // just returning to the page
 			if (req.session.user.interviewer){
-				if(req.session.user.isAlternate) res.redirect('interviewerProfile/alternate');
-                else res.redirect('interviewerProfile');
+				res.redirect('interviewerProfile/alternate');
             }    
 			else {
-				if(req.session.user.isAlternate) res.redirect('intervieweeProfile/alternate');
-                else res.render('interviewee/intervieweeProfile', req.session.user);
+				res.redirect('intervieweeProfile/alternate');
             }    
 		}
 	}
@@ -608,16 +604,11 @@ exports.viewIntervieweeProfile = function(req, res) {
 				console.log(user.isAlternate)
 				req.session.user = user
 				if (user.interviewer){
-					if(user.isAlternate) res.redirect('interviewerProfile/alternate');
-                    else res.redirect('interviewerProfile');				
+					res.redirect('interviewerProfile/alternate');
 				}	
 				else {
 					console.log('I AM HERE')
-					if(user.isAlternate) {
-						res.redirect('intervieweeProfile/alternate');
-						console.log('I AM HERE again');
-					}	
-                    else res.render('interviewee/intervieweeProfile', req.session.user);
+					res.redirect('intervieweeProfile/alternate');
 				}				
 			}
 			else 
