@@ -2,13 +2,13 @@
 	<div class="header col-xs-6">
 		<form role="form" id="toggle-availability" method="get" action="/saveAvailabilityChange">
 			<div class="radio">
-				<label>
+				<label style="color: #d3d3d3">
 					<input type="radio" name="optionsRadios" id="available" value="available" {{#if isAvailable}} checked {{else}}{{/if}}>
 					Available
 				</label>
 			</div>
 			<div class="radio">
-				<label>
+				<label style="color: #d3d3d3">
 					<input type="radio" name="optionsRadios" id="unavailable" value="unavailable" {{#if isAvailable}} {{else}} checked {{/if}}>
 					Invisible
 				</label>

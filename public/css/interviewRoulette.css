@@ -391,7 +391,6 @@ small.text-muted {
 }
 
 #profile-name {
-  font-family: "Gill Sans";
   font-weight: normal;
   text-shadow: black 0.1em 0.1em 0.2em;
 }
@@ -416,4 +415,12 @@ small.text-muted {
   font-weight: normal;
   text-align: center;
   background: rgb(171, 24, 2);
+}
+
+#match-button {
+  background: rgb(171, 24, 2);
+}
+
+.description-text {
+  font-family: "Lato";
 }
