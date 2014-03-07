@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src = "/js/startInterview.js"></script>
   <script type = "text/javascript" src = "http://cdn.dev.skype.com/uri/skype-uri.js"></script>
+  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -35,5 +37,16 @@
       </div>
     </div>
   </div>
+  <script type='text/javascript'>
+  $(document).ready(function() {
+    $('#available').click(function(e){
+        $('#toggle-availability').submit();
+    });
+
+    $('#unavailable').click(function(e){
+        $('#toggle-availability').submit();
+    });
+  });
+  </script> 
 </body>
 </html>

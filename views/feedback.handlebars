@@ -5,6 +5,8 @@
   <link rel="stylesheet" type="text/css" href="/css/interviewRoulette.css">
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
   <meta charset="utf-8">
+  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </head>
 <body>
  <div class="container">
@@ -25,5 +27,16 @@
         <button id="submit" type="submit" class="btn btn-primary match btn-lg active">Save</button>
     </form>
   </div> 
+  <script type='text/javascript'>
+  $(document).ready(function() {
+    $('#available').click(function(e){
+        $('#toggle-availability').submit();
+    });
+
+    $('#unavailable').click(function(e){
+        $('#toggle-availability').submit();
+    });
+  });
+  </script> 
 </body>
 </html>

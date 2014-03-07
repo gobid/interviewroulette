@@ -3,23 +3,37 @@ var model = require('../model');
 // ROUTES
 
 exports.saveAvailabilityChange = function(req, res) {
+	console.log('hi im here')
 	function afterSave(err){
 		if(err) {
 			console.log(err)
 			res.send(500)
 		}
+		else {
+			backURL = req.header('Referer') || '/';
+			res.redirect(backURL);
+		}
 	}
 
 	if(req.query.optionsRadios == 'available') {
 		var curr_user = req.session.user
-		model.User.update({"email":req.session.user.email}, 
-				{"isAvailable":true}
-		).exec(afterSave)
+		req.session.user.isAvailable = true
+		model.User.update({
+			"email":req.session.user.email
+		}, 
+		{
+			"isAvailable":true
+		}).exec(afterSave)
 	}
 	else {
 		var curr_user = req.session.user
-		model.User.update({"email":req.session.user.email}, 
-				{"isAvailable":false}).exec(afterSave)
+		req.session.user.isAvailable = false
+		model.User.update({
+			"email":req.session.user.email
+		}, 
+		{
+			"isAvailable":false
+		}).exec(afterSave)
 	}
 }
 
@@ -147,7 +161,10 @@ exports.viewIntervieweeFeedback = function(req, res){
 	function renderFeedbacks(err, users) {
         var user = users[0]
         console.log(user.feedback)
-		res.render('interviewee/intervieweeFeedback', {'feedbacks': user.feedback, 'isAvailable':req.session.user.isAvailable});
+		res.render('interviewee/intervieweeFeedback', {
+			'feedbacks': user.feedback, 
+			'isAvailable':req.session.user.isAvailable
+		});
 	}
 };
 
@@ -157,7 +174,10 @@ exports.viewInterviewerFeedback = function(req, res){
 	function renderFeedbacks(err, users) {
         var user = users[0]
         console.log(user.feedback)
-		res.render('interviewer/interviewerFeedback', {'feedbacks': user.feedback, 'isAvailable':req.session.user.isAvailable});
+		res.render('interviewer/interviewerFeedback', {
+			'feedbacks': user.feedback, 
+			'isAvailable':req.session.user.isAvailable
+		});
 	}
 };
 
@@ -626,7 +646,11 @@ exports.saveFeedback = function(req,res){
 			res.send(500)
 		}
 		else {		
-			res.render('feedbackSaved', {'match':req.params.match,'curr_user':curr_user, 'isAvailable':req.session.user.isAvailable});											
+			res.render('feedbackSaved', {
+				'match':req.params.match,
+				'curr_user':curr_user, 
+				'isAvailable':req.session.user.isAvailable
+			});											
 		}
 	}
 	
