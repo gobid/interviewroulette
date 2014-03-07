@@ -403,3 +403,25 @@ small.text-muted {
   font-weight: normal;
   text-shadow: black 0.1em 0.1em 0.2em;
 }
+
+#edit-button {
+  background-color: inherit;
+  border-color: rgb(23, 115, 195);
+}
+
+#email-text {
+  color: white;
+}
+
+.logo {
+  color: white;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  font-family: "Gill Sans";
+  font-size: 35px;
+  line-height: 70px;
+  font-weight: normal;
+  text-align: center;
+  background: rgb(171, 24, 2);
+}
