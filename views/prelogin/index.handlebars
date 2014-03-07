@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body class = "home">
+  <div class="container"> 
   {{> navbar}}
   {{#if invalid}}
     <div class="alert alert-danger">
@@ -13,12 +14,11 @@
       Please try logging in again
     </div>
   {{/if}}
-  <div class="container"> 
     <div class="jumbotron" style="padding-top:25%;">
       <center>
         <div class="logo">IR</div>
       </center>
-      <h3 class ="clear">Interview Roulette</h3>
+      <h3 class ="clear" style="font-family: Gill Sans; font-weight:normal">Interview Roulette</h3>
       <h5 class = "lead">Realtime practice that helps you ace the next interview.</h5>
       <p><a class="btn btn-lg btn-success" href="/signup" role="button">Sign up today</a></p>
     </div>
