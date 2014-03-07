@@ -8,14 +8,16 @@
 <body class = "home">
   {{> navbar}}
   {{#if invalid}}
-  <div class="alert alert-danger">
-    <strong>Invalid email and/or password</strong> 
-    Please try logging in again
-  </div>
+    <div class="alert alert-danger">
+      <strong>Invalid email and/or password</strong> 
+      Please try logging in again
+    </div>
   {{/if}}
   <div class="container"> 
-    <br>
     <div class="jumbotron" style="padding-top:25%;">
+      <center>
+        <div class="logo">IR</div>
+      </center>
       <h3 class ="clear">Interview Roulette</h3>
       <h5 class = "lead">Realtime practice that helps you ace the next interview.</h5>
       <p><a class="btn btn-lg btn-success" href="/signup" role="button">Sign up today</a></p>

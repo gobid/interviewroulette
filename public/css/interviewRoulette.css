@@ -332,14 +332,14 @@ small.text-muted {
 
 .clear {
    text-shadow:black 0.2em 0.2em 0.2em;
-   font-size:40px;
+   font-size:44px;
    color: white;
    text-align: center;
 }
 
 .lead {
   text-shadow:black 0.1em 0.1em 0.1em;
-  font-size:28px;
+  font-size:22px;
   color: white;
   text-align: center;
 }
