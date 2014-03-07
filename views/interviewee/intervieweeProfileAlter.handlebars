@@ -8,49 +8,52 @@
 </head>    
 <body>
   <div class="container">
-    {{> logout}}
-    <div class="row">
-      <div class="col-md-6">
-        <a href="/editIntervieweeProfile">
-          <button type="submit" class="btn btn-primary btn-large edit-button">
-            <i class="edit-icon glyphicon glyphicon-pencil"></i>
-          </button>
-        </a>
-      </div>
-      <div class="col-md-8 extrainfo">
-        <h1>{{firstname}} {{lastname}} </h1>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8 extrainfo">
-        <h4><small>interviewee</h4></small><br>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-4 extrainfo">
-        <address>
-          {{location}}<br>
-        </address>
-        <address>
-          <strong>{{education}}</strong><br>
-        </address>
-      </div>
-      <div class="col-md-4 extrainfo">
-        <address>
-          <strong>{{occupation}}</strong><br>
-          <a href="mailto:#">{{email}}</a>
-        </address>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-12 extrainfo">
-        <center>
-          <a href="/matchForInterviewee">
-            <button type = "button" class = "btn btn-primary btn-large">Match with an interviewer</button>
+    <div id="container">
+      {{> logout}}
+      <div class="row">
+        <div class="col-md-6">
+          <a href="/editIntervieweeProfile">
+            <button type="submit" class="btn btn-primary btn-large edit-button">
+              <i class="edit-icon glyphicon glyphicon-pencil"></i>
+            </button>
           </a>
-        </center>
+        </div>
+        <div class="col-md-8 extrainfo">
+          <h1 id="profile-name">{{firstname}} {{lastname}} </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 extrainfo">
+          <h4><small>interviewee</h4></small><br>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 extrainfo">
+          <address>
+            {{location}}<br>
+          </address>
+          <address>
+            <strong>{{education}}</strong><br>
+          </address>
+        </div>
+        <div class="col-md-4 extrainfo">
+          <address>
+            <strong>{{occupation}}</strong><br>
+            <a href="mailto:#">{{email}}</a>
+          </address>
+        </div>
       </div>
     </div>
+    <br>
+    <div class="row">
+        <div class="col-md-12 extrainfo">
+          <center>
+            <a href="/matchForInterviewee">
+              <button type = "button" class = "btn btn-primary btn-large">Match with an interviewer</button>
+            </a>
+          </center>
+        </div>
+      </div>
   </div>
   <br>
   <br>
