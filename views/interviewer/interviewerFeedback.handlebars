@@ -10,11 +10,13 @@
   <div class="container">
     {{> logout}}
     <form role="form" method="get" action="/intervieweeProfile">
-      <h1>Feedback from interviewee</h1>
-      <div class="form-group">
+      <h1>Feedback from interviewee will be shown after interview</h1>
+      <div class="alert alert-info" style="text-align:left">
+        <ul>
         {{#each feedbacks}}
-          <h5>{{text}} by {{by}}</h5>
+          <li><h5>{{text}} -- by {{by}}</h5></li>
           {{/each}}
+        </ul>  
       </div>
     </form>
   </div>
