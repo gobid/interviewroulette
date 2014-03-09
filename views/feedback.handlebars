@@ -8,23 +8,24 @@
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </head>
-<body>
- <div class="container">
+<body style="background-color: rgb(23, 115, 195);">
+ <div class="container" id="container">
     <br>
     <div class="row">
-      <div class="col-md-12">
-          <a href = '/intervieweeProfile'>
-          <button type="submit" class="btn btn-default">Back To My Profile</button>
+      <div class="col-md-12" style="padding-right: 0px">
+        <a href = '/intervieweeProfile'>
+           <button style="float:left" type="submit" id="back-button" class="glyphicon glyphicon-home"></button>
+        </a>  
+        {{> logoutForStartInterview}}
         </a>
       </div>
     </div>
-    {{> logout}}
     <form role="form" method="get" action="/feedbackSaved/{{ match }}">
       <label for="feedback">Share your feedback for interview with {{ match }}</label>
       <textarea class="form-control" rows="3" name="feedback"></textarea>
         <br>
         <br>
-        <button id="submit" type="submit" class="btn btn-primary match btn-lg active">Save</button>
+        <button id="submit" type="submit" class="btn" style="float: right; border-color: white; background: rgb(171, 24, 2); color: white; font-family: Gill Sans">Save</button>
     </form>
   </div> 
   <script type='text/javascript'>

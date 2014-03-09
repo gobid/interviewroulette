@@ -9,35 +9,35 @@
   <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <div class="container">
-    <div class="form-group">
+<body style="background-color: rgb(214, 216, 216);">
+  <div class="container" id="container">
+    <div class="form-group" style="padding-top: 10px">
       <a href = '/intervieweeProfile'>
-        <button type="submit" class="btn btn-default">Back To My Profile</button>
+        <button style="float:left" type="submit" id="back-button" class="glyphicon glyphicon-home"></button>
       </a>
-      {{> logout}} 
-      <h4 style="padding-top:10%;text-align:center">Start your interview now.</h4>
-      <br>
-      <div class = "row">
-        <div class = "col-md-4">
-          <div style="text-align:center">
-            <div id = "call_32">
-              <script type = "text/javascript">
-                Skype.ui({
-                  name: "call",
-                  element: "call_32",
-                  participants: ["{{match}}"],
-                  imageSize: 32,
-                  listParticipants: "true"
-                })
-              </script>
-            </div>
-            <a href='/feedback/{{ match }}'><button type="button" class="btn btn-primary match btn-lg active"> Give feedbacks </button></a>
-          </div>
-        </div>
-      </div>
+      {{> logoutForStartInterview}}
+      <center>
+         <div class="logo">IR</div>
+      </center>
+      <h1 style="text-align:center" id="startInterviewTitle">Start your interview now.</h1>
     </div>
   </div>
+  <center>
+    <span id="skype-call">
+      <div id = "call_32">
+        <script type = "text/javascript">
+          Skype.ui({
+            name: "call",
+            element: "call_32",
+            participants: ["{{match}}"],
+            imageSize: 32,
+            listParticipants: "true"
+          })
+        </script>
+      </div>
+    </span>
+    <a href='/feedback/{{ match }}'><button type="button" class="btn btn-primary match btn-lg active" style="border-color: white; background: rgb(171, 24, 2); color: white; font-family: Gill Sans; margin-bottom: 30px"> Give feedbacks </button></a>
+  </center>
   <script type='text/javascript'>
   $(document).ready(function() {
     $('#available').click(function(e){

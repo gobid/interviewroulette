@@ -6,11 +6,11 @@
   <title>Interview Profile</title>
   {{> bootplyBoilerplate}}
 </head>
-<body>
-  <div class="container">
+<body style="background-color: rgb(23, 115, 195);">
+  <div class="container" id="container">
     {{> logout}}
     <form role="form" method="get" action="/intervieweeProfile">
-      <h1>Feedback from interviewee will be shown after interview</h1>
+      <h3>Feedback from interviewee will be shown after interview</h3>
       <div class="alert alert-info" style="text-align:left">
         <ul>
         {{#each feedbacks}}
