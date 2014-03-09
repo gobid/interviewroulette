@@ -9,16 +9,19 @@
 <body>
   <div class="container">
     {{> logout}}
-    <form role="form" method="get" action="/intervieweeProfile">
-      <h1>Feedback from interviewee will be shown after interview</h1>
-      <div class="alert alert-info" style="text-align:left">
+    <div class="row">
+      <div class = "col-md-12">
+      <h4>Feedback from interviewer will be shown after each interview</h4>
+      <div class="form-control" rows = "5">
         <ul>
         {{#each feedbacks}}
           <li><h5>{{text}} -- by {{by}}</h5></li>
-          {{/each}}
+        {{/each}}
         </ul>  
       </div>
-    </form>
+      </div>
+    </div>  
+  </div>
   </div>
   <br>
   <br>
