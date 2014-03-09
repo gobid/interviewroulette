@@ -5,43 +5,58 @@
   <meta charset="utf-8">
   <title>Interview Profile</title>
   {{> bootplyBoilerplate}}
-</head>    
+</head>   
 <body>
-  <div class="container" id="container">
-    {{> logout}}
-    <br>
-    <div class="row">
-      <div class = "col-md-12">
-        <a href="/editInterviewerProfile">
-          <button type="submit" class="btn btn-primary btn-large edit-button" id="">
-            <i class="edit-icon glyphicon glyphicon-pencil"></i>
-          </button>
-        </a>
+  <div class="container">
+    <div id="container">
+      {{> logout}}
+      <div class="row">
+        <div class="col-md-6">
+           <a style="display:inline" href="/editInterviewerProfile">
+            <button type="submit" class="btn btn-primary btn-large edit-button" id="edit-button">
+              <i class="edit-icon glyphicon glyphicon-pencil"></i>
+            </button>
+          </a>
+        </div>
+        <center>
+         <div class="logo">IR</div>
+        </center>
+        <div class="col-md-8 extrainfo">
+          <h1 id="profile-name" style="display:inline">{{firstname}} {{lastname}} </h1>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 30px font-family:Lato">
+        <div class="col-md-8 extrainfo">
+          <i style="color: #d3d3d3">interviewer</i>
+        </div>
+      </div>
+      <br>
+      <div class="row description-text">
+        <div class="col-md-4 extrainfo">
+            {{company}} <br>
+            {{location}}<br>
+            <br>
+            {{education}}
+        </div>
+        <div class="col-md-4 extrainfo description-text">
+          <address>
+            {{occupation}}<br>
+            <br>
+            <a href="mailto:#" id="email-text" class="description-text">{{email}}</a>
+          </address>
+        </div>
       </div>
     </div>
-    <div class="col-md-8 extrainfo">
-      <h1>{{firstname}} {{lastname}}</h1><br>
-      <p><h4><small>interviewer</h4></small><br>
-      <div class="row">
-        <div class="col-md-4 extrainfo">
-          <address>
-            <strong>{{company}}</strong><br>
-            {{location}}<br>
-          </address>
-          <address>
-            <strong>{{education}}</strong><br>
-          </address>
-        </div>
-        <div class="col-md-4 extrainfo">
-          <address>
-            <strong>{{occupation}}</strong><br>
-            <a href="mailto:#">{{email}}</a>
-          </address>
+    <br>
+    <div class="row">
+        <div class="col-md-12 extrainfo">
+          <center>
+            <a href="/matchForInterviewer">
+              <button type = "button" class = "btn btn-primary btn-large" style="border-color: rgb(171, 24, 2); background: rgb(171, 24, 2)">Match with an interviewee</button>
+            </a>
+          </center>
         </div>
       </div>
-      <a href="/matchForInterviewer">
-        <button type = "button" class = "btn btn-primary btn-large" id="match-button">Match with an interviewee</button>
-      </a>
     </div>
   </div>
   <br>
@@ -63,7 +78,6 @@
       $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
       $('#btnShow').toggle();
     });
-
     $('#available').click(function(e){
         $('#toggle-availability').submit();
     });
@@ -83,7 +97,7 @@
     $(document).ready(function(){
       $('.persistent').click(function(e){
         e.preventDefault();
-        ga('send', 'event', 'persistent', 'click');
+        ga('send', 'event', 'sidebar', 'click');
         window.location.href = $(this).attr('href');
       });
     })

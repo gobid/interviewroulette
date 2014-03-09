@@ -6,8 +6,8 @@
   <title>About Me</title>
   {{> bootplyBoilerplate}}
 </head>
-<body>
-  <div class="container">
+<body style="background-color: rgb(23, 115, 195);">
+  <div class="container" id="container">
     {{> logout}}
     <br>
     <div class="row">
@@ -23,7 +23,7 @@
     <div class = "row">
       <div class = "col-md-12">
         <form role="form" method="get" action="/interviewerAboutMe">
-          <h1>ABOUT {{firstname}}:</h1></br>
+          <h1>About {{firstname}}</h1></br>
           <div class="form-group">
             <strong>My mission: </strong><br>
             <textarea class="form-control" rows="3" placeholder="{{mission}}" name="mission">{{mission}}</textarea>
@@ -33,7 +33,7 @@
             <textarea class="form-control" rows="3" placeholder="{{hobbies}}" name="hobbies">{{hobbies}}</textarea>
           </div>
           <div class="form-group">
-            <button id="submit" type="submit" class="btn btn-default pull-right">Save</button>
+            <button id="submit" type="submit" class="btn btn-default pull-right" style="border-color: white; background: rgb(171, 24, 2); color: white">Save</button>
           </div>
         </form>
       </div>

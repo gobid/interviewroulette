@@ -4,52 +4,55 @@
   {{> head}}
   <link rel="stylesheet" type="text/css" href="/css/interviewRoulette.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
 </head>
-<body>
-  <div class="container">
-    <div class="jumbotron">
-      <div class="form-group">
+<body style="background-color: rgb(214, 216, 216);">
+  <div class="container" id="container">
+    <div class="jumbotron" style="padding: 15px; margin-bottom: 0px">
+      <div class="form-group" style="float: left">
         <a href = '/intervieweeProfile'>
-          <button type="submit" class="btn btn-default">Back To My Profile</button>
+          <button style="float:left" type="submit" id="back-button" class="glyphicon glyphicon-home"></button>
         </a>
+        <div style=" position: fixed; right: 0px" class="logo" id="logo-small">IR</div>
       </div>
-      <h3> Congraluations! We have found an interviewer for you.</h3>
-      <div class = "row">
-        <div class="col-md-8" >
-          <div class="row">
-            <div class="col-md-8">
-              <h1 style="color:black">{{ match.firstname }} {{ match.lastname }}</h1>
-            </div> 
-            <!-- Description used to go here -->
-            <!-- <p class="lead">{{ match.description1 }} {{ match.description2 }}</p> -->
-          </div> 
-          <div class="row">
-            <div class="col-md-6 extrainfo">
-              <address style="color:#0099CC">
-                {{ match.location}}<br>
-                {{ match.education}}<br>
-                {{ match.occupation}}<br>
-              </address>
-            </div>       
-            <div class="col-md-6 extrainfo">
-              <address>
-                <a href="mailto:#">{{ match.email }}</a>
-              </address>
-            </div>  
-          </div>   
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 extrainfo"> 
-          <a class="btn btn-primary btn-lg match active" href="/startInterview/{{ match.email }}" role="button">Request an interview</a>
-        </div>
-        <div class="col-md-4 extrainfo"> 
-          <a class="btn btn-primary btn-lg match active" href="/matchForInterviewee" role="button">Try another roulette</a>
-        </div>
-      </div>	
-    </div> 
+      <br>
+      <center>
+        <h1 id="congratulations" > Congratulations! </h1> 
+        <small>We have found an interviewer for you.</small>
+      </center>
+    </div>
+  </div>
+  <div>
+  <center><span style="border-radius: 20px; margin-top: 20px; margin-bottom: 5px; display: inline-block; background-color: rgb(23, 115, 195);" >
+    <span style="display: inline-block; color: white" class="row">
+      <div class="col-xs-12 extraoinfo">
+        <center><h1>{{ match.firstname }} {{ match.lastname }}</h1></center>
+      </div> 
+    </span> 
+    <br>
+    <span style="display: inline-block;" class="row">
+      <div class="col-md-6">
+         <address style="color:white">
+          {{ match.location}}<br>
+          {{ match.education}}<br>
+          {{ match.occupation}}<br>
+        </address>
+      </div>       
+      <div class="col-md-6 ">
+        <address>
+          <a href="mailto:#" style="color: white">{{ match.email }}</a>
+        </address>
+      </div>  
+    </span>   
+  </span></center>
+</div>
+  <div class="row" style="height: 0px">
+    <div class="col-md-4 extrainfo"> 
+      <a class="btn btn-primary btn-lg match active" href="/startInterview/{{ match.email}}" role="button" style="border-color: white; background: rgb(171, 24, 2); color: white; font-family: Gill Sans">Request an interview</a>
+    </div>
+    <br>
+  <div class="col-md-4 extrainfo"> 
+    <a class="btn btn-primary btn-lg match active" href="/matchForInterviewee" role="button" style="border-color: white; background: rgb(171, 24, 2); color: white; font-family: Gill Sans">Try another roulette</a>
+  </div>
   </div> 
 </body>
 </html>
