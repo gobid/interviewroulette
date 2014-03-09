@@ -12,13 +12,11 @@
     <!-- Placeholder for "saved" notfication -->
     <div class="row">
       <div class = "col-md-12">
-      <h4>Feedback from interviewer will be shown after each interview</h4>
-      <div class="alert alert-info" style="text-align:left; padding: 6px 12px;border:1px solid;height:80px;">
-        <ul>
+      <h4>Feedback will show after each interview</h4>
+      <div class="alert alert-info" style="text-align:left; padding: 6px 12px;border:1px solid;">
         {{#each feedbacks}}
-          <li><h5>{{text}} -- by {{by}}</h5></li>
-        {{/each}}
-        </ul>  
+          <li style="color:grey"><h5>{{text}} -- by {{by}}</h5></li>
+        {{/each}}  
       </div>
       </div>
     </div>  
