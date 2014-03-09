@@ -1,0 +1,23 @@
+<div class="row" style="height:5%">
+<div class="header col-xs-4">
+  <form role="form" id="toggle-availability" method="get" action="/saveAvailabilityChange">
+    <div class="radio" style="margin-top: 0px">
+      <label style="color: #d3d3d3">
+        <input type="radio" name="optionsRadios" id="available" value="available" {{#if isAvailable}} checked {{else}}{{/if}}>
+        Available
+      </label>
+    </div>
+    <div class="radio">
+      <label style="color: #d3d3d3">
+        <input type="radio" name="optionsRadios" id="unavailable" value="unavailable" {{#if isAvailable}} {{else}} checked {{/if}}>
+        Invisible
+      </label>
+    </div>
+  </form>
+</div>
+<div class="header col-xs-6" style="padding-right: 0px">
+  <ul class="nav nav-pills pull-right" style="padding-top:3%">
+    <li class="active"><a href="/logout">Logout</a></li>
+  </ul>
+</div>
+</div> 
