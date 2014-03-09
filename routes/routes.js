@@ -473,17 +473,6 @@ exports.viewMatchForInterviewee = function(req, res){
 	};
 };
 
-
-exports.postFeedback = function(req,res){
-	console.log(req.params.match)
-	var curr_user = req.session.user
-	res.render('feedback', {
-		'match': req.params.match,
-		'curr_user': curr_user,
-		'isAvailable':req.session.user.isAvailable
-	});
-};
-
 exports.kickoff = function(req, res) { 
 	var curr_user = req.session.user
 	res.render('startInterview', {
@@ -639,14 +628,14 @@ exports.viewIntervieweeProfile = function(req, res) {
 		res.redirect('/?invalid=1');
 }
 
-exports.saveFeedback = function(req,res){
+exports.postFeedback = function(req,res){
 	function afterUpdate(err){
 		if(err) {
 			console.log(err)
 			res.send(500)
 		}
 		else {		
-			res.render('feedbackSaved', {
+			res.render('feedback', {
 				'match':req.params.match,
 				'curr_user':curr_user, 
 				'isAvailable':req.session.user.isAvailable
@@ -654,10 +643,9 @@ exports.saveFeedback = function(req,res){
 		}
 	}
 	
-	if(req.query.feedback){
-		console.log("I came here!")
+	if(req.query.feedback){// form submit
+		console.log("I came here! Pay attention!")
 		var curr_user = req.session.user
-		console
 		model.User.update({"email":req.params.match},
 		{ $push: {"feedback":{"text":req.query.feedback,"by":curr_user.firstname}}
 		}).exec(afterUpdate);
@@ -666,7 +654,40 @@ exports.saveFeedback = function(req,res){
 		afterUpdate(null);
 }
 
-
+exports.viewInterviewerPastExp = function(req, res){
+	function afterFind(err){
+		if(err) {
+			console.log(err)
+			res.send(500)
+		}
+		else {
+			model.User.find({
+				"email":req.session.user.email
+			}).exec(function(err,users){
+				if (err) {
+					console.log(err)
+					res.send(500)
+					}
+				else {
+					var found = users[0]
+					req.session.user = found;	
+					res.render('interviewer/interviewerPastExp', req.session.user);						
+			   }
+			})
+		}
+	}
+	if (req.query.description1){ // form submit
+		model.User.update({
+			"email":req.session.user.email
+		},
+		{
+			"description1":req.query.description1,
+			"description2":req.query.description2
+		}).exec(afterFind);		
+	}
+	else
+		afterFind(null)
+};
 
 
 

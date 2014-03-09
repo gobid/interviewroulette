@@ -46,7 +46,6 @@ app.get('/signup', routes.viewSignup);
 app.get("/intervieweeSurvey", routes.dosurveyInterviewee);
 app.get("/interviewerSurvey", routes.dosurveyInterviewer);
 
-app.get("/feedback/:match",routes.postFeedback);
 app.get("/startInterview/:match",routes.kickoff);
 app.get("/startInterviewWithInterviewee/:match",routes.kickoffWithInterviewee);
 
@@ -79,7 +78,7 @@ app.get("/matchForInterviewee", routes.viewMatchForInterviewee);
 app.get("/matchForInterviewer", routes.viewMatchForInterviewer);
 
 // Post feedbacks
-app.get("/feedbackSaved/:match",routes.saveFeedback);
+app.get("/feedback/:match",routes.postFeedback);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
