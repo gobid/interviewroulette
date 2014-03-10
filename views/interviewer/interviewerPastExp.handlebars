@@ -1,4 +1,4 @@
-control<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
@@ -10,7 +10,7 @@ control<!DOCTYPE html>
   <div class="container" id="container">
     {{> logout}}
     <br>
-    <div class="row" style="height: 0px">
+    <div class="row">
       <div class = "col-md-12">
         <div id="save-notification" class="notification-hidden">
           <div class="alert alert-success">
@@ -19,14 +19,14 @@ control<!DOCTYPE html>
         </div>
       </div>
     </div>
-    <div class = "row" style="height: 0px">
+    <div id="save-notification"></div>
+    <div class = "row">
       <div class = "col-md-12">
         <form role="form" method="get" action="/interviewerPastExp">
-          <br>
-          <h1>Past Experiences</h1>
+          <h1>Past Experience</h1></br>
           <div class="form-group">
             <strong>Previous positions and projects</strong><br>
-            <textarea class="form-control" rows="3"name="description1">{{description1}}</textarea>
+            <textarea class="form-control" rows="3"  name="description1">{{description1}}</textarea>
           </div>
           <div class="form-group">
             <strong>My specialties</strong><br>
@@ -48,31 +48,31 @@ control<!DOCTYPE html>
   <script type='text/javascript' src="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
   <!-- JavaScript jQuery code from Bootply.com editor -->
   <script type='text/javascript'>
-    $(document).ready(function() {
-      //Handle notificaitons
-      var url = window.location.href;
-      if(url.indexOf("?")!= -1) {
-        $("#save-notification").fadeIn('slow'); 
-      }
+  $(document).ready(function() {
+    //Handle notificaitons
+    var url = window.location.href;
+    if(url.indexOf("?")!= -1) {
+      $("#save-notification").fadeIn('slow'); 
+    }
 
-      /* off-canvas sidebar toggle */
-      $('[data-toggle=offcanvas]').click(function() {
-        $(this).toggleClass('visible-xs text-center');
-        $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
-        $('.row-offcanvas').toggleClass('active');
-        $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
-        $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
-        $('#btnShow').toggle();
-      });
-
-      $('#available').click(function(e){
-        $('#toggle-availability').submit();
-      });
-
-      $('#unavailable').click(function(e){
-        $('#toggle-availability').submit();
-      });
+    /* off-canvas sidebar toggle */
+    $('[data-toggle=offcanvas]').click(function() {
+      $(this).toggleClass('visible-xs text-center');
+      $(this).find('i').toggleClass('glyphicon-chevron-right glyphicon-chevron-left');
+      $('.row-offcanvas').toggleClass('active');
+      $('#lg-menu').toggleClass('hidden-xs').toggleClass('visible-xs');
+      $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
+      $('#btnShow').toggle();
     });
+
+    $('#available').click(function(e){
+        $('#toggle-availability').submit();
+    });
+
+    $('#unavailable').click(function(e){
+        $('#toggle-availability').submit();
+    });
+  });
   </script>
 </body>
 </html>
