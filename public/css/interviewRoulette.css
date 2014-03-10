@@ -5,6 +5,14 @@ html, body {
    font-family:verdana,arial,sans-serif;
 }
 
+body.survey { 
+  background: url(/images/interview.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .nav {
    font-family:Arial,sans-serif;
    font-size:13px;
@@ -478,6 +486,7 @@ small.text-muted {
   font-weight: 200; 
   margin-top: 25px; 
   margin-bottom: 25px;
+  padding: 10px;
 }
 
 .persistant-bar {
